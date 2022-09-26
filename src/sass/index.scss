@@ -1,2 +1,19 @@
-@import './common';
-@import './example';
+@import './base/common';
+@import './base/reset';
+
+@import './components/button-anchor';
+@import './components/button';
+@import './components/container';
+@import './components/modal-authorization';
+@import './components/modal-film-info';
+@import './components/modal-team';
+@import './components/section';
+
+@import './layout/footer';
+@import './layout/header-home';
+@import './layout/header-my-library';
+@import './layout/main';
+
+@import './utils/hidden';
+@import './utils/variables';
+
