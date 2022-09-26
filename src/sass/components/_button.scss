@@ -1,0 +1,45 @@
+.button {
+    height: 44px;
+    font-family: "Roboto";
+    font-size: 12px;
+    line-height: 1.33px;
+    border-radius: 5px;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    color: #ffffff;
+    border: none;
+}
+
+.button--desktop {
+    width: 148px;
+}
+
+.button--tablet {
+    width: 130px;
+}
+
+.button--mobile {
+    width: 110px;
+}
+
+.button--orange {
+    background-color: #ff6b01;
+}
+
+.button--orange:hover,
+.button--orange:focus {
+    border: 1px solid #ffffff;
+    background-color: rgba(0, 0, 0, 0.56);
+}
+
+.button--transparent {
+    border: 1px solid #ffffff;
+    background-color: rgba(0, 0, 0, 0.56);
+}
+
+.button--transparent:hover,
+.button--transparent:focus {
+    background-color: #ff6b01;
+    border: none;
+}
