@@ -1,0 +1,2 @@
+document.querySelector("body").onscroll=function(e){const o=document.getElementsByClassName("btn_anchor")[0];e.target.scrollingElement.scrollTop>0?o.classList.remove("btn_anchor-hidden"):o.classList.add("btn_anchor-hidden")},document.querySelector(".btn_anchor").addEventListener("click",(()=>{document.querySelector("body").scrollIntoView({top:0,behavior:"smooth"})}));
+//# sourceMappingURL=index.84695c1a.js.map
