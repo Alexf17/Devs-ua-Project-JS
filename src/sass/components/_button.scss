@@ -1,13 +1,12 @@
 .button {
     height: 44px;
-    font-family: "Roboto";
     font-size: 12px;
     line-height: 1.33px;
     border-radius: 5px;
     align-items: center;
     text-align: center;
     text-transform: uppercase;
-    color: #ffffff;
+    color: var(--white-color);
     border: none;
 }
 
@@ -24,22 +23,22 @@
 }
 
 .button--orange {
-    background-color: #ff6b01;
+    background-color:var(--accent-color);
 }
 
 .button--orange:hover,
 .button--orange:focus {
-    border: 1px solid #ffffff;
+    border: 1px solid var(--white-color);
     background-color: rgba(0, 0, 0, 0.56);
 }
 
 .button--transparent {
-    border: 1px solid #ffffff;
+    border: 1px solid var(--white-color);
     background-color: rgba(0, 0, 0, 0.56);
 }
 
 .button--transparent:hover,
 .button--transparent:focus {
-    background-color: #ff6b01;
+    background-color:var(--accent-color);
     border: none;
 }
