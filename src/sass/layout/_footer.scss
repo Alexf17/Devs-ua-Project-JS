@@ -1,7 +1,7 @@
 .footer {
   padding-top: 30px;
   padding-bottom: 30px;
-  background-color: #f7f7f7;
+  background-color: var(--light-gray-color);
   max-width: 1024px;
   margin: 0 auto;
   @media screen and (min-width: 1328px) {
@@ -38,7 +38,7 @@
   display: block;
   font-size: 14px;
   line-height: 1.14;
-  color: #545454;
+  color: var(--footer-text-color);
   @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 1.19;
@@ -58,7 +58,7 @@
 }
 
 .footer__svg {
-  fill: #ff6b08;
+  fill: var(--accent-color);
   width: 14px;
   height: 14px;
   margin: 0 10px;
