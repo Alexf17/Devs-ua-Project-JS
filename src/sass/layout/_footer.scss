@@ -1,11 +1,11 @@
+// styles for footer bg-color
 .footer {
   padding-top: 30px;
   padding-bottom: 30px;
   background-color: var(--light-gray-color);
-  max-width: 1024px;
   margin: 0 auto;
-  @media screen and (min-width: 1328px) {
-    max-width: 1328px;
+  @media screen and (min-width: 1280px) {
+    max-width: 1280px;
   }
 }
 
@@ -34,6 +34,7 @@
   display: flex;
 }
 
+// styles for text information
 .footer__text {
   display: block;
   font-size: 14px;
