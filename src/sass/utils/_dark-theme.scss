@@ -1,0 +1,29 @@
+.change_theme {
+    border: none;
+    box-shadow:  rgba(255, 255, 255, 0.103);
+    fill: white;
+    background-color: transparent;
+
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-bottom:20px;
+
+    margin-left: auto;
+}
+
+@media screen and (min-width: 768px) {
+    .change_theme {
+
+    margin-right: 32px;
+    margin-bottom:32px;
+    margin-top: 0px;
+    }
+}
+
+button.change_theme[data-theme='onDark'] {
+    display: block;
+}
+
+button.change_theme[data-theme='onLight'] {
+    display: none;
+}
