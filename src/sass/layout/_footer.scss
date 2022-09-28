@@ -1,0 +1,68 @@
+// styles for footer bg-color
+.footer {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background-color: var(--light-gray-color);
+  margin: 0 auto;
+  @media screen and (min-width: 1280px) {
+    max-width: 1280px;
+  }
+}
+
+.footer__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.footer__first-text-box {
+  margin-bottom: 10px;
+  display: flex;
+  @media screen and (min-width: 768px) {
+    margin-bottom: 0;
+  }
+}
+
+.footer__second-text-box {
+  display: flex;
+}
+
+// styles for text information
+.footer__text {
+  display: block;
+  font-size: 14px;
+  line-height: 1.14;
+  color: var(--footer-text-color);
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 1.19;
+  }
+}
+
+.footer__text--vertical-line {
+  &::after {
+    content: '|';
+    margin: 0 5px;
+  }
+}
+
+.footer__link {
+  text-decoration-line: underline;
+  margin-left: 4px;
+}
+
+.footer__svg {
+  fill: var(--accent-color);
+  width: 14px;
+  height: 14px;
+  margin: 0 10px;
+  display: flex;
+  align-self: center;
+}
