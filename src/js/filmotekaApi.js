@@ -65,7 +65,7 @@ export default class ApiFilmoteka {
     
     try {
 
-      const { data } = await axios.get(`/trending/all/week?api_key=${this.API_KEY}&page=${this.pageNumber}`);
+      const { data } = await axios.get(`/trending/movie/week?api_key=${this.API_KEY}&page=${this.pageNumber}`);
       // Изменяет значение в свойстве totalPages екземпляра класса для пагинации
       this.totalPages = data.total_pages;
        // console.log(data.results)
