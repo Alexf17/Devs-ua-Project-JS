@@ -1,5 +1,6 @@
-import axios from 'axios';
-
+// import axios from 'axios';
+import ApiFilmoteka from './filmotekaApi';
+const api = new ApiFilmoteka();
 // создаем обьект жанров фильмов ключ: значения.
 const genresList = {
   28: 'Action',
@@ -33,20 +34,17 @@ const searchGenresById = idArrayList => {
 };
 
 // функция создания списка фильмов
-const createMainMarkup = async () => {
+async function createMainMarkup() {
   //получаем список фильмов по запросу
-  const results = await axios.get(
-    'https://api.themoviedb.org/3/trending/all/day?api_key=74bfe718a55ac7916c6e6ad87b15f944'
-  );
+  const results = await api.fetchPopularsFilms();
 
   // получаем массив из елементов 'li' , переводим в строку с помощю join
-  const filmCards = results.data.results
+  const filmCards = results
     .map(
       ({
         id,
         poster_path,
         title,
-        name,
         genre_ids,
         release_date,
       }) => `<li class="film__item">
@@ -55,9 +53,7 @@ const createMainMarkup = async () => {
   <img src="https://image.tmdb.org/t/p/original${poster_path}" class="film-item__img" alt="${title}" width="300">
   </div>
   <div>
-  <h3 class="film__title">${
-    title ? title.toUpperCase() : name.toUpperCase()
-  }</h3>
+  <h3 class="film__title">${title}</h3>
   </div>
   <div class="film__genres-date">
   <p class="film__genres">${searchGenresById(genre_ids)}</p>
@@ -71,6 +67,6 @@ const createMainMarkup = async () => {
   console.log(filmCards);
   // возвращаем строку
   return filmCards;
-};
+}
 // вызываем функцию
 createMainMarkup();
