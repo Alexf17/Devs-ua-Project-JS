@@ -1,44 +1,68 @@
 .button {
-    height: 44px;
-    font-size: 12px;
-    line-height: 1.33px;
-    border-radius: 5px;
-    align-items: center;
-    text-align: center;
-    text-transform: uppercase;
-    color: var(--white-color);
-    border: none;
+  height: 44px;
+  font-size: 12px;
+  line-height: 1.33px;
+  border-radius: 5px;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--white-color);
+  border: none;
 }
 
 .button--desktop {
-    width: 148px;
+  width: 148px;
 }
 
 .button--tablet {
-    width: 130px;
+  width: 130px;
 }
 
 .button--mobile {
-    width: 110px;
+  width: 110px;
 }
 
 .button--orange {
-    background-color:var(--accent-color);
+  background-color: var(--accent-color);
+  color: var(--white-color);
+  border: none;
 }
 
 .button--orange:hover,
 .button--orange:focus {
-    border: 1px solid var(--white-color);
-    background-color: var(--back-drop-bg-color);
+  border: 1px solid var(--white-color);
+  background-color: transparent;
 }
 
 .button--transparent {
-    border: 1px solid var(--white-color);
-    background-color: var(--back-drop-bg-color);
+  border: 1px solid var(--white-color);
+  background-color: var(--back-drop-bg-color);
 }
 
 .button--transparent:hover,
 .button--transparent:focus {
-    background-color:var(--accent-color);
-    border: none;
+  background-color: var(--accent-color);
+  border: none;
+}
+
+.button-modal__orange {
+  background-color: var(--accent-color);
+  color: var(--white-color);
+  border: none;
+}
+
+.button-modal__orange:hover,
+.button-modal__orange:focus {
+  background-color: var(--back-drop-bg-color);
+}
+
+.button-modal__white {
+  background-color: transparent;
+  border: 1px solid var(--main-text-color);
+}
+
+.button-modal__white:hover,
+.button-modal__white:focus {
+  box-shadow: 2px 2px 5px rgb(161, 158, 158);
+  background-color: var(--back-drop-bg-color);
 }
