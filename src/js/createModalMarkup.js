@@ -71,8 +71,6 @@ export function createModalMarkup(data) {
             </button>
           </li>
         </ul>
-      </div>
-    </div>
   </div>`;
   // Возвращаем результат работы функции
   return filmModalMarkup;
