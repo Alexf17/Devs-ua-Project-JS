@@ -1,9 +1,9 @@
-import {searchGenresById} from './genresList'
+import { searchGenresById } from './genresList';
 import ApiFilmoteka from './filmotekaApi';
-import {renderFoo} from './renderMarkup'
+import { renderFoo } from './renderMarkup';
 const api = new ApiFilmoteka();
 
-const cardListEl = document.querySelector('ul.card__list')
+const cardListEl = document.querySelector('ul.card__list');
 
 // создаем обьект жанров фильмов ключ: значения.
 // const genresList = {
@@ -56,10 +56,10 @@ async function createMainMarkup() {
   <div class="film__wrap">
   <img src="https://image.tmdb.org/t/p/original${poster_path}" class="film-item__img" alt="${title}" width="300">
   </div>
-  <div>
+  <div class="film__title-wrap">
   <h3 class="film__title">${title}</h3>
   </div>
-  <div class="film__genres-date">
+  <div class="film__genres-and-date">
   <p class="film__genres">${searchGenresById(genre_ids)}</p>
   <p class="film__release-date">${new Date(release_date).getFullYear()}</p>
   
@@ -70,8 +70,8 @@ async function createMainMarkup() {
     .join('');
   console.log(filmCards);
   // возвращаем строку
-  renderFoo(filmCards, cardListEl)
+  renderFoo(filmCards, cardListEl);
   return filmCards;
 }
 // вызываем функцию render
-createMainMarkup() 
+createMainMarkup();
