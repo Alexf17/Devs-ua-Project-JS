@@ -20,7 +20,7 @@ export default class ApiFilmoteka {
   }
   
   setFilmName(newName) {
-    this.name = newName;
+    this.filmName = newName;
   }
 
   async fetchFilmsByName() {
