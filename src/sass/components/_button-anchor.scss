@@ -1,20 +1,30 @@
 .btn_anchor {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  bottom: 0;
-  right: 0;
+
   width: 50px;
   height: 50px;
   cursor: pointer;
-  background: rgb(233, 241, 0);
+  background: var(--accent-color);
   border-radius: 50%;
+  border: 3px solid rgba(0, 0, 0, 0.56);
+  margin-bottom: 10px;
+  margin-right: 10px;
+  opacity: 30%;
   &-hidden {
     display: none;
   }
   img {
-    width: 25px;
-    fill: rgb(20, 96, 238);
+    width: 22px;
   }
+}
+
+.btn_anchor:hover {
+  cursor: pointer;
+  opacity: 100%;
 }
