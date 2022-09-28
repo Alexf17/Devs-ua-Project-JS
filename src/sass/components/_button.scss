@@ -1,4 +1,6 @@
+//common button styles
 .button {
+  width: 110px;
   height: 44px;
   font-size: 12px;
   line-height: 1.33px;
@@ -20,18 +22,32 @@
 
 .button--mobile {
   width: 110px;
+
+  //tablet button styles
+  @media screen and (min-width: 321px) {
+    width: 130px;
+  }
+  //desktop tablet style
+  @media screen and (nin-width: 769px) {
+    width: 148px;
+  }
+
 }
 
 .button--orange {
   background-color: var(--accent-color);
+
   color: var(--white-color);
   border: none;
+
 }
 
 .button--orange:hover,
 .button--orange:focus {
   border: 1px solid var(--white-color);
+
   background-color: transparent;
+
 }
 
 .button--transparent {
@@ -44,6 +60,7 @@
   background-color: var(--accent-color);
   border: none;
 }
+
 
 .button-modal__orange {
   background-color: var(--accent-color);
@@ -66,3 +83,4 @@
   box-shadow: 2px 2px 5px rgb(161, 158, 158);
   background-color: var(--back-drop-bg-color);
 }
+
