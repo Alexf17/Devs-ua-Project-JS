@@ -49,19 +49,19 @@ const createMainMarkup = async () => {
         name,
         genre_ids,
         release_date,
-      }) => `<li class="film-item">
-        <a class="film-link" id="${id}">
-  <div class="film-wrap">
-  <img src="https://image.tmdb.org/t/p/original${poster_path}" class="film-item-img" alt="${title}" width="300">
+      }) => `<li class="film__item">
+        <a class="film__link" id="${id}">
+  <div class="film__wrap">
+  <img src="https://image.tmdb.org/t/p/original${poster_path}" class="film-item__img" alt="${title}" width="300">
   </div>
   <div>
-  <h3 class="film-title">${
+  <h3 class="film__title">${
     title ? title.toUpperCase() : name.toUpperCase()
   }</h3>
   </div>
-  <div class="film-genres-date">
-  <p class="film-genres">${searchGenresById(genre_ids)}</p>
-  <p class="film-release-date">${new Date(release_date).getFullYear()}</p>
+  <div class="film__genres-date">
+  <p class="film__genres">${searchGenresById(genre_ids)}</p>
+  <p class="film__release-date">${new Date(release_date).getFullYear()}</p>
   
    </div>
    </a>
