@@ -1,3 +1,3 @@
-export function renderFoo(markup, list) {
-      list.insertAdjacentHTML('beforeend', markup);
-};
+export function renderFoo(markup, renderTarget) {
+  renderTarget.insertAdjacentHTML('beforeend', markup);
+}

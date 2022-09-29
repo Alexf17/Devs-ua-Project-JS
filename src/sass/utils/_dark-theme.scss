@@ -1,29 +1,52 @@
 .change_theme {
-    border: none;
-    box-shadow:  rgba(255, 255, 255, 0.103);
-    fill: white;
-    background-color: transparent;
+  border: none;
+  box-shadow: rgba(255, 255, 255, 0.103);
+  fill: white;
+  background-color: transparent;
 
-    margin-top: 20px;
-    margin-right: 20px;
-    margin-bottom:20px;
+  margin-top: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
 
-    margin-left: auto;
+  margin-left: auto;
 }
 
 @media screen and (min-width: 768px) {
-    .change_theme {
-
+  .change_theme {
     margin-right: 32px;
-    margin-bottom:32px;
+    margin-bottom: 32px;
     margin-top: 0px;
-    }
+  }
 }
 
 button.change_theme[data-theme='onDark'] {
-    display: block;
+  display: block;
 }
 
 button.change_theme[data-theme='onLight'] {
+  display: none;
+}
+
+.dark__theme {
+  background-color: #5c5b5b;
+
+  .footer {
+    background-color: #363636;
+  }
+  .footer__text {
+    color: var(--white-color);
+  }
+  .film__title {
+    color: var(--white-color);
+  }
+  .infoFilm {
+    background-color: rgb(184, 93, 93);
+  }
+  button.change_theme[data-theme='onDark'] {
     display: none;
+  }
+
+  button.change_theme[data-theme='onLight'] {
+    display: block;
+  }
 }
