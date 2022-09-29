@@ -1,0 +1,87 @@
+.card__list {
+  width: 100%;
+  text-align: center;
+  @media screen and(min-width:768px) {
+    display: grid;
+    gap: 32px;
+    grid-template-columns: repeat(2, calc((100% - 32px) / 2));
+  }
+  @media screen and(min-width:1280px) {
+    gap: 32px 16px;
+    grid-template-columns: repeat(3, calc((100% - 32px) / 3));
+  }
+}
+.film__item {
+  display: inline-block;
+  @media screen and (max-width: 767px) {
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 0px;
+  }
+}
+.film__link {
+  cursor: pointer;
+}
+.film__wrap {
+  margin-bottom: 10px;
+  @media screen and (min-width: 768px) {
+    margin-bottom: 8px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-bottom: 12px;
+  }
+}
+.film-item__img {
+  width: 100%;
+  border-radius: 5px;
+  height: 398px;
+  @media screen and (min-width: 768px) {
+    height: 455px;
+  }
+  @media screen and (min-width: 1280px) {
+    height: 574px;
+  }
+}
+.film__title-wrap {
+  text-align: left;
+}
+.film__title {
+  font-family: Roboto;
+  font-size: 12px;
+  line-height: 1.33;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 1);
+  @media screen and (min-width: 1280px) {
+    font-size: 20px;
+    line-height: 1.2;
+  }
+}
+.film__genres-and-date {
+  display: flex;
+  font-family: Roboto;
+  font-size: 12px;
+  line-height: 1.17;
+  color: var(--accent-color);
+  @media screen and(min-width:768px) {
+    line-height: 1.33;
+  }
+  @media screen and (min-width: 1280px) {
+    font-size: 20px;
+    line-height: 1.2;
+  }
+}
+.film__genres {
+  &::after {
+    content: ' | ';
+  }
+}
+.film__genres {
+}
+
+.film__release-date {
+  margin-left: 2px;
+}

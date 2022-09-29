@@ -56,10 +56,10 @@ export async function createMainMarkup() {
   <div class="film__wrap">
   <img src="https://image.tmdb.org/t/p/original${poster_path}" class="film-item__img" alt="${title}" width="300">
   </div>
-  <div>
+  <div class="film__title-wrap">
   <h3 class="film__title">${title}</h3>
   </div>
-  <div class="film__genres-date">
+  <div class="film__genres-and-date">
   <p class="film__genres">${searchGenresById(genre_ids)}</p>
   <p class="film__release-date">${new Date(release_date).getFullYear()}</p>
   
