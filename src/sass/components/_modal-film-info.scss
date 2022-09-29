@@ -10,6 +10,8 @@
 }
 
 .infoFilm {
+  margin-top: 40px;
+  
   position: relative;
   width: 280px;
   max-width: 90vw;
@@ -24,11 +26,13 @@
 
   @media screen and (min-width: 768px) {
     width: 704px;
+    margin-top: 0px;
 
     padding: 40px 72px 40px 36px;
   }
   @media screen and (min-width: 1280px) {
     width: 806px;
+    margin-top: 0px;
 
     padding: 40px 12px;
   }
