@@ -21,6 +21,8 @@
   padding: 48px 20px 40px;
 
   background-color: #ffffff;
+  scrollbar-color: var(--gray-color);
+  scrollbar-width: thin;
 
   @media screen and (min-width: 768px) {
     width: 704px;
@@ -113,8 +115,8 @@
 
 .about-film {
   margin-bottom: 20px;
+  vertical-align: middle;
 }
-
 
 .about-film__left {
   font-weight: 500;
@@ -134,6 +136,8 @@
 }
 
 .about-film__right {
+  display: inline-block;
+
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
