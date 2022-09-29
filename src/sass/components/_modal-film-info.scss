@@ -24,13 +24,11 @@
 
   @media screen and (min-width: 768px) {
     width: 704px;
-    height: 552px;
 
     padding: 40px 72px 40px 36px;
   }
   @media screen and (min-width: 1280px) {
     width: 806px;
-    height: 558px;
 
     padding: 40px 12px;
   }
@@ -60,8 +58,8 @@
 }
 
 .infoFilm__svg {
-  width: 14px;
-  height: 14px;
+  width: 20px;
+  height: 20px;
 }
 
 .infoFilm__wrap {
@@ -114,42 +112,33 @@
 }
 
 .about-film {
-  display: flex;
-  align-items: center;
-
   margin-bottom: 20px;
 }
 
-.left-list {
-  margin-right: 39px;
 
-  @media screen and (min-width: 1280px) {
-    margin-right: 83px;
-  }
-}
-
-.left-list__item {
+.about-film__left {
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
+  width: 108px;
+
+  @media screen and (min-width: 1280px) {
+    width: 152px;
+  }
 
   color: var(--gray-color);
 
   &:not(:last-child) {
-    margin-bottom: 8px;
+    padding-bottom: 8px;
   }
 }
 
-.right-list___item {
+.about-film__right {
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
 
   color: var(--main-text-color);
-
-  &:not(:last-child) {
-    margin-bottom: 8px;
-  }
 
   &:nth-child(2) {
     line-height: 1.17;
@@ -157,6 +146,9 @@
 
   &:nth-child(3) {
     text-transform: uppercase;
+  }
+  &:not(:last-child) {
+    padding-bottom: 8px;
   }
 }
 
