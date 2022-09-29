@@ -1,0 +1,206 @@
+// стили на бэкдроп
+.team__backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--back-drop-bg-color);
+  opacity: 1;
+  transition: opacity var(--transition--duration) var(--transition-timing);
+}
+
+// стили для контейнера Девс-юа
+.ourteam__container {
+  overflow-y: auto;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  scrollbar-color: var(--gray-color);
+  scrollbar-width: thin;
+  background-color: #ffffff;
+  font-size: 12px;
+  width: 300px;
+  max-width: 528px;
+  max-height: 100vh;
+  padding: 30px 20px 30px 20px;
+  color: var(--main-text-color);
+
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    width: 628px;
+    height: 628px;
+    padding: 30px;
+  }
+  @media screen and (min-width: 1024px) {
+    min-width: 900px;
+    height: 700px;
+    padding: 30px;
+  }
+}
+// Title
+.title-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    margin-bottom: 30px;
+    margin-top: 30px;
+  }
+  @media screen and (min-width: 1024px) {
+    margin-top: 30px;
+    margin-bottom: 50px;
+  }
+}
+
+.ourteam__title {
+  font-size: 25px;
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    line-height: 1.16;
+    @media screen and (min-width: 1024px) {
+      margin-top: 10px;
+      margin-bottom: 40px;
+      font-size: 28px;
+    }
+  }
+}
+.team-logo {
+  height: 70px;
+  width: 100px;
+}
+
+.ourteam__content {
+  text-align: center;
+  margin: 0 -5px -32px -5px;
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    margin: 0 -20px -32px -16px;
+  }
+  @media screen and (min-width: 1024px) {
+    margin: 0 -16px -32px -16px;
+  }
+}
+.ourteam__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.ourteam__item {
+  position: relative;
+  border-radius: 0px 0px 4px 4px;
+  margin: 0 5px 32px 5px;
+  width: calc((100% - 20px * 1) / 2);
+
+  @media screen and (max-width: 1023px) {
+    &:first-child {
+      text-align: center;
+    }
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    width: 140px;
+  }
+  @media screen and (min-width: 1024px) {
+    width: calc((100% - 5px * 5) / 6);
+    margin: 0 16px 32px 16px;
+  }
+}
+
+//Добавляет класс на фото
+.image__scale {
+  display: inline-block;
+
+  margin: auto;
+  width: 100px;
+  height: 100px;
+
+  margin-bottom: 5px;
+  position: relative;
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    margin-bottom: 10px;
+    width: 140px;
+    height: 140px;
+  }
+  @media screen and (min-width: 1024px) {
+    margin-bottom: 20px;
+    width: 150px;
+    height: 150px;
+  }
+}
+.ourteam__image {
+  border-radius: 30px;
+  transition: transform var(--transition-duration) var(--transition-timing),
+    box-shadow var(--transition-duration) var(--transition-timing);
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+}
+.ourteam__subtitle {
+  font-size: 12px;
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    margin-bottom: 5px;
+    font-size: 12px;
+    line-height: 1;
+  }
+  @media screen and (min-width: 1024px) {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 14px;
+    line-height: 1.15;
+  }
+}
+
+.ourteam__text {
+  color: var(--accent-color);
+  line-height: 1.12;
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    margin-bottom: 15px;
+    font-size: 12px;
+    line-height: 1.15;
+  }
+  @media screen and (min-width: 1024px) {
+    margin-bottom: 15px;
+    font-size: 14px;
+    line-height: 1.1;
+  }
+}
+
+.social__icon {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  margin: 0;
+
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    width: 30px;
+    height: 30px;
+  }
+  @media screen and (min-width: 1024px) {
+    width: 30px;
+    height: 30px;
+  }
+}
+// закрытие модального окна
+.modal__close-button {
+  position: absolute;
+  background: none;
+  outline: none;
+  border: none;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  display: block;
+  padding: 8px;
+  border-radius: 50%;
+  fill: var(--main-text-color);
+}
+
+.modal__close-button-svg {
+  width: 20px;
+  height: 20px;
+}
