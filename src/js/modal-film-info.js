@@ -38,6 +38,7 @@ async function onFilmCardClick(e) {
   renderFoo(markup, refs.ModalFilmWrap);
   refs.ModalFilmBackdrop.classList.remove('visually-hidden');
   refs.ModalFilmBody.classList.add('no-scroll');
+  refs.ModalFilmBackdrop.classList.add('scroll');
 }
 
 //  Функция закрытия модального окна и очистка разметки модального окна
@@ -46,4 +47,5 @@ function onModalFilmBtnClose() {
   refs.ModalFilmBackdrop.classList.add('visually-hidden');
   refs.ModalFilmBody.classList.remove('no-scroll');
   cleanerMarkup(refs.ModalFilmWrap);
+  refs.ModalFilmBackdrop.classList.remove('scroll');
 }
