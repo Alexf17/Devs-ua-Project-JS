@@ -1,9 +1,9 @@
-import {searchGenresById} from './genresList'
+import { searchGenresById } from './genresList';
 import ApiFilmoteka from './filmotekaApi';
-import {renderFoo} from './renderMarkup'
+import { renderFoo } from './renderMarkup';
 const api = new ApiFilmoteka();
 
-const cardListEl = document.querySelector('ul.card__list')
+const cardListEl = document.querySelector('ul.card__list');
 
 // создаем обьект жанров фильмов ключ: значения.
 // const genresList = {
@@ -68,10 +68,10 @@ async function createMainMarkup() {
    </li>`
     )
     .join('');
-  console.log(filmCards);
+  // console.log(filmCards);
   // возвращаем строку
-  renderFoo(filmCards, cardListEl)
+  renderFoo(filmCards, cardListEl);
   return filmCards;
 }
 // вызываем функцию render
-createMainMarkup() 
+createMainMarkup();

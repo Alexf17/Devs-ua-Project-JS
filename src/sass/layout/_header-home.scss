@@ -187,21 +187,18 @@
 
 .header__form-icon {
   display: inline-flex;
-
 }
 
 .header__error {
-  
-  opacity: 0;
-
-  visibility: hidden;
-}
-
-.header__error-visible {
+  // opacity: 100;
+  // visibility: hidden;
   margin-top: 16px;
   color: var(--red-color);
   opacity: 100%;
   visibility: visible;
+}
+
+.header__error-visible {
 }
 
 .header__list-link--accent::after {
@@ -261,12 +258,10 @@
 }
 
 /*Ховери*/
-.header__logo:hover 
-.header__icon {
+.header__logo:hover .header__icon {
   stroke: var(--orange-hover);
 }
-.header__logo:hover 
-.header__logo-text {
+.header__logo:hover .header__logo-text {
   color: var(--orange-hover);
 }
 .header__list-link:hover {
@@ -282,12 +277,10 @@
   border-bottom-color: var(--orange-hover);
 }
 
-.header__form-input:hover
-.header__form-input::placeholder {
+.header__form-input:hover .header__form-input::placeholder {
   color: var(--orange-hover);
 }
 
-.header__form-input:hover
-.header__search {
+.header__form-input:hover .header__search {
   stroke: var(--orange-hover);
 }
