@@ -1,0 +1,81 @@
+
+.preloader{
+  position: fixed;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba($color: #fff, $alpha: 1);
+  transition: opacity 1s var(--transition-timing),
+  visibility 1s var(--transition-timing);
+  opacity: 1;
+
+  &__loader, 
+  &__precents {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__precents{
+
+    font-size:30px;
+    font-weight: bold;
+  }
+
+  &--hide {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+}
+
+
+@keyframes ldio-auzoskln {
+  0% {
+    transform: rotate(0deg)
+  }
+
+  50% {
+    transform: rotate(180deg)
+  }
+
+  100% {
+    transform: rotate(360deg)
+  }
+}
+
+.ldio-auzoskln div {
+  position: absolute;
+  animation: ldio-auzoskln 0.8s linear infinite;
+  width: 160px;
+  height: 160px;
+  top: 20px;
+  left: 20px;
+  border-radius: 50%;
+  box-shadow: 0 4px 0 0 #ff001b;
+  transform-origin: 80px 82px;
+}
+
+.loadingio-spinner-eclipse {
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+  overflow: hidden;
+  background: none;
+}
+
+.ldio-auzoskln {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: translateZ(0) scale(1);
+  backface-visibility: hidden;
+  transform-origin: 0 0;
+  /* see note above */
+}
+
+.ldio-auzoskln div {
+  box-sizing: content-box;
+}
