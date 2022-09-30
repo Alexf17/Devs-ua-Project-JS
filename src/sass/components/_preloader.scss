@@ -1,5 +1,6 @@
 
 .preloader{
+  z-index: 1000;
   position: fixed;
   top:0;
   left: 0;
@@ -8,7 +9,6 @@
   background-color: rgba($color: #fff, $alpha: 1);
   transition: opacity 1s var(--transition-timing),
   visibility 1s var(--transition-timing);
-  opacity: 1;
 
   &__loader, 
   &__precents {
