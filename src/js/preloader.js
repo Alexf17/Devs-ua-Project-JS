@@ -6,7 +6,6 @@ export function preloaderRefresh() {
 
 export function preloaderRefreshOFF() {
   const arrElements = Array.from(refs.imgElArr);
-  console.log(arrElements)
 
     arrElements.forEach((el, index) => {
       el.onload = () => {
@@ -14,7 +13,7 @@ export function preloaderRefreshOFF() {
         if (index === arrElements.length - 1) {
           refs.preloaderEl.classList.add('preloader--hide');
         }
-        console.log("мы молодцы")
+        // console.log("мы молодцы")
       }
     });
 }
@@ -30,7 +29,7 @@ function  onLoad(e) {
     refs.preloaderEl.classList.add('preloader--hide');
   
     window.removeEventListener('load', onLoad);
-    console.log('C window слушатель успешно снят');
+    // console.log('C window слушатель успешно снят');
   }
 
 preloaderOn();
