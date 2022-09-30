@@ -34,7 +34,7 @@ export default class User {
         });
 
         signOut(auth).then(() => {
-          refs.userLibrary.classList.add('hidden-tab');
+          // refs.userLibrary.classList.add('hidden-tab');
         });
       })
       .catch(error => {
