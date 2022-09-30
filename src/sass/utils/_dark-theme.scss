@@ -26,8 +26,9 @@ button.change_theme[data-theme='onDark'] {
 button.change_theme[data-theme='onLight'] {
   display: none;
 }
-
+// Тёмная тема
 .dark__theme {
+  // страница -------------------
   background-color: #5c5b5b;
 
   .footer {
@@ -39,9 +40,44 @@ button.change_theme[data-theme='onLight'] {
   .film__title {
     color: var(--white-color);
   }
+  // модалка основная (инфо)---------
   .infoFilm {
-    background-color: rgb(184, 93, 93);
+    background-color: #5c5b5b;
   }
+  .infoFilm__button {
+    fill: var(--light-gray-color);
+  }
+  .button-modal__orange {
+    color: var(--light-gray-color);
+  }
+  .button-modal__white {
+    color: var(--light-gray-color);
+    border-color: var(--light-gray-color);
+  }
+  .about-film__left {
+    color: var(--light-gray-color);
+  }
+  .votes-count {
+    background-color: var(--light-gray-color);
+  }
+  // модалка команды -------------------
+  .ourteam__container {
+    background-color: #5c5b5b;
+  }
+  .modal__close-button {
+    fill: var(--light-gray-color);
+  }
+  .ourteam__title {
+    color: var(--light-gray-color);
+  }
+  .ourteam__subtitle {
+    color: var(--light-gray-color);
+  }
+
+  .team-logo {
+    border-radius: 50%;
+  }
+
   button.change_theme[data-theme='onDark'] {
     display: none;
   }

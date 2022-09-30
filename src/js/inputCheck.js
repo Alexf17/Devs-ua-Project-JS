@@ -6,7 +6,6 @@ const headerformEl = document.querySelector('.header__form');
 const headerInputEl = document.querySelector('.header__form');
 const cardListEl = document.querySelector('ul.card__list');
 const headerErrorEl = document.querySelector('.header__error');
-console.log(headerInputEl);
 const api = new ApiFilmoteka();
 headerInputEl.addEventListener('submit', onFormSubmit);
 
