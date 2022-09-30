@@ -1,6 +1,7 @@
 import { searchGenresById } from './genresList';
 import ApiFilmoteka from './filmotekaApi';
 import { renderFoo } from './renderMarkup';
+import img from '../images/filmWrap.jpg';
 const api = new ApiFilmoteka();
 
 const cardListEl = document.querySelector('ul.card__list');
@@ -54,21 +55,27 @@ export async function createMainMarkup() {
       }) => `<li class="film__item">
         <a class="film__link" id="${id}">
   <div class="film__wrap">
-  <img src="https://image.tmdb.org/t/p/original${poster_path}" class="film-item__img" alt="${title}" width="300">
+      <img src=${
+        // через тернарник проверка
+        poster_path ? `https://image.tmdb.org/t/p/original${poster_path}` : img
+      } class="film-item__img" alt="${title}" width="300">
   </div>
   <div class="film__title-wrap">
   <h3 class="film__title">${title}</h3>
   </div>
   <div class="film__genres-and-date">
   <p class="film__genres">${searchGenresById(genre_ids)}</p>
-  <p class="film__release-date">${new Date(release_date).getFullYear()}</p>
-  
+  <p class="film__release-date">${
+    //проверяем через тернарник
+    release_date ? new Date(release_date).getFullYear() : 'Nobody know'
+  }</p>
+
    </div>
    </a>
    </li>`
     )
     .join('');
-  // console.log(filmCards);
+
   // возвращаем строку
   renderFoo(filmCards, cardListEl);
   return filmCards;
