@@ -57,7 +57,7 @@ async function createMainMarkup(fetchedData) {
   <div class="film__genres-and-date">
   <p class="film__genres">${searchGenresById(genre_ids)}</p>
   <p class="film__release-date">${
-    release_date ? new Date(release_date).getFullYear() : '2000'
+    release_date ? new Date(release_date).getFullYear() : 'Top Secret'
   }</p>
   
   

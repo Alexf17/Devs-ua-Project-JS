@@ -187,6 +187,11 @@
 
 .header__form-icon {
   display: inline-flex;
+  stroke: var(--white-color);
+  &:hover,
+  &:focus {
+    stroke: var(--orange-hover);
+  }
 }
 
 .header__error {
