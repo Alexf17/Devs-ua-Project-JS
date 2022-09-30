@@ -22,9 +22,15 @@ const genresList = {
 
 //создаем функцию searchGenresById, которая возвращает строку с жанрами на основе  genre_ids,
 export const searchGenresById = idArrayList => {
+  // условие
+  if (idArrayList.length > 2) {
+    idArrayList.splice(2);
+    idArrayList.push('etc');
+  }
+
   return idArrayList
     .map(item => {
-      return genresList[item];
+      return genresList[item] || 'etc';
     })
     .join(', ');
 };
