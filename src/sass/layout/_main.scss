@@ -24,14 +24,14 @@
   }
 }
 .film__link {
-  outline: 20px green dotted;
-  transition-property: box-shadow;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  display: block;
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: scale 250ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover,
   &:focus {
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
       1px 4px 6px rgba(0, 0, 0, 0.16);
+    scale: 1.02;
   }
 }
 
