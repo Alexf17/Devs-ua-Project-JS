@@ -3,15 +3,25 @@ import ApiFilmoteka from './filmotekaApi';
 import { cleanerMarkup } from './cleanerMarkup';
 import { searchGenresById } from './genresList';
 import { renderFoo } from './renderMarkup';
+import { refs } from './refs';
+import { preloaderRefresh, preloaderRefreshOFF } from './preloader';
 const headerformEl = document.querySelector('.header__form');
 const cardListEl = document.querySelector('ul.card__list');
 const headerErrorEl = document.querySelector('.header__error');
+const preloaderEl = document.querySelector('.preloader');
+const imgEl = document.getElementsByClassName('film-item__img');
+
+function preloaderRefresh() {
+  preloaderEl.classList.remove('preloader--hide');
+  }
+
 //Initialize class instance
 const api = new ApiFilmoteka();
 headerformEl.addEventListener('submit', onFormSubmit);
 
 function onFormSubmit(event) {
   event.preventDefault();
+  preloaderRefresh()
   let query = event.target.elements[0].value.trim();
   //Checking for query existance
   if (query) {
@@ -62,6 +72,7 @@ async function createMainMarkup(fetchedData) {
       .join('');
     // Running render function
     renderFoo(filmCards, cardListEl);
+    preloaderRefreshOFF();
     return filmCards;
   }
 }
