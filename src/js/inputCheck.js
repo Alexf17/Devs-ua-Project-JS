@@ -9,7 +9,6 @@ const headerformEl = document.querySelector('.header__form');
 const cardListEl = document.querySelector('ul.card__list');
 const headerErrorEl = document.querySelector('.header__error');
 const preloaderEl = document.querySelector('.preloader');
-const imgEl = document.getElementsByClassName('film-item__img');
 
 function preloaderRefresh() {
   preloaderEl.classList.remove('preloader--hide');
