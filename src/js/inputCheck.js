@@ -34,6 +34,7 @@ async function createMainMarkup(fetchedData) {
   if (!results.length) {
     await errorMessage();
   } else {
+    headerErrorEl.classList.add('visually-hidden');
     // получаем массив из елементов 'li' , переводим в строку с помощю join
     const filmCards = results
       .map(
@@ -46,14 +47,19 @@ async function createMainMarkup(fetchedData) {
         }) => `<li class="film__item">
         <a class="film__link" id="${id}">
   <div class="film__wrap">
-  <img src="https://image.tmdb.org/t/p/original${poster_path}" class="film-item__img" alt="${title}" width="300">
+  <img src="https://image.tmdb.org/t/p/original${
+    poster_path ? `https://image.tmdb.org/t/p/original${poster_path}` : img
+  }" class="film-item__img" alt="${title}" width="300">
   </div>
   <div>
   <h3 class="film__title">${title}</h3>
   </div>
   <div class="film__genres-and-date">
   <p class="film__genres">${searchGenresById(genre_ids)}</p>
-  <p class="film__release-date">${new Date(release_date).getFullYear()}</p>
+  <p class="film__release-date">${
+    release_date ? new Date(release_date).getFullYear() : 'Top Secret'
+  }</p>
+  
   
    </div>
    </a>
