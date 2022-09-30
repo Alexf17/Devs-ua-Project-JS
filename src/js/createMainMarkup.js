@@ -67,7 +67,7 @@ export async function createMainMarkup() {
   <p class="film__genres">${searchGenresById(genre_ids)}</p>
   <p class="film__release-date">${
     //проверяем через тернарник
-    release_date ? new Date(release_date).getFullYear() : '2000'
+    release_date ? new Date(release_date).getFullYear() : 'Nobody know'
   }</p>
 
    </div>
