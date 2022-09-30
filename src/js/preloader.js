@@ -59,7 +59,7 @@ function loader(e) {
     const precentsRef = document.querySelector('#precents');
 
     console.log(precentsRef);
-    const mediaFiles = document.getElementsByClassName('film-item__img');
+    const mediaFiles = document.querySelectorAll('film-item__img');
     let i = 0;
     // console.log(e)
     console.log(mediaFiles);
