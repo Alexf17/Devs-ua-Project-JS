@@ -6,7 +6,9 @@ import { renderFoo } from './renderMarkup';
 const headerformEl = document.querySelector('.header__form');
 const cardListEl = document.querySelector('ul.card__list');
 const headerErrorEl = document.querySelector('.header__error');
+
 //Initialize class instance
+
 const api = new ApiFilmoteka();
 headerformEl.addEventListener('submit', onFormSubmit);
 
