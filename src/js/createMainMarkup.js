@@ -2,6 +2,7 @@ import { searchGenresById } from './genresList';
 import ApiFilmoteka from './filmotekaApi';
 import { renderFoo } from './renderMarkup';
 import img from '../images/filmWrap.jpg';
+import pagination from './pagination';
 const api = new ApiFilmoteka();
 
 const cardListEl = document.querySelector('ul.card__list');
@@ -78,7 +79,15 @@ export async function createMainMarkup() {
 
   // возвращаем строку
   renderFoo(filmCards, cardListEl);
+ 
+  await pagination(api.pageNumber, api.totalPages)
+  
   return filmCards;
 }
 // вызываем функцию render
 createMainMarkup();
+
+
+
+
+

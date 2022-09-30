@@ -69,7 +69,7 @@ export default class ApiFilmoteka {
       );
       // Изменяет значение в свойстве totalPages екземпляра класса для пагинации
       this.totalPages = data.total_pages;
-      // console.log(data.results)
+       console.log(data.total_pages)
       return data.results;
     } catch (error) {
       console.log(error);

@@ -1,5 +1,6 @@
 import './js/btn-anchor';
 import './js/createMainMarkup';
+import './js/pagination';
 import './js/preloader';
 import './js/inputCheck';
 
