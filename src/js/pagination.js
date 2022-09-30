@@ -27,7 +27,7 @@ export default function pagination(currentPage, allPages) {
   if (currentPage > 2) {
     markup += `<li>${beforePage}</li>`;
   }
-  markup += `<li><b>${currentPage}</b></li>`;
+  markup += `<li class="paginationPage--current">${currentPage}</li>`;
   if (allPages - 1 > currentPage) {
     markup += `<li>${afterPage}</li>`;
   }
@@ -38,7 +38,7 @@ export default function pagination(currentPage, allPages) {
     markup += `<li>...</li>`;
   }
   if (allPages > currentPage) {
-    markup += `<li>${allPages}</li>`;
+    markup += `<li>${currentPage + 5}</li>`;
     markup += `<li>&#129146;<li>`;
   }
   paginationBox.innerHTML = markup;
@@ -49,9 +49,9 @@ paginationBox.addEventListener('click', handlerPagination);
 // createMainMarkup(apiFilmoteka.fetchPopularsFilms())
 
 async function handlerPagination(evt) {
-  // if (evt.target.nodeName !== 'LI') {
-  //   return
-  // }
+  if (evt.target.nodeName !== 'LI') {
+    return;
+  }
   if (evt.target.textContent === '🡸') {
     apiFilmoteka.setPageNumber((globalCurrentpage -= 1));
     const filesFromBackend = await apiFilmoteka.fetchPopularsFilms();
@@ -78,7 +78,15 @@ async function handlerPagination(evt) {
   if (evt.target.textContent === '...') {
     return;
   }
-  // const page = evt.target.textContent
+  const page = evt.target.textContent;
+
+  apiFilmoteka.setPageNumber(Number(page));
+  const filesFromBackend = await apiFilmoteka.fetchPopularsFilms();
+
+  cleanerMarkup(cardListEl);
+  createMainMarkup(filesFromBackend);
+
+  pagination(apiFilmoteka.pageNumber, apiFilmoteka.totalPages);
 }
 // Import
 
@@ -117,7 +125,6 @@ function createMainMarkup(fetchedData) {
   if (!fetchedData) {
     errorMessage();
   } else {
-    console.log(fetchedData);
     headerErrorEl.classList.add('visually-hidden');
     // получаем массив из елементов 'li' , переводим в строку с помощю join
     const filmCards = fetchedData
