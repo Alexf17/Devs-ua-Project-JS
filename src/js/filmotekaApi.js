@@ -1,7 +1,6 @@
-import axios from "axios";
+import axios from 'axios';
 
 export default class ApiFilmoteka {
-  
   constructor() {
     this.filmName = '';
     this.pageNumber = 1;
@@ -18,7 +17,7 @@ export default class ApiFilmoteka {
   setFilmId(newFilmId) {
     this.filmId = newFilmId;
   }
-  
+
   setFilmName(newName) {
     this.filmName = newName;
   }
@@ -27,31 +26,32 @@ export default class ApiFilmoteka {
     axios.defaults.baseURL = this.BASE_URL;
 
     try {
-      const response = await axios.get(`search/movie?api_key=${this.API_KEY}&language=en-US&query=${this.filmName}&page=${this.pageNumber}&include_adult=false`);
+      const response = await axios.get(
+        `search/movie?api_key=${this.API_KEY}&language=en-US&query=${this.filmName}&page=${this.pageNumber}&include_adult=false`
+      );
       const { data } = response;
-       // Изменяет значение в свойстве totalPages екземпляра класса для пагинации
+      // Изменяет значение в свойстве totalPages екземпляра класса для пагинации
       this.totalPages = data.total_pages;
 
       return response.data.results;
-
     } catch (error) {
-       console.log(error)
+      console.log(error);
     }
     return response.data.results;
   }
 
   async fetchFilmsById() {
     axios.defaults.baseURL = this.BASE_URL;
-    
-    try {
 
-      const response = await axios.get(`movie/${this.filmId}?api_key=${this.API_KEY}&language=en-US`);
+    try {
+      const response = await axios.get(
+        `movie/${this.filmId}?api_key=${this.API_KEY}&language=en-US`
+      );
       // console.log(response);
       const { data } = response;
       return data;
-
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
     return data;
   }
@@ -59,22 +59,21 @@ export default class ApiFilmoteka {
   // Для получения ответа от сервера с релевантной страницей,
   // перед использованием функции необходимо использовать метод setPageNumber() на екземпляре класса
   // ПРИМЕР api = new ApiFilmoteka (это пимер инициализации екземпляра класса) => api.setPageNumber(номер страницы)
-  
+
   async fetchPopularsFilms() {
     axios.defaults.baseURL = this.BASE_URL;
-    
-    try {
 
-      const { data } = await axios.get(`/trending/movie/week?api_key=${this.API_KEY}&page=${this.pageNumber}`);
+    try {
+      const { data } = await axios.get(
+        `/trending/movie/week?api_key=${this.API_KEY}&page=${this.pageNumber}`
+      );
       // Изменяет значение в свойстве totalPages екземпляра класса для пагинации
       this.totalPages = data.total_pages;
-       // console.log(data.results)
+      // console.log(data.results)
       return data.results;
-
     } catch (error) {
-       console.log(error)
+      console.log(error);
     }
     return data.results;
   }
-  
 }

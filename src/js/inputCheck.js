@@ -1,36 +1,39 @@
+// Import
 import ApiFilmoteka from './filmotekaApi';
 import { cleanerMarkup } from './cleanerMarkup';
 import { searchGenresById } from './genresList';
 import { renderFoo } from './renderMarkup';
 const headerformEl = document.querySelector('.header__form');
-const headerInputEl = document.querySelector('.header__form');
 const cardListEl = document.querySelector('ul.card__list');
 const headerErrorEl = document.querySelector('.header__error');
-console.log(headerInputEl);
+//Initialize class instance
 const api = new ApiFilmoteka();
-headerInputEl.addEventListener('submit', onFormSubmit);
+headerformEl.addEventListener('submit', onFormSubmit);
 
 function onFormSubmit(event) {
   event.preventDefault();
-
-  console.log(event.target.elements[0].value);
-  let query = event.target.elements[0].value;
-  console.log(query);
-  if (query === '') {
-    errorMessage();
-    return;
-  } else {
+  let query = event.target.elements[0].value.trim();
+  //Checking for query existance
+  if (query) {
+    //Cleaning markup
     cleanerMarkup(cardListEl);
     //Setting querry to api of ApiFilmoteka
     api.setFilmName(query);
     createMainMarkup(api.fetchFilmsByName());
+  } else {
+    //Running error message function
+    errorMessage();
+    return;
   }
 }
 
-async function createMainMarkup(xxx) {
-  //получаем список фильмов по запросу
-  const results = await xxx;
-  if (results.length !== 0) {
+async function createMainMarkup(fetchedData) {
+  //Getting results from API
+  const results = await fetchedData;
+  //Chegking response from API
+  if (!results.length) {
+    await errorMessage();
+  } else {
     // получаем массив из елементов 'li' , переводим в строку с помощю join
     const filmCards = results
       .map(
@@ -48,7 +51,7 @@ async function createMainMarkup(xxx) {
   <div>
   <h3 class="film__title">${title}</h3>
   </div>
-  <div class="film__genres-date">
+  <div class="film__genres-and-date">
   <p class="film__genres">${searchGenresById(genre_ids)}</p>
   <p class="film__release-date">${new Date(release_date).getFullYear()}</p>
   
@@ -57,15 +60,15 @@ async function createMainMarkup(xxx) {
    </li>`
       )
       .join('');
-    // возвращаем строку
+    // Running render function
     renderFoo(filmCards, cardListEl);
     return filmCards;
-  } else {
-    errorMessage();
   }
 }
 
 function errorMessage() {
+  //Making message visible
   headerErrorEl.classList.remove('visually-hidden');
+  //Form element cleaning
   headerformEl.reset();
 }
