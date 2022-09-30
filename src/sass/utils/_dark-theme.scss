@@ -1,23 +1,36 @@
 .change_theme {
+  position: absolute;
+  max-width: 30em;
+  padding: 0;
+  top: 180px;
+
   border: none;
   box-shadow: rgba(255, 255, 255, 0.103);
   fill: white;
   background-color: transparent;
+  transform: scale(0.75); // 75% of original size
+}
 
-  margin-top: 20px;
-  margin-right: 20px;
-  margin-bottom: 20px;
-
-  margin-left: auto;
+.change_theme:hover,
+.change_theme:focus {
+  fill: var(--orange-hover);
+  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1),
+  fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @media screen and (min-width: 768px) {
   .change_theme {
-    margin-right: 32px;
-    margin-bottom: 32px;
-    margin-top: 0px;
+    top: 160px;
+    transform: scale(1); // 75% of original size
   }
 }
+
+
+
+
+
+
+
 
 button.change_theme[data-theme='onDark'] {
   display: block;
@@ -74,9 +87,9 @@ button.change_theme[data-theme='onLight'] {
     color: var(--light-gray-color);
   }
 
-  .team-logo {
-    // border-radius: 50%;
-  }
+  // .team-logo {
+  //   // border-radius: 50%;
+  // }
 
   button.change_theme[data-theme='onDark'] {
     display: none;
