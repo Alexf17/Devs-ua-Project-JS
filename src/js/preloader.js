@@ -1,3 +1,72 @@
+import { refs } from "./refs";
+
+export function preloaderRefresh() {
+  refs.preloaderEl.classList.remove('preloader--hide');
+}
+
+export function preloaderRefreshOFF() {
+  const arrElements = Array.from(refs.imgElArr);
+
+    arrElements.forEach((el, index) => {
+      el.onload = () => {
+
+        if (index === arrElements.length - 1) {
+          refs.preloaderEl.classList.add('preloader--hide');
+        }
+        // console.log("мы молодцы")
+      }
+    });
+}
+
+
+
+function preloaderOn() {
+  refs.preloaderEl.classList.remove('preloader--hide');
+   window.addEventListener('load', onLoad);
+  }
+    
+function  onLoad(e) {
+    refs.preloaderEl.classList.add('preloader--hide');
+  
+    window.removeEventListener('load', onLoad);
+    // console.log('C window слушатель успешно снят');
+  }
+
+preloaderOn();
+
+
+
+
+
+// export class Preloader {
+  
+//   constructor() {
+//     this.preloaderEl = document.querySelector('.preloader');
+  
+//   }
+
+//   preloaderOn() {
+//    window.addEventListener('load', this.onLoad);
+//   }
+    
+//   onLoad(e) {
+//     console.log(this.preloaderEl.classList);
+//     this.preloaderEl.classList.add('preloader--hide');
+//     // window.removeEventListener('load', onLoad);
+//     // console.log('C window слушатель успешно снят');
+//   }
+
+
+// }
+
+// const preloaderApp = new Preloader();
+// console.log(preloaderApp);
+// preloaderApp.preloaderOn()
+
+
+
+
+
 
 
 //  class Preloader {
@@ -48,43 +117,43 @@
 // })
 
 
-export function prelouderOn() {
-  window.addEventListener('DOMContentLoaded', loader);
-}
+// export function prelouderOn() {
+//   window.addEventListener('DOMContentLoaded', loader);
+// }
 
-function loader(e) {
+// function loader(e) {
   
-  setTimeout(() => {
-    const preloaderRef = document.querySelector('.preloader');
-    const precentsRef = document.querySelector('#precents');
+//   setTimeout(() => {
+//     const preloaderRef = document.querySelector('.preloader');
+//     const precentsRef = document.querySelector('#precents');
 
-    console.log(precentsRef);
-    const mediaFiles = document.querySelectorAll('film-item__img');
-    let i = 0;
-    // console.log(e)
-    console.log(mediaFiles);
+//     console.log(precentsRef);
+//     const mediaFiles = document.querySelectorAll('film-item__img');
+//     let i = 0;
+//     // console.log(e)
+//     console.log(mediaFiles);
     
-    Array.from(mediaFiles).forEach((el, index) => {
-      el.onload = () => {
-        i++
+//     Array.from(mediaFiles).forEach((el, index) => {
+//       el.onload = () => {
+//         i++
         
-        precentsRef.innerHTML = ((i * 100) / mediaFiles.length).toFixed();
+//         precentsRef.innerHTML = ((i * 100) / mediaFiles.length).toFixed();
 
-        if (i === mediaFiles.length) {
-          precentsRef.innerHTML = 100;
-          preloaderRef.classList.add('preloader--hide');
+//         if (i === mediaFiles.length) {
+//           precentsRef.innerHTML = 100;
+//           preloaderRef.classList.add('preloader--hide');
           
-          window.removeEventListener('DOMContentLoaded', loader);
-          // console.log("Cлушатель DOMContentLoaded c window снят!");
-        }
-      }
+//           window.removeEventListener('DOMContentLoaded', loader);
+//           // console.log("Cлушатель DOMContentLoaded c window снят!");
+//         }
+//       }
     
-    })
-  },200)
+//     })
+//   },200)
 
-}
+// }
 
-prelouderOn()
+// prelouderOn()
 
 
 
