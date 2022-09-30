@@ -37,32 +37,20 @@ async function onFilmCardClick(e) {
 
   const markup = createModalMarkup(dataBackEnd);
   renderFoo(markup, refs.ModalFilmWrap);
-  refs.ModalFilmBackdrop.classList.remove('visually-hidden');
-  refs.ModalFilmBody.classList.add('no-scroll');
-  refs.ModalFilmBackdrop.classList.add('scroll');
-  refs.btn_anchor.classList.add('btn_anchor-hidden');
-  refs.ModalFilmBody.addEventListener('keydown', onKeyAction);
+  openModal();
 }
 
 //  Функция закрытия модального окна и очистка разметки модального окна при нажатии на кнопку закрытия
 
 function onModalFilmBtnClose() {
-  refs.ModalFilmBackdrop.classList.add('visually-hidden');
-  refs.ModalFilmBody.classList.remove('no-scroll');
-  refs.ModalFilmBackdrop.classList.remove('scroll');
-  refs.btn_anchor.classList.remove('btn_anchor-hidden');
-  cleanerMarkup(refs.ModalFilmWrap);
+  closeModal();
 }
 
 //  Функция закрытия модального окна и очистка разметки модального окна при клике по бекдропу
 
 function onBackdropClose(e) {
   if (e.target === e.currentTarget) {
-    refs.ModalFilmBackdrop.classList.add('visually-hidden');
-    refs.ModalFilmBody.classList.remove('no-scroll');
-    refs.ModalFilmBackdrop.classList.remove('scroll');
-    refs.btn_anchor.classList.remove('btn_anchor-hidden');
-    cleanerMarkup(refs.ModalFilmWrap);
+    closeModal();
   }
 }
 
@@ -70,12 +58,25 @@ function onBackdropClose(e) {
 
 function onKeyAction({ key }) {
   if (key === 'Escape') {
-    refs.ModalFilmBody.removeEventListener('keydown', onKeyAction);
-
-    refs.ModalFilmBackdrop.classList.add('visually-hidden');
-    refs.ModalFilmBody.classList.remove('no-scroll');
-    refs.ModalFilmBackdrop.classList.remove('scroll');
-    refs.btn_anchor.classList.remove('btn_anchor-hidden');
-    cleanerMarkup(refs.ModalFilmWrap);
+    closeModal();
   }
+}
+
+//
+function closeModal() {
+  refs.ModalFilmBody.removeEventListener('keydown', onKeyAction);
+
+  refs.ModalFilmBackdrop.classList.add('visually-hidden');
+  refs.ModalFilmBody.classList.remove('no-scroll');
+  refs.ModalFilmBackdrop.classList.remove('scroll');
+  refs.btn_anchor.classList.remove('btn_anchor-hidden');
+  cleanerMarkup(refs.ModalFilmWrap);
+}
+
+function openModal() {
+  refs.ModalFilmBackdrop.classList.remove('visually-hidden');
+  refs.ModalFilmBody.classList.add('no-scroll');
+  refs.ModalFilmBackdrop.classList.add('scroll');
+  refs.btn_anchor.classList.add('btn_anchor-hidden');
+  refs.ModalFilmBody.addEventListener('keydown', onKeyAction);
 }
