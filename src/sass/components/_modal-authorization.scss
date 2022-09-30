@@ -87,3 +87,37 @@ a {
   margin-top: 20px;
   color: black;
 }
+// стили регистрации
+.backdrop-modalRegistration {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--back-drop-bg-color);
+  opacity: 1;
+  transition: opacity var(--transition--duration) var(--transition-timing);
+}
+
+.registration__close {
+  padding: 4px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+
+  right: 8px;
+  top: 8px;
+
+  border: none;
+  background-color: transparent;
+
+  transition: fill var(--transition-duration) var(--transition-timing);
+
+  &:hover,
+  &:focus {
+    fill: var(--accent-color);
+  }
+}
