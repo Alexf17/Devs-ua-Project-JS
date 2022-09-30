@@ -24,9 +24,9 @@
   }
 }
 
-.header__section {
-  padding-top: 40px;
-  padding-bottom: 44px;
+.header__section-lib {
+  padding-top: 44px;
+  padding-bottom: 62px;
 }
 
 @media screen and (min-width: 768px) {
@@ -34,7 +34,7 @@
     min-height: auto;
   }
   .header__section {
-    padding-bottom: 60px;
+    padding-bottom: 77px;
   }
 }
 
@@ -89,7 +89,7 @@
   display: block;
   stroke: var(--white-color);
   fill: none;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .header__logo-text {
@@ -165,15 +165,15 @@
 }
 
 /*Стилізація кнопок */
-.library__btns {
-  margin-top: 62px;
-  margin-right: -20px;
-
+.btn-container {
+  margin-top: 49px;
   display: flex;
   justify-content: center;
 }
 
-.library__button {
+
+
+.lib-btn{
     display: block;
   text-align: center;
   font-size: 12px;
@@ -191,37 +191,41 @@
   border: 1px solid var(--white-color);
   border-radius: 5px;
   background: none;
+  text-transform: uppercase;
 
-  margin-right: 20px;
+  transition: background-color 250ms;
   transition: background-color border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.button--accent {
+.lib-btn:not(:last-child) {
+  margin-right: 15px;
+}
+
+.current-btn {
+  box-shadow: 0 8px 43px rgb(255 107 1 / 60%);
   background-color: var(--orange-btn);
-  border-color: var(--orange-btn);
+  border: 0;
+  border-radius: 5px;
+  outline: none;
 }
 
 
 @media screen and (min-width: 768px) {
-  .library__btns {
-    margin-top: 40px;
-    margin-right: -32px;
-  }
-  .library__button {
+
+  .lib-btn {
     width: 152px;
     height: 44px;
     padding: 13px, 46px;
-    margin-right: 32px;
   }
 
 }
 
 @media screen and (min-width: 1280px) {
-  .library__btns {
+  .lib-btn {
     margin-right: -16px;
   }
 
-  .library__button {
+  .lib-btn {
     width: 148px;
     height: 42px;
     margin-right: 16px;
@@ -231,17 +235,33 @@
 
 }
 /*Ховери*/
-.header__logo:hover .header__icon {
+.header__logo:hover
+.header__icon {
   stroke: var(--orange-hover);
+  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1),
+  fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.header__logo:hover .header__logo-text {
+.header__logo:focus
+.header__icon {
+  stroke: var(--orange-hover);
+  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1),
+  fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header__logo:hover
+.header__logo-text {
   color: var(--orange-hover);
 }
+.header__logo:focus
+.header__logo-text {
+  color: var(--orange-hover);
+}
+
 
 .header__list-link:hover {
   color: var(--orange-hover);
 }
-.library__button:hover {
+.lib-btn:hover {
   background-color: var(--orange-hover);
   border-color: var(--orange-hover);
 }
