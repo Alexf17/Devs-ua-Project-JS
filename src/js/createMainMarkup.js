@@ -57,7 +57,6 @@ export async function createMainMarkup() {
         <a class="film__link" id="${id}">
   <div class="film__wrap">
       <img src=${
-        // через тернарник проверка
         poster_path ? `https://image.tmdb.org/t/p/original${poster_path}` : img
       } class="film-item__img" alt="${title}" width="300">
   </div>
@@ -79,15 +78,10 @@ export async function createMainMarkup() {
 
   // возвращаем строку
   renderFoo(filmCards, cardListEl);
- 
-  await pagination(api.pageNumber, api.totalPages)
-  
+
+  await pagination(api.pageNumber, api.totalPages);
+
   return filmCards;
 }
 // вызываем функцию render
 createMainMarkup();
-
-
-
-
-
