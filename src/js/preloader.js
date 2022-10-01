@@ -5,7 +5,7 @@ export function preloaderRefresh() {
   setTimeout(() => {
     refs.bodyEl.scrollIntoView({ top: 0, behavior: 'smooth' });
   },100)
-  console.log("ЗАПУСК ПРЕЛОУДЕРА");
+  // console.log("ЗАПУСК ПРЕЛОУДЕРА");
 }
 
 export function preloaderRefreshOFF() {
@@ -21,7 +21,7 @@ export function preloaderRefreshOFF() {
 
         if (index === arrElements.length - 1) {
           refs.preloaderEl.classList.add('preloader--hide');
-          console.log("ВЫКЛ ПРЕЛОУДЕРА");
+          // console.log("ВЫКЛ ПРЕЛОУДЕРА");
         }
         // console.log("мы молодцы")
       }

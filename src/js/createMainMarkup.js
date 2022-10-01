@@ -4,7 +4,7 @@ import { renderFoo } from './renderMarkup';
 import img from '../images/filmWrap.jpg';
 import pagination from './pagination';
 const api = new ApiFilmoteka();
-
+import { refs } from './refs';
 const cardListEl = document.querySelector('ul.card__list');
 
 // создаем обьект жанров фильмов ключ: значения.
@@ -43,7 +43,7 @@ const cardListEl = document.querySelector('ul.card__list');
 export async function createMainMarkup() {
   //получаем список фильмов по запросу
   const results = await api.fetchPopularsFilms();
-
+  refs.fetchDataValue = results;
   // получаем массив из елементов 'li' , переводим в строку с помощю join
   const filmCards = results
     .map(
