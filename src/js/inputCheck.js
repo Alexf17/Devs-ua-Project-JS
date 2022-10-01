@@ -10,11 +10,6 @@ const headerformEl = document.querySelector('.header__form');
 const cardListEl = document.querySelector('ul.card__list');
 const headerErrorEl = document.querySelector('.header__error');
 
-const preloaderEl = document.querySelector('.preloader');
-
-function preloaderRefresh() {
-  preloaderEl.classList.remove('preloader--hide');
-}
 
 //Initialize class instance
 
@@ -23,10 +18,11 @@ headerformEl.addEventListener('submit', onFormSubmit);
 
 function onFormSubmit(event) {
   event.preventDefault();
-  preloaderRefresh();
+  
   let query = event.target.elements[0].value.trim();
   //Checking for query existance
   if (query) {
+    preloaderRefresh();
     //Cleaning markup
     cleanerMarkup(cardListEl);
     //Setting querry to api of ApiFilmoteka
@@ -86,6 +82,7 @@ async function createMainMarkup(fetchedData) {
 }
 
 function errorMessage() {
+  preloaderRefreshOFF();
   //Making message visible
   headerErrorEl.classList.remove('visually-hidden');
   //Form element cleaning

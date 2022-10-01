@@ -1,12 +1,12 @@
 .preloader{
-  position:absolute;
+  position:fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
 
-  transition: opacity 1s var(--transition-timing),
-              visibility 1s var(--transition-timing);
+  transition: opacity var(--transition-duration) var(--transition-timing),
+              visibility var(--transition-duration) var(--transition-timing);
 
   &--hide{
     opacity: 0;

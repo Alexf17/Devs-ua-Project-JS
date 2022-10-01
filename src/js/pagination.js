@@ -1,5 +1,5 @@
 import ApiFilmoteka from './filmotekaApi';
-
+import { preloaderRefresh, preloaderRefreshOFF } from './preloader';
 // import createMainMarkup from './createMainMarkup'
 const apiFilmoteka = new ApiFilmoteka();
 const paginationBox = document.querySelector('.paginationBox');
@@ -49,11 +49,14 @@ export default function pagination(currentPage, allPages) {
 paginationBox.addEventListener('click', handlerPagination);
 
 async function handlerPagination(evt) {
+   preloaderRefresh()
   if (evt.target.nodeName !== 'LI') {
     return;
   }
+ 
   if (evt.target.textContent === '🡸') {
     apiFilmoteka.setPageNumber((globalCurrentpage -= 1));
+    
     const filesFromBackend = await apiFilmoteka.fetchPopularsFilms();
 
     cleanerMarkup(cardListEl);
@@ -66,6 +69,7 @@ async function handlerPagination(evt) {
   if (evt.target.textContent === '🡺') {
     apiFilmoteka.setPageNumber((globalCurrentpage += 1));
     console.log(apiFilmoteka.pageNumber);
+    
     const filesFromBackend = await apiFilmoteka.fetchPopularsFilms();
 
     cleanerMarkup(cardListEl);
@@ -85,8 +89,9 @@ async function handlerPagination(evt) {
 
   cleanerMarkup(cardListEl);
   createMainMarkup(filesFromBackend);
-
+  
   pagination(apiFilmoteka.pageNumber, apiFilmoteka.totalPages);
+  preloaderRefreshOFF()
 }
 // Import
 
@@ -133,7 +138,7 @@ function createMainMarkup(fetchedData) {
    </li>`
       )
       .join('');
-
+    
     // Running render function
     renderFoo(filmCards, cardListEl);
     return filmCards;

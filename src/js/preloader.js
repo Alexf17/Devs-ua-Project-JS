@@ -2,16 +2,26 @@ import { refs } from "./refs";
 
 export function preloaderRefresh() {
   refs.preloaderEl.classList.remove('preloader--hide');
+  setTimeout(() => {
+    refs.bodyEl.scrollIntoView({ top: 0, behavior: 'smooth' });
+  },100)
+  console.log("ЗАПУСК ПРЕЛОУДЕРА");
 }
 
 export function preloaderRefreshOFF() {
   const arrElements = Array.from(refs.imgElArr);
-
+  // console.log(arrElements);
+  
+  if (arrElements.length === 0) {
+      refs.preloaderEl.classList.add('preloader--hide');
+  }
+  
     arrElements.forEach((el, index) => {
       el.onload = () => {
 
         if (index === arrElements.length - 1) {
           refs.preloaderEl.classList.add('preloader--hide');
+          console.log("ВЫКЛ ПРЕЛОУДЕРА");
         }
         // console.log("мы молодцы")
       }

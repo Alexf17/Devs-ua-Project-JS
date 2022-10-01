@@ -27,6 +27,7 @@ const pass = document.querySelector('[name="password"]')
 const loginEl = document.querySelector('.auth')
 const logoutEl = document.querySelector('.logout-btn')
 
+
 formSignUp.addEventListener('submit', formSubmit)
 
 function formSubmit(e) {
