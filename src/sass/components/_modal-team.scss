@@ -47,12 +47,10 @@
   margin-bottom: 20px;
   margin-top: 20px;
   @media screen and (min-width: 768px) and (max-width: 1023px) {
-    margin-bottom: 30px;
     margin-top: 30px;
   }
   @media screen and (min-width: 1024px) {
     margin-top: 30px;
-    margin-bottom: 50px;
   }
 }
 
@@ -201,6 +199,12 @@
   padding: 8px;
   border-radius: 50%;
   fill: var(--main-text-color);
+  transition: fill var(--transition-duration) var(--transition-timing);
+
+  &:hover,
+  &:focus {
+    fill: var(--accent-color);
+  }
 }
 
 .modal__close-button-svg {
