@@ -24,11 +24,11 @@ const firebaseConfig = initializeApp({
 const auth = getAuth(firebaseConfig);
 
 
-const formEl = document.querySelector('.signup') 
+const formEl = document.querySelector('#login') 
 const mail = document.querySelector('#email')
 const pass = document.querySelector('#pass')
-const loginEl = document.querySelector('.login-btn')
-const logoutEl = document.querySelector('.logout-btn')
+const loginEl = document.querySelector('#login')
+const logoutEl = document.querySelector('#login')
 
 formEl.addEventListener('submit', formSubmit)
 
