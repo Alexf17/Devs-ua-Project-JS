@@ -10,7 +10,12 @@ export function preloaderRefresh() {
 
 export function preloaderRefreshOFF() {
   const arrElements = Array.from(refs.imgElArr);
-  console.log(arrElements);
+  // console.log(arrElements);
+  
+  if (arrElements.length === 0) {
+      refs.preloaderEl.classList.add('preloader--hide');
+  }
+  
     arrElements.forEach((el, index) => {
       el.onload = () => {
 
