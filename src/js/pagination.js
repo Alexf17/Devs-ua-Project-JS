@@ -1,107 +1,158 @@
 import ApiFilmoteka from './filmotekaApi';
+
 import { preloaderRefresh, preloaderRefreshOFF } from './preloader';
 // import createMainMarkup from './createMainMarkup'
-const apiFilmoteka = new ApiFilmoteka();
-const paginationBox = document.querySelector('.paginationBox');
-let globalCurrentpage = 0;
+// const apiFilmoteka = new ApiFilmoteka();
+import Pagination from './paginationApi';
+const pagination = new Pagination();
 
-export default function pagination(currentPage, allPages) {
-  let markup = '';
-  let beforeTwoPage = currentPage - 2;
-  let beforePage = currentPage - 1;
-  let afterPage = currentPage + 1;
-  let afterTwoPage = currentPage + 2;
-  globalCurrentpage = currentPage;
-  if (currentPage > 1) {
-    markup += `<li class="paginationRow">&#129144;</li>`;
-  }
-  if (currentPage > 1) {
-    markup += `<li>1</li>`;
-  }
+// export default function pagination(currentPage, allPages) {
+//   let markup = '';
+//   let beforeTwoPage = currentPage - 2;
+//   let beforePage = currentPage - 1;
+//   let afterPage = currentPage + 1;
+//   let afterTwoPage = currentPage + 2;
+//   globalCurrentpage = currentPage;
+//   if (currentPage > 1) {
+//     markup += `<li class="paginationRow">&#129144;</li>`;
+//   }
+//   if (currentPage > 1) {
+//     markup += `<li>1</li>`;
+//   }
 
-  if (currentPage > 4) {
-    markup += `<li>...</li>`;
-  }
-  if (currentPage > 3) {
-    markup += `<li>${beforeTwoPage}</li>`;
-  }
-  if (currentPage > 2) {
-    markup += `<li>${beforePage}</li>`;
-  }
-  markup += `<li class="paginationPage--current">${currentPage}</li>`;
-  if (allPages - 1 > currentPage) {
-    markup += `<li>${afterPage}</li>`;
-  }
-  if (allPages - 2 > currentPage) {
-    markup += `<li>${afterTwoPage}</li>`;
-  }
-  if (allPages - 3 > currentPage) {
-    markup += `<li>...</li>`;
-  }
-  if (allPages > currentPage) {
-    markup += `<li class="avd">${currentPage + 5}</li>`;
-    markup += `<li class="paginationRow">&#129146;<li>`;
-  }
+//   if (currentPage > 4) {
+//     markup += `<li>...</li>`;
+//   }
+//   if (currentPage > 3) {
+//     markup += `<li>${beforeTwoPage}</li>`;
+//   }
+//   if (currentPage > 2) {
+//     markup += `<li>${beforePage}</li>`;
+//   }
+//   markup += `<li class="paginationPage--current">${currentPage}</li>`;
+//   if (allPages - 1 > currentPage) {
+//     markup += `<li>${afterPage}</li>`;
+//   }
+//   if (allPages - 2 > currentPage) {
+//     markup += `<li>${afterTwoPage}</li>`;
+//   }
+//   if (allPages - 3 > currentPage) {
+//     markup += `<li>...</li>`;
+//   }
+//   if (allPages > currentPage) {
+//     markup += `<li class="avd">${currentPage + 5}</li>`;
+//     markup += `<li class="paginationRow">&#129146;<li>`;
+//   }
 
-  paginationBox.innerHTML = markup;
-}
+//   paginationBox.innerHTML = markup;
+// }
 
-paginationBox.addEventListener('click', handlerPagination);
+refs.paginationBox.addEventListener('click', pagination.handlerPaginationMain);
 
-async function handlerPagination(evt) {
-   preloaderRefresh()
-  if (evt.target.nodeName !== 'LI') {
-    return;
-  }
- 
-  if (evt.target.textContent === '🡸') {
-    apiFilmoteka.setPageNumber((globalCurrentpage -= 1));
-    
-    const filesFromBackend = await apiFilmoteka.fetchPopularsFilms();
+// paginationBox.addEventListener
+// async function handlerPagination(evt) {
+//   preloaderRefresh();
+//   if (evt.target.nodeName !== 'LI') {
+//     return;
+//   }
 
-    cleanerMarkup(cardListEl);
-    createMainMarkup(filesFromBackend);
+//   if (evt.target.textContent === '🡸') {
+//     apiFilmoteka.setPageNumber((globalCurrentpage -= 1));
 
-    pagination(apiFilmoteka.pageNumber, apiFilmoteka.totalPages);
+//     const filesFromBackend = await apiFilmoteka.fetchPopularsFilms();
 
-    return;
-  }
-  if (evt.target.textContent === '🡺') {
-    apiFilmoteka.setPageNumber((globalCurrentpage += 1));
-    console.log(apiFilmoteka.pageNumber);
-    
-    const filesFromBackend = await apiFilmoteka.fetchPopularsFilms();
+//     cleanerMarkup(cardListEl);
+//     createMainMarkup(filesFromBackend);
 
-    cleanerMarkup(cardListEl);
-    createMainMarkup(filesFromBackend);
+//     pagination(apiFilmoteka.pageNumber, apiFilmoteka.totalPages);
 
-    pagination(apiFilmoteka.pageNumber, apiFilmoteka.totalPages);
+//     return;
+//   }
+//   if (evt.target.textContent === '🡺') {
+//     apiFilmoteka.setPageNumber((globalCurrentpage += 1));
+//     console.log(apiFilmoteka.pageNumber);
 
-    return;
-  }
-  if (evt.target.textContent === '...') {
-    return;
-  }
-  const page = evt.target.textContent;
+//     const filesFromBackend = await apiFilmoteka.fetchPopularsFilms();
 
-  apiFilmoteka.setPageNumber(Number(page));
-  const filesFromBackend = await apiFilmoteka.fetchPopularsFilms();
+//     cleanerMarkup(cardListEl);
+//     createMainMarkup(filesFromBackend);
 
-  cleanerMarkup(cardListEl);
-  createMainMarkup(filesFromBackend);
-  
-  pagination(apiFilmoteka.pageNumber, apiFilmoteka.totalPages);
-  preloaderRefreshOFF()
-}
+//     pagination(apiFilmoteka.pageNumber, apiFilmoteka.totalPages);
+//     console.log(refs.expFilmName);
+
+//     return;
+//   }
+//   if (evt.target.textContent === '...') {
+//     return;
+//   }
+//   const page = evt.target.textContent;
+
+//   apiFilmoteka.setPageNumber(Number(page));
+//   const filesFromBackend = await apiFilmoteka.fetchPopularsFilms();
+
+//   cleanerMarkup(cardListEl);
+//   createMainMarkup(filesFromBackend);
+
+//   pagination(apiFilmoteka.pageNumber, apiFilmoteka.totalPages);
+//   preloaderRefreshOFF();
+// }
+
+// async function handlerPaginationInput(evt) {
+//   preloaderRefresh();
+//   if (evt.target.nodeName !== 'LI') {
+//     return;
+//   }
+
+//   if (evt.target.textContent === '🡸') {
+//     apiFilmoteka.setPageNumber((globalCurrentpage -= 1));
+
+//     const filesFromBackend = await apiFilmoteka.fetchFilmsByName();
+
+//     cleanerMarkup(cardListEl);
+//     createMainMarkup(filesFromBackend);
+
+//     pagination(apiFilmoteka.pageNumber, apiFilmoteka.totalPages);
+
+//     return;
+//   }
+//   if (evt.target.textContent === '🡺') {
+//     apiFilmoteka.setPageNumber((globalCurrentpage += 1));
+//     console.log(apiFilmoteka.pageNumber);
+
+//     const filesFromBackend = await apiFilmoteka.fetchFilmsByName();
+
+//     cleanerMarkup(cardListEl);
+//     createMainMarkup(filesFromBackend);
+
+//     pagination(apiFilmoteka.pageNumber, apiFilmoteka.totalPages);
+
+//     return;
+//   }
+//   if (evt.target.textContent === '...') {
+//     return;
+//   }
+//   const page = evt.target.textContent;
+
+//   apiFilmoteka.setPageNumber(Number(page));
+//   const filesFromBackend = await apiFilmoteka.fetchPopularsFilms();
+
+//   cleanerMarkup(cardListEl);
+//   createMainMarkup(filesFromBackend);
+
+//   pagination(apiFilmoteka.pageNumber, apiFilmoteka.totalPages);
+//   preloaderRefreshOFF();
+// }
+
 // Import
 
-import ApiFilmoteka from './filmotekaApi';
+// import ApiFilmoteka from './filmotekaApi';
 import { cleanerMarkup } from './cleanerMarkup';
 import { searchGenresById } from './genresList';
 import { renderFoo } from './renderMarkup';
+import { refs } from './refs';
 const cardListEl = document.querySelector('ul.card__list');
 //Initialize class instance
-const api = new ApiFilmoteka();
+// const api = new ApiFilmoteka();
 
 function createMainMarkup(fetchedData) {
   //Getting results from API
@@ -138,7 +189,7 @@ function createMainMarkup(fetchedData) {
    </li>`
       )
       .join('');
-    
+
     // Running render function
     renderFoo(filmCards, cardListEl);
     return filmCards;

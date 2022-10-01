@@ -10,7 +10,6 @@ const headerformEl = document.querySelector('.header__form');
 const cardListEl = document.querySelector('ul.card__list');
 const headerErrorEl = document.querySelector('.header__error');
 
-
 //Initialize class instance
 
 const api = new ApiFilmoteka();
@@ -18,8 +17,10 @@ headerformEl.addEventListener('submit', onFormSubmit);
 
 function onFormSubmit(event) {
   event.preventDefault();
-  
+
   let query = event.target.elements[0].value.trim();
+  refs.expFilmName = query;
+
   //Checking for query existance
   if (query) {
     preloaderRefresh();
