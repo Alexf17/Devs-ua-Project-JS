@@ -61,6 +61,7 @@ export function createModalMarkup(data) {
               type="button"
               id="${id}"
               class="button-list__button button-modal__orange"
+              data-action="watched"
             >
               Add to watched
             </button>
@@ -70,6 +71,7 @@ export function createModalMarkup(data) {
               type="button"
             id="${id}"
               class="button-list__button button-modal__white"
+              data-action="queue"
             >
               Add to queue
             </button>
