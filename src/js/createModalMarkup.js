@@ -1,4 +1,5 @@
 // Объявляем функцию, которая создает разметку одного модального окна при нажатии на карточку фильма
+import img from '../images/filmWrap.jpg';
 export function createModalMarkup(data) {
   // Делаем деструктуризацию полученных файлов с бэкэнда
   const {
@@ -20,10 +21,13 @@ export function createModalMarkup(data) {
   //  а так же присваиваем кнопкам значение каждого айди фильма, для будущей записи выбранных фильмов в локал сторедж.
   const filmModalMarkup = `<div class="infoFilm__left">
       <img
-          src="https://image.tmdb.org/t/p/original${poster_path}"
-          alt="${title}"
-          class="infoFilm__img"
-        /> 
+          src=${
+            poster_path
+              ? `https://image.tmdb.org/t/p/original${poster_path}`
+              : img
+          } class="infoFilm__img" alt="${title}"
+          
+        > 
       </div>
       <div class="infoFilm__right">
         <h2 class="infoFilm___title">"${title}"</h2>

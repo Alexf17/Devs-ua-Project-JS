@@ -65,7 +65,9 @@ export async function createMainMarkup() {
   <h3 class="film__title">${title}</h3>
   </div>
   <div class="film__genres-and-date">
-  <p class="film__genres">${searchGenresById(genre_ids)}</p>
+  <p class="film__genres">${
+    searchGenresById(genre_ids) ? searchGenresById(genre_ids) : 'Unknown genre'
+  }</p>
   <p class="film__release-date">${
     //проверяем через тернарник
     release_date ? new Date(release_date).getFullYear() : 'Nobody know'
