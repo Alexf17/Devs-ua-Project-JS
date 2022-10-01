@@ -13,75 +13,77 @@ let localStorageData = JSON.parse(localStorage.getItem('localStorageData')) || {
 refs.infoFilmWrapEl.addEventListener('click', onInfoFilmWrapClick);
 
 function onInfoFilmWrapClick(e) {
-  // получаю массив объектов респонса
+  // Get array of objects response
   const fetchDataArr = refs.fetchDataValue;
-  console.log(fetchDataArr)
-
+  // console.log(fetchDataArr)
 
   // фильтр собития только на кнопку
   if (e.target.nodeName !== 'BUTTON') {
     return
   }
-  // получаю ссылку на кнопку watchedBtn
+  // Get link on watchedBtn
   if (e.target.dataset.action === 'watched') {
     let watchedBtn = e.target;
-     // получаю id кнопки watched
+     // Get id btn watched
     let idFilmWatched = +e.target.id;
 
-    console.log('Click on e.target.dataset.action watchedBTN', watchedBtn);
-    console.log('id кнопки :', idFilmWatched);
+    // console.log('Click on e.target.dataset.action watchedBTN', watchedBtn);
+    // console.log('id кнопки :', idFilmWatched);
     
     for (const filmObj of fetchDataArr) {
         // console.log(filmObj.id);
         if (filmObj.id === idFilmWatched) {
           let filmWatchedObjAdd = filmObj;
-            console.log(filmWatchedObjAdd);
-          
-            // записываю в локал велью
+            // console.log(filmWatchedObjAdd);
+            // зSet watched velue to localsrorage
           if (!isExistsWatchedObjFilm(idFilmWatched)) {
-            console.log('сработало записывает');
+            // console.log('сработало записывает');
             localStorageData.watchedFilms.push(filmWatchedObjAdd);
-
             localStorage.setItem('localStorageData', JSON.stringify(localStorageData));
-            console.log('Длина localStorageData свойство watchedFilms: ', localStorageData.watchedFilms.length)
-          } else {
-            console.log('уже есть не записываю', 'localStorageData.length свойство watchedFilms:', localStorageData.watchedFilms.length);
-          }
+            // console.log('Длина localStorageData свойство watchedFilms: ', localStorageData.watchedFilms.length);
+            setStatusRemove(watchedBtn);
 
+          } else {
+            // console.log('уже есть не записываю', 'localStorageData.length свойство watchedFilms:', localStorageData.watchedFilms.length);
+            removeObjFilm(localStorageData.watchedFilms, idFilmWatched);
+            setStatusAddToWatched(watchedBtn);
+          }
 
         }
       
       }
-    
-    
+  
   }
 
-  // получаю ссылку на кнопку queueBtn
+  // Get link to queueBtn
   if (e.target.dataset.action === 'queue') {
     let queueBtn = e.target;
-    console.log('Click on e.target.dataset.action queueBTN', queueBtn);
+    // console.log('Click on e.target.dataset.action queueBTN', queueBtn);
 
-    // получаю id кнопки queue
+    // Get id btn queue
     let idFilmQueue = +e.target.id;
-    console.log('id кнопки :', idFilmQueue);
      
     for (const filmObj of fetchDataArr) {
         // console.log(filmObj.id);
         if (filmObj.id === idFilmQueue) {
           let filmQueueObjAdd = filmObj;
-            console.log(filmQueueObjAdd);
+            // console.log(filmQueueObjAdd);
           
-            // записываю в локал велью
+            //Set queue velue to localsrorage
           if (!isExistsQueueObjFilm(idFilmQueue)) {
-            console.log('сработало записывает');
+            // console.log('сработало записывает');
             localStorageData.queueFilms.push(filmQueueObjAdd);
 
             localStorage.setItem('localStorageData', JSON.stringify(localStorageData));
-            console.log('Длина localStorageData свойство queueFilms: ', localStorageData.queueFilms.length)
+            // console.log('Длина localStorageData свойство queueFilms: ', localStorageData.queueFilms.length);
+            setStatusRemove(queueBtn)
+            // queueBtn.textContent = 'remove';
           } else {
-            console.log('уже есть не записываю', 'localStorageData.length свойство queueFilms:', localStorageData.queueFilms.length);
+            // console.log('уже есть не записываю', 'localStorageData.length свойство queueFilms:', localStorageData.queueFilms.length);
+            removeObjFilm(localStorageData.queueFilms, idFilmQueue);
+            setStatusAddToQueue(queueBtn);
+            // console.log(localStorageData.queueFilms);
           }
-
 
         }
       
@@ -115,4 +117,26 @@ export function isExistsQueueObjFilm(id) {
   }
 
   return answer;
+}
+
+function removeObjFilm(propArr, checkId) {
+  for (let i = 0; i < propArr.length; i++) {
+    if (propArr[i].id === checkId) {
+      
+      propArr.splice(i, 1);
+
+    }
+  }
+}
+
+function setStatusRemove(btnRef) {
+  btnRef.textContent = 'remove';
+}
+
+function setStatusAddToQueue(btnRef) {
+  btnRef.textContent = 'add to queue';
+}
+
+function setStatusAddToWatched(watchedBtnRef) {
+  watchedBtnRef.textContent = 'add to watched';
 }
