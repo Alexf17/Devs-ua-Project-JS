@@ -10,7 +10,6 @@ const headerformEl = document.querySelector('.header__form');
 const cardListEl = document.querySelector('ul.card__list');
 const headerErrorEl = document.querySelector('.header__error');
 
-
 //Initialize class instance
 
 const api = new ApiFilmoteka();
@@ -18,7 +17,7 @@ headerformEl.addEventListener('submit', onFormSubmit);
 
 function onFormSubmit(event) {
   event.preventDefault();
-  
+
   let query = event.target.elements[0].value.trim();
   //Checking for query existance
   if (query) {
@@ -63,7 +62,9 @@ async function createMainMarkup(fetchedData) {
   <h3 class="film__title">${title}</h3>
   </div>
   <div class="film__genres-and-date">
-  <p class="film__genres">${searchGenresById(genre_ids)}</p>
+  <p class="film__genres">${
+    searchGenresById(genre_ids) ? searchGenresById(genre_ids) : 'Unknown genre'
+  }</p>
   <p class="film__release-date">${
     release_date ? new Date(release_date).getFullYear() : 'Nobody know'
   }</p>
