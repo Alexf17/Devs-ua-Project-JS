@@ -6,14 +6,13 @@ import { searchGenresById } from './genresList';
 import { renderFoo } from './renderMarkup';
 import { refs } from './refs';
 import { preloaderRefresh, preloaderRefreshOFF } from './preloader';
-const headerformEl = document.querySelector('.header__form');
-const cardListEl = document.querySelector('ul.card__list');
-const headerErrorEl = document.querySelector('.header__error');
+
+
 
 //Initialize class instance
 
 const api = new ApiFilmoteka();
-headerformEl.addEventListener('submit', onFormSubmit);
+refs.headerFormEl.addEventListener('submit', onFormSubmit);
 
 function onFormSubmit(event) {
   event.preventDefault();
@@ -23,7 +22,7 @@ function onFormSubmit(event) {
   if (query) {
     preloaderRefresh();
     //Cleaning markup
-    cleanerMarkup(cardListEl);
+    cleanerMarkup(refs.cardListEl);
     //Setting querry to api of ApiFilmoteka
     api.setFilmName(query);
     createMainMarkup(api.fetchFilmsByName());
@@ -41,7 +40,7 @@ async function createMainMarkup(fetchedData) {
   if (!results.length) {
     await errorMessage();
   } else {
-    headerErrorEl.classList.add('visually-hidden');
+    refs.headerErrorEl.classList.add('visually-hidden');
     // получаем массив из елементов 'li' , переводим в строку с помощю join
     const filmCards = results
       .map(
@@ -76,7 +75,7 @@ async function createMainMarkup(fetchedData) {
       )
       .join('');
     // Running render function
-    renderFoo(filmCards, cardListEl);
+    renderFoo(filmCards, refs.cardListEl);
     preloaderRefreshOFF();
     return filmCards;
   }
@@ -85,7 +84,7 @@ async function createMainMarkup(fetchedData) {
 function errorMessage() {
   preloaderRefreshOFF();
   //Making message visible
-  headerErrorEl.classList.remove('visually-hidden');
+  refs.headerErrorEl.classList.remove('visually-hidden');
   //Form element cleaning
-  headerformEl.reset();
+  refs.headerFormEl.reset();
 }
