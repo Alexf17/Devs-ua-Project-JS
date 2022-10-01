@@ -82,6 +82,7 @@ async function createMainMarkup(fetchedData) {
 }
 
 function errorMessage() {
+  preloaderRefreshOFF();
   //Making message visible
   headerErrorEl.classList.remove('visually-hidden');
   //Form element cleaning
