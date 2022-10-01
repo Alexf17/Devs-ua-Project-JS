@@ -79,15 +79,10 @@ export async function createMainMarkup() {
 
   // возвращаем строку
   renderFoo(filmCards, cardListEl);
- 
-  await pagination(api.pageNumber, api.totalPages)
-  
+
+  await pagination(api.pageNumber, api.totalPages);
+
   return filmCards;
 }
 // вызываем функцию render
 createMainMarkup();
-
-
-
-
-
