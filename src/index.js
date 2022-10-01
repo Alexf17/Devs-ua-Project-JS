@@ -11,5 +11,5 @@ import './js/modal-authorization';
 
 import './js/library-main'
 
-import './js/user-service';
+import './js/auth-firebase';
 
