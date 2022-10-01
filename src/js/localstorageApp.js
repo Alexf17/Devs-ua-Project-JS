@@ -4,7 +4,7 @@ import { refs } from "./refs";
 // data-action="watched"
 
 // создаю и инициализирую переменную для работы с localstorage
-let localStorageData = JSON.parse(localStorage.getItem('localStorageData')) || {
+export let localStorageData = JSON.parse(localStorage.getItem('localStorageData')) || {
   queueFilms: [],
   watchedFilms: [],
 };

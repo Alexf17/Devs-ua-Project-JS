@@ -1,7 +1,7 @@
 // Объявляем функцию, которая создает разметку одного модального окна при нажатии на карточку фильма
 import img from '../images/filmWrap.jpg';
 import { isExistsQueueObjFilm, isExistsWatchedObjFilm } from './localstorageApp';
-import { localStorageData } from './localstorageApp';
+
 
 export function createModalMarkup(data) {
   // Делаем деструктуризацию полученных файлов с бэкэнда

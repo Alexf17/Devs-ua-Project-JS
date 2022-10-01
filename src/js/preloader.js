@@ -1,6 +1,7 @@
 import { refs } from "./refs";
 
 export function preloaderRefresh() {
+  refs.bodyEl.classList.add('no-scroll');
   refs.preloaderEl.classList.remove('preloader--hide');
   setTimeout(() => {
     refs.bodyEl.scrollIntoView({ top: 0, behavior: 'smooth' });
@@ -9,6 +10,7 @@ export function preloaderRefresh() {
 }
 
 export function preloaderRefreshOFF() {
+  refs.bodyEl.classList.remove('no-scroll');
   const arrElements = Array.from(refs.imgElArr);
   // console.log(arrElements);
   
@@ -31,13 +33,14 @@ export function preloaderRefreshOFF() {
 
 
 function preloaderOn() {
+  refs.bodyEl.classList.add('no-scroll');
   refs.preloaderEl.classList.remove('preloader--hide');
    window.addEventListener('load', onLoad);
   }
     
 function  onLoad(e) {
     refs.preloaderEl.classList.add('preloader--hide');
-  
+    refs.bodyEl.classList.remove('no-scroll');
     window.removeEventListener('load', onLoad);
     // console.log('C window слушатель успешно снят');
   }
