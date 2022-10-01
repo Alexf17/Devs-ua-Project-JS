@@ -6,6 +6,7 @@ import { getAuth,signOut,
   browserLocalPersistence,onAuthStateChanged
 } from "firebase/auth";
 import {Notify} from "notiflix";
+import {refs} from './modal-authorization';
 
 const firebaseConfig = initializeApp({
   apiKey: "AIzaSyBMQEt78CaPaq3dSOfApmBG4vPslBGp6pQ",
@@ -22,14 +23,13 @@ const firebaseConfig = initializeApp({
 const auth = getAuth(firebaseConfig);
 
 const formSignUp = document.querySelector('.registration');
-const name = document.querySelector('[name="name"]');
 const mail = document.querySelector('[name="email"]');
 const pass = document.querySelector('[name="password"]')
 const signUpName = document.querySelector('[name="sign-up-name"]');
 const signUpEmail = document.querySelector('[name="sign-up-email"]');
 const signUpPass = document.querySelector('[name="sign-up-password"]')
 const loginEl = document.querySelector('.auth')
-const logoutEl = document.querySelector('.logout-btn')
+const logoutEl = document.querySelector('#log-out')
 const myLibrary = document.querySelector('.library')
 
 formSignUp.addEventListener('submit', formSubmit)
@@ -46,6 +46,7 @@ function formSubmit(e) {
   createNewAccount(auth, userEmail, userPass)
   Notify.success(`Congratulation, ${userName}! You did it!`)
   formSignUp.reset()
+  refs.modalRegistrationBackdrop.classList.add('visually-hidden');
 }
 
 async function createNewAccount(auth, email, password) {
@@ -69,16 +70,19 @@ function onLoginPageSubmit(e) {
         return;
     }
     loginIntoAccount(auth, userEmail, userPassword);
-    // myLibrary.classList.remove('visually-hidden');
-    Notify.info('You logged in')
+    
+       
+    
+
     loginEl.reset();
+    refs.modalAuthorizationBackdrop.classList.add('visually-hidden');
 }
 
 onAuthStateChanged(auth, user => {
     if (user) {
         myLibrary.classList.remove('visually-hidden');
     } else {
-      // User signed out
+        myLibrary.classList.add('visually-hidden');
     }
   });
 
@@ -87,16 +91,19 @@ async function loginIntoAccount(auth, email, password) {
     auth = getAuth(firebaseConfig);
     await setPersistence(auth, browserLocalPersistence);
     await signInWithEmailAndPassword(auth, email, password);
-    
+    Notify.info(`You successfully logged in`)
   } catch (error) {
     console.log(error);
+    Notify.warning("Email or password wrong! Please, try again.");
   }
 }
 
 // Log out users
-// logoutEl.addEventListener('click', logOutFunction)
+logoutEl.addEventListener('click', logOutFunction)
 
-// function logOutFunction(e) {
-//      e.preventDefault()
-//     signOut(auth)
-// }
+function logOutFunction(e) {
+     e.preventDefault()
+    signOut(auth)
+    Notify.failure('Sorry, you had to go! Come back soon.')
+    refs.modalAuthorizationBackdrop.classList.add('visually-hidden');
+}
