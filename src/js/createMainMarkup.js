@@ -1,43 +1,13 @@
 import { searchGenresById } from './genresList';
+import { refs } from './refs';
 import ApiFilmoteka from './filmotekaApi';
 import { renderFoo } from './renderMarkup';
 import img from '../images/filmWrap.jpg';
 import pagination from './pagination';
 const api = new ApiFilmoteka();
+
 import { refs } from './refs';
 const cardListEl = document.querySelector('ul.card__list');
-
-// создаем обьект жанров фильмов ключ: значения.
-// const genresList = {
-//   28: 'Action',
-//   12: 'Adventure',
-//   16: 'Animation',
-//   35: 'Comedy',
-//   80: 'Crime',
-//   99: 'Documentary',
-//   18: 'Drama',
-//   10751: 'Family',
-//   14: 'Fantasy',
-//   27: 'Horror',
-//   36: 'History',
-//   10402: 'Music',
-//   9648: 'Mystery',
-//   10749: 'Romance',
-//   878: 'Science Fiction',
-//   10770: 'TV Movie',
-//   53: 'Thriller',
-//   10752: 'War',
-//   37: 'Western',
-// };
-
-// //создаем функцию searchGenresById, которая возвращает строку с жанрами на основе  genre_ids,
-// const searchGenresById = idArrayList => {
-//   return idArrayList
-//     .map(item => {
-//       return genresList[item];
-//     })
-//     .join(', ');
-// };
 
 // функция создания списка фильмов
 export async function createMainMarkup() {
@@ -81,7 +51,7 @@ export async function createMainMarkup() {
     .join('');
 
   // возвращаем строку
-  renderFoo(filmCards, cardListEl);
+  renderFoo(filmCards, refs.cardListEl);
 
   await pagination(api.pageNumber, api.totalPages);
 

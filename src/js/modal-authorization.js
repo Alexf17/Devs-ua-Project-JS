@@ -1,4 +1,4 @@
-const refs = {
+export const refs = {
     authorizationBtn: document.querySelector('#headerAuthorization'),
     modalAuthorizationBackdrop: document.querySelector('.backdrop-modalAuthorization'),
     modalCloseAuthorozation: document.querySelector('.authorization__close'),
@@ -34,7 +34,7 @@ function onModalAuthorizationLinkClick(event) {
 
 refs.modalCloseRegistration.addEventListener('click', onModalCloseRegistrationClick);
 
-function onModalCloseRegistrationClick(event) {
+export default function onModalCloseRegistrationClick(event) {
     event.preventDefault();
-    refs.modalRegistrationBackdrop.classList.add('visually-hidden')
+    refs.modalRegistrationBackdrop.classList.add('visually-hidden');
 }
