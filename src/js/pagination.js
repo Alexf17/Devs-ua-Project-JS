@@ -1,5 +1,6 @@
 import ApiFilmoteka from './filmotekaApi';
 import { preloaderRefresh, preloaderRefreshOFF } from './preloader';
+import { refs } from './refs';
 // import createMainMarkup from './createMainMarkup'
 const apiFilmoteka = new ApiFilmoteka();
 const paginationBox = document.querySelector('.paginationBox');
@@ -105,7 +106,8 @@ const api = new ApiFilmoteka();
 
 function createMainMarkup(fetchedData) {
   //Getting results from API
-
+  
+  refs.fetchDataValue = fetchedData;
   //Chegking response from API
   if (!fetchedData) {
   } else {
