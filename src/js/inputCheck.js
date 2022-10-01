@@ -36,6 +36,7 @@ function onFormSubmit(event) {
 async function createMainMarkup(fetchedData) {
   //Getting results from API
   const results = await fetchedData;
+  refs.fetchDataValue = results;
   //Chegking response from API
   if (!results.length) {
     await errorMessage();
