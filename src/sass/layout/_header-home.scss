@@ -194,16 +194,18 @@
 }
 
 .header__error {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.header__error-visible {
   margin-top: 16px;
   color: var(--red-color);
+  transition: opacity var(--transition-duration) var(--transition-timing);
   opacity: 100%;
-  visibility: visible;
 }
+
+// .header__error-visible {
+//   // margin-top: 16px;
+//   // color: var(--red-color);
+//   // opacity: 100%;
+//   // visibility: visible;
+// }
 
 .header__list-link--accent::after {
   content: '';
