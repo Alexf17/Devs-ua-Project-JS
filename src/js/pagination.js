@@ -13,11 +13,12 @@ export default function pagination(currentPage, allPages) {
   let afterTwoPage = currentPage + 2;
   globalCurrentpage = currentPage;
   if (currentPage > 1) {
-    markup += `<li>&#129144;</li>`;
+    markup += `<li class="paginationRow">&#129144;</li>`;
   }
   if (currentPage > 1) {
     markup += `<li>1</li>`;
   }
+
   if (currentPage > 4) {
     markup += `<li>...</li>`;
   }
@@ -38,15 +39,14 @@ export default function pagination(currentPage, allPages) {
     markup += `<li>...</li>`;
   }
   if (allPages > currentPage) {
-    markup += `<li>${currentPage + 5}</li>`;
-    markup += `<li>&#129146;<li>`;
+    markup += `<li class="avd">${currentPage + 5}</li>`;
+    markup += `<li class="paginationRow">&#129146;<li>`;
   }
+
   paginationBox.innerHTML = markup;
 }
 
 paginationBox.addEventListener('click', handlerPagination);
-
-// createMainMarkup(apiFilmoteka.fetchPopularsFilms())
 
 async function handlerPagination(evt) {
   if (evt.target.nodeName !== 'LI') {
@@ -94,38 +94,16 @@ import ApiFilmoteka from './filmotekaApi';
 import { cleanerMarkup } from './cleanerMarkup';
 import { searchGenresById } from './genresList';
 import { renderFoo } from './renderMarkup';
-const headerformEl = document.querySelector('.header__form');
 const cardListEl = document.querySelector('ul.card__list');
-const headerErrorEl = document.querySelector('.header__error');
 //Initialize class instance
 const api = new ApiFilmoteka();
-headerformEl.addEventListener('submit', onFormSubmit);
-
-function onFormSubmit(event) {
-  event.preventDefault();
-  let query = event.target.elements[0].value.trim();
-  //Checking for query existance
-  if (query) {
-    //Cleaning markup
-    cleanerMarkup(cardListEl);
-    //Setting querry to api of ApiFilmoteka
-    api.setFilmName(query);
-    createMainMarkup(api.fetchFilmsByName());
-  } else {
-    //Running error message function
-    errorMessage();
-    return;
-  }
-}
 
 function createMainMarkup(fetchedData) {
   //Getting results from API
 
   //Chegking response from API
   if (!fetchedData) {
-    errorMessage();
   } else {
-    headerErrorEl.classList.add('visually-hidden');
     // получаем массив из елементов 'li' , переводим в строку с помощю join
     const filmCards = fetchedData
       .map(
@@ -143,16 +121,16 @@ function createMainMarkup(fetchedData) {
   }" class="film-item__img" alt="${title}" width="300">
   </div>
   <div>
+ 
   <h3 class="film__title">${title}</h3>
   </div>
   <div class="film__genres-and-date">
   <p class="film__genres">${searchGenresById(genre_ids)}</p>
   <p class="film__release-date">${
-    release_date ? new Date(release_date).getFullYear() : 'Top Secter'
+    release_date ? new Date(release_date).getFullYear() : 'Nobody know'
   }</p>
-  
-  
    </div>
+  
    </a>
    </li>`
       )
@@ -162,11 +140,4 @@ function createMainMarkup(fetchedData) {
     renderFoo(filmCards, cardListEl);
     return filmCards;
   }
-}
-
-function errorMessage() {
-  //Making message visible
-  headerErrorEl.classList.remove('visually-hidden');
-  //Form element cleaning
-  headerformEl.reset();
 }

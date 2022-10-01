@@ -61,6 +61,7 @@ export async function createMainMarkup() {
         poster_path ? `https://image.tmdb.org/t/p/original${poster_path}` : img
       } class="film-item__img" alt="${title}" width="300">
   </div>
+  <div class="wrap__film>
   <div class="film__title-wrap">
   <h3 class="film__title">${title}</h3>
   </div>
@@ -72,6 +73,7 @@ export async function createMainMarkup() {
   }</p>
 
    </div>
+   </div>
    </a>
    </li>`
     )
@@ -79,15 +81,10 @@ export async function createMainMarkup() {
 
   // возвращаем строку
   renderFoo(filmCards, cardListEl);
- 
-  await pagination(api.pageNumber, api.totalPages)
-  
+
+  await pagination(api.pageNumber, api.totalPages);
+
   return filmCards;
 }
 // вызываем функцию render
 createMainMarkup();
-
-
-
-
-

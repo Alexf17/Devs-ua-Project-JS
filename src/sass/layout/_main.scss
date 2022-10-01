@@ -13,6 +13,7 @@
 }
 .film__item {
   display: inline-block;
+  flex-grow: 1;
   @media screen and (max-width: 767px) {
     &:not(:last-child) {
       margin-bottom: 20px;
@@ -88,8 +89,6 @@
   &::after {
     content: ' | ';
   }
-}
-.film__genres {
 }
 
 .film__release-date {
