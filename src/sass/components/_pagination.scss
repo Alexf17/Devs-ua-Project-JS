@@ -6,6 +6,7 @@
   margin-top: 60px;
 
   & > li {
+    cursor: pointer;
     padding-top: 14px;
     display: inline-block;
     text-align: center;
@@ -15,20 +16,25 @@
     border-radius: 5px;
     width: 40px;
     height: 40px;
-    margin-left: 10px;
-    transition: transform var(--transition-duration) var(--transition-timing);
+    transition: transform var(--transition-duration) var(--transition-timing),
+      color var(--transition-duration) var(--transition-timing);
     &:hover,
     &:focus {
-      transform: scale(1.01);
+      transform: scale(1.02);
+      color: var(--accent-color);
+    }
+    &.paginationPage--current {
+      color: var(--white-color);
+      background-color: var(--accent-color);
+      &:hover,
+      &:focus {
+        color: var(--white-color);
+        transform: scale(1);
+      }
     }
   }
 }
 
-.paginationPage--current {
-  color: var(--white-color);
-  background-color: var(--accent-color);
-  &:hover,
-  &:focus {
-    color: var(--white-color);
-  }
+.paginationRow {
+  background-color: var(--light-gray-color);
 }

@@ -60,6 +60,7 @@ export async function createMainMarkup() {
         poster_path ? `https://image.tmdb.org/t/p/original${poster_path}` : img
       } class="film-item__img" alt="${title}" width="300">
   </div>
+  <div class="wrap__film>
   <div class="film__title-wrap">
   <h3 class="film__title">${title}</h3>
   </div>
@@ -70,6 +71,7 @@ export async function createMainMarkup() {
     release_date ? new Date(release_date).getFullYear() : 'Nobody know'
   }</p>
 
+   </div>
    </div>
    </a>
    </li>`
