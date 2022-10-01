@@ -9,7 +9,7 @@ const apiFilmoteka = new ApiFilmoteka();
 
 // Получение ссылок на необходимые элементы
 
-const refs = {
+export const refs = {
   filmList: document.querySelector('.card__list'),
   ModalFilmBackdrop: document.querySelector('.backdrop-modalInfo'),
   ModalFilmBody: document.querySelector('body'),

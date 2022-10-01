@@ -7,7 +7,7 @@ const app = initializeApp(FIREBASECFG);
 const db = getDatabase(app);
 const auth = getAuth(app);
 
-export default class dataStorage {
+export default class DataStorage {
   constructor({ queue, watched }) {
     this._queue = queue;
     this._watched = watched;

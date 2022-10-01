@@ -99,25 +99,23 @@ const auth = getAuth(app);
 //   refs.modalAuth.classList.toggle('visibility');
 //   refs.authContainer.classList.add('hidden-tab');
 // }
-const login__button = document.querySelector('.form__button')
-login__button.addEventListener('submit', onLogInUser)
+const login__button = document.querySelector('#login')
+login__button.addEventListener('click', onLogInUser)
 
 function onLogInUser(e) {
-  console.log('test');
-  e.preventDefault();
+ e.preventDefault();
 
-  const signUpEmail = document.querySelector("#email");
-  const signUpPswd = document.querySelector("#password");
-  console.log(signUpEmail.value);
+  const signUpEmail = document.querySelector("#email").value;
+  const signUpPswd = document.querySelector("#password").value;
+  
+  const userData = {
+    email: signUpEmail,
+    pswd: signUpPswd,
+  };
 
-  // const userData = {
-  //   email: signUpEmail,
-  //   pswd: signUpPswd,
-  // };
+    const user = new User(userData);
 
-  // const user = new User(userData);
-
-  // user.logIn();
+  user.logIn();
 
   // // refs.userLibrary.classList.remove('hidden-tab');
 
@@ -148,24 +146,26 @@ function onLogInUser(e) {
 //   refs.modalAuth.classList.toggle('visibility');
 //   refs.body.removeAttribute('style');
 // }
+const signUp__button = document.querySelector('#sign-up')
+signUp__button.addEventListener('click', onCreateUser)
 
-// function onCreateUser(e) {
-//   e.preventDefault();
+function onCreateUser(e) {
+  e.preventDefault();
 
-//   const userData = {
-//     name: document.getElementById('name').value,
-//     email: document.getElementById('email').value,
-//     password: document.getElementById('reg-pswd').value,
-//   };
+  const userData = {
+    name: document.querySelector('#name').value,
+    email: document.querySelector('#email').value,
+    password: document.querySelector('#password').value,
+  };
 
-//   const user = new User(userData);
+  const user = new User(userData);
 
-//   user.create();
+  user.create();
 
-//   e.currentTarget.reset();
+  // e.currentTarget.reset();
 
-//   onCloseModalAuth(e);
-// }
+  // onCloseModalAuth(e);
+}
 
 // function onUpdateUser(e) {
 //   e.preventDefault();
