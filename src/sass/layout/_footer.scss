@@ -1,5 +1,6 @@
-// styles for footer bg-color
+// Чтобы футер не уменьшался добавлен flex-shrink
 .footer {
+  flex-shrink: 0;
   padding-top: 30px;
   padding-bottom: 30px;
   background-color: var(--light-gray-color);
@@ -58,7 +59,6 @@
   text-decoration-line: underline;
   margin: 0;
   margin-left: 4px;
-  
 }
 
 .footer__svg {

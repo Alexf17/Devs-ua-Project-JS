@@ -1,3 +1,15 @@
+// Добавляет позиционирование футера во вкладке моя библиотека
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+//  Чтоб футер занимал оставшееся пространство
+main {
+  flex-grow: 1;
+}
+
 .card__list {
   width: 100%;
   text-align: center;
