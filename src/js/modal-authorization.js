@@ -6,7 +6,7 @@ const refs = {
     modalRegistrationBackdrop: document.querySelector('.backdrop-modalRegistration'),
     modalCloseRegistration: document.querySelector('.registration__close'),
 }
-console.log(refs.modalAuthorizationLink);
+
 refs.authorizationBtn.addEventListener('click', onAuthorizationBtnClick);
 refs.modalCloseAuthorozation.addEventListener('click', onModalCloseAuthorozationClick);
 
