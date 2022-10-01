@@ -12,6 +12,7 @@
   }
 }
 .film__item {
+  border-radius: 5px;
   display: inline-block;
   @media screen and (max-width: 767px) {
     &:not(:last-child) {
