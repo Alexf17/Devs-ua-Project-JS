@@ -5,6 +5,7 @@ import { getAuth,signOut,
   setPersistence,
   browserLocalPersistence,
 } from "firebase/auth";
+import {Notify} from "notiflix";
 
 const firebaseConfig = initializeApp({
   apiKey: "AIzaSyBMQEt78CaPaq3dSOfApmBG4vPslBGp6pQ",
@@ -17,29 +18,25 @@ const firebaseConfig = initializeApp({
   measurementId: "G-X5BM5EZZVP"
 });
 
-// Initialize Firebase aaa@ukl.com
-
-
 // Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(firebaseConfig);
 
-
-const formEl = document.querySelector('#login') 
-const mail = document.querySelector('#email')
-const pass = document.querySelector('#pass')
-const loginEl = document.querySelector('#login')
-const logoutEl = document.querySelector('#login')
-
-formEl.addEventListener('submit', formSubmit)
+const formSignUp = document.querySelector('.registration');
+const mail = document.querySelector('[name="email"]');
+const pass = document.querySelector('[name="password"]')
+const loginEl = document.querySelector('.auth')
+const logoutEl = document.querySelector('.logout-btn')
 
 
+formSignUp.addEventListener('submit', formSubmit)
 
 function formSubmit(e) {
   e.preventDefault()
   const userName = mail.value;
   const userPass = pass.value;
   createNewAccount(auth, userName, userPass)
-  formEl.reset()
+  console.log(userName);
+  formSignUp.reset()
 }
 
 async function createNewAccount(auth, email, password) {
@@ -50,14 +47,20 @@ async function createNewAccount(auth, email, password) {
     }
 }
 // Log-in users
-loginEl.addEventListener('click', onLoginPageSubmit);
+loginEl.addEventListener('submit', onLoginPageSubmit);
 
 function onLoginPageSubmit(e) {
     e.preventDefault()
-  const userEmail = mail.value;
-  const userPassword = pass.value;
-  loginIntoAccount(auth, userEmail, userPassword);
-  formEl.reset();
+    const userEmail = mail.value;
+    const userPassword = pass.value;
+    if (!userEmail || !userPassword) {
+        
+        Notify.warning('Please enter your email and password!');
+        return;
+    }
+    loginIntoAccount(auth, userEmail, userPassword);
+    Notify.info('You logged in')
+    loginEl.reset();
 }
 
 
@@ -74,9 +77,9 @@ async function loginIntoAccount(auth, email, password) {
 }
 
 // Log out users
-logoutEl.addEventListener('click', logOutFunction)
+// logoutEl.addEventListener('click', logOutFunction)
 
-function logOutFunction(e) {
-     e.preventDefault()
-    signOut(auth)
-}
+// function logOutFunction(e) {
+//      e.preventDefault()
+//     signOut(auth)
+// }
