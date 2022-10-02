@@ -13,4 +13,4 @@ export const refs = {
   libBtnContainerEl: document.querySelector('.btn-container'),
   paginationBox: document.querySelector('.paginationBox'),
   cardListEl: document.querySelector('ul.card__list'),
-  
+}
