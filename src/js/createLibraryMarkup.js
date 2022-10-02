@@ -7,6 +7,8 @@ let libBtnId = '';
 
 refs.libBtnContainerEl.addEventListener('click', onLibBtnClick);
 
+//До выбора списка избранного , отображаем фильмы из watched
+
 function onLibBtnClick(e) {
   e.preventDefault();
   if (e.target.nodeName !== 'BUTTON') {
@@ -18,6 +20,7 @@ function onLibBtnClick(e) {
 }
 
 let localStorageData = JSON.parse(localStorage.getItem('localStorageData'));
+
 
 async function createLibraryMarkup(onBtnClick) {
   //получаем список фильмов по запросу
