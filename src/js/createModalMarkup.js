@@ -1,7 +1,9 @@
 // Объявляем функцию, которая создает разметку одного модального окна при нажатии на карточку фильма
 import img from '../images/filmWrap.jpg';
-import { isExistsQueueObjFilm, isExistsWatchedObjFilm } from './localstorageApp';
-
+import {
+  isExistsQueueObjFilm,
+  isExistsWatchedObjFilm,
+} from './localstorageApp';
 
 export function createModalMarkup(data) {
   // Делаем деструктуризацию полученных файлов с бэкэнда
@@ -16,14 +18,32 @@ export function createModalMarkup(data) {
     genres,
     id,
   } = data;
-  
-  
+
   let text_btn_watch = '';
   let text_btn_queue = '';
-  
-  isExistsWatchedObjFilm(id) ? text_btn_watch = 'remove' : text_btn_watch = 'add to watched';
-  isExistsQueueObjFilm(id) ? text_btn_queue = 'remove' : text_btn_queue = 'add to queue';
-  
+  let watched_checked = '';
+  let queue_checked = '';
+
+  // isExistsWatchedObjFilm(id)
+  //   ? (text_btn_watch = 'remove')
+  //   : (text_btn_watch = 'add to watched');
+  // isExistsQueueObjFilm(id)
+  //   ? (text_btn_queue = 'remove')
+  //   : (text_btn_queue = 'add to queue');
+
+  if (isExistsWatchedObjFilm(id)) {
+    text_btn_watch = 'remove';
+    watched_checked = 'button-modal__checked';
+  } else {
+    text_btn_watch = 'add to watched';
+  }
+  if (isExistsQueueObjFilm(id)) {
+    text_btn_queue = 'remove';
+    queue_checked = 'button-modal__checked';
+  } else {
+    text_btn_queue = 'add to queue';
+  }
+
   //   Выстаскиваем из полученного объекта названия жанров
   const genresList = genres.map(({ name }) => name).join(', ');
 
@@ -70,7 +90,7 @@ export function createModalMarkup(data) {
             <button
               type="button"
               id="${id}"
-              class="button-list__button button-modal__orange"
+              class="button-list__button button-modal__white ${watched_checked}"
               data-action="watched"
             >
               ${text_btn_watch}
@@ -80,7 +100,7 @@ export function createModalMarkup(data) {
             <button
               type="button"
             id="${id}"
-              class="button-list__button button-modal__white"
+              class="button-list__button button-modal__white ${queue_checked}"
               data-action="queue"
             >
               ${text_btn_queue}
@@ -89,5 +109,6 @@ export function createModalMarkup(data) {
         </ul>
   </div>`;
   // Возвращаем результат работы функции
+
   return filmModalMarkup;
 }
