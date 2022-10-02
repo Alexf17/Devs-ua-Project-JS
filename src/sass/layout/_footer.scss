@@ -59,6 +59,11 @@
   text-decoration-line: underline;
   margin: 0;
   margin-left: 4px;
+  transition: color var(--transition-timing) var(--transition-duration);
+  &:hover,
+  &:focus {
+    color: var(--accent-color);
+  }
 }
 
 .footer__svg {
