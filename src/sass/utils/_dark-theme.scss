@@ -133,4 +133,27 @@ button.change_theme[data-theme='onLight'] {
   button.change_theme[data-theme='onLight'] {
     display: block;
   }
+  //пагинация
+  .paginationBox > li {
+    color: var(--white-color);
+    transition: transform var(--transition-duration) var(--transition-timing),
+      color var(--transition-duration) var(--transition-timing);
+    &:hover,
+    &:focus {
+      transform: scale(1.02);
+      color: var(--accent-color);
+    }
+    &.paginationPage--current {
+      color: #363636;
+      background-color: var(--accent-color);
+      &:hover,
+      &:focus {
+        color: var(--white-color);
+        transform: scale(1);
+      }
+    }
+  }
+  .paginationRow {
+    background-color: #363636;
+  }
 }
