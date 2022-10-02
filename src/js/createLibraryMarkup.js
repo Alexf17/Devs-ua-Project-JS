@@ -1,19 +1,37 @@
-import { searchGenresById } from './genresList';
 import { refs } from './refs';
-import ApiFilmoteka from './filmotekaApi';
 import { renderFoo } from './renderMarkup';
 import img from '../images/filmWrap.jpg';
-import pagination from './pagination';
-const api = new ApiFilmoteka();
+import { searchGenresById } from './genresList';
+import {cleanerMarkup} from './cleanerMarkup';
+let libBtnId = '';
 
-import { refs } from './refs';
-const cardListEl = document.querySelector('ul.card__list');
+refs.libBtnContainerEl.addEventListener('click', onLibBtnClick);
 
-// функция создания списка фильмов
-export async function createMainMarkup() {
+function onLibBtnClick(e) {
+  e.preventDefault();
+  if (e.target.nodeName !== 'BUTTON') {
+    return
+  }
+  libBtnId = e.target.id;
+  // console.log('ID c onLibBtnClick :', libBtnId);
+  createLibraryMarkup(libBtnId);
+}
+
+let localStorageData = JSON.parse(localStorage.getItem('localStorageData'));
+
+async function createLibraryMarkup(onBtnClick) {
   //получаем список фильмов по запросу
-  const results = await api.fetchPopularsFilms();
-  refs.fetchDataValue = results;
+  let results = null;
+
+  if (onBtnClick === 'watched') {
+    results = localStorageData.watchedFilms;
+  }
+
+  if (onBtnClick === 'queue') {
+    results = localStorageData.queueFilms;
+  }
+
+  // console.log(results);
   // получаем массив из елементов 'li' , переводим в строку с помощю join
   const filmCards = results
     .map(
@@ -50,12 +68,8 @@ export async function createMainMarkup() {
     )
     .join('');
 
+  cleanerMarkup(refs.cardListEl);
   // возвращаем строку
   renderFoo(filmCards, refs.cardListEl);
 
-  await pagination(api.pageNumber, api.totalPages);
-
-  return filmCards;
 }
-// вызываем функцию render
-createMainMarkup();
