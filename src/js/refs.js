@@ -3,7 +3,7 @@ export const refs = {
   imgElArr: document.getElementsByClassName('film-item__img'),
   bodyEl: document.querySelector('body'),
   infoFilmWrapEl: document.querySelector('.infoFilm__wrap'),
-  fetchDataValue:null,
+  fetchDataValue: null,
   btnAnchorEl: document.getElementsByClassName('btn_anchor')[0],
   darkBtn: document.querySelector('button[data-theme="onDark"]'),
   lightBtn: document.querySelector('button[data-theme="onLight"]'),
@@ -12,5 +12,4 @@ export const refs = {
   headerErrorEl: document.querySelector('.header__error'),
   libBtnContainerEl: document.querySelector('.btn-container'),
   paginationBox: document.querySelector('.paginationBox'),
-  cardListEl: document.querySelector('ul.card__list'),
-}
+};
