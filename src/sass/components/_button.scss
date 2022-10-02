@@ -31,7 +31,6 @@
   @media screen and (nin-width: 769px) {
     width: 148px;
   }
-
 }
 
 .button--orange {
@@ -39,7 +38,6 @@
 
   color: var(--white-color);
   border: none;
-
 }
 
 .button--orange:hover,
@@ -47,7 +45,6 @@
   border: 1px solid var(--white-color);
 
   background-color: transparent;
-
 }
 
 .button--transparent {
@@ -61,26 +58,22 @@
   border: none;
 }
 
-
-.button-modal__orange {
-  background-color: var(--accent-color);
-  color: var(--white-color);
-  border: none;
-}
-
-.button-modal__orange:hover,
-.button-modal__orange:focus {
-  background-color: var(--back-drop-bg-color);
-}
-
 .button-modal__white {
   background-color: transparent;
   border: 1px solid var(--main-text-color);
+  transition: box-shadow var(--transition-duration) var(--transition-timing),
+    background-color var(--transition-duration) var(--transition-timing),
+    border var(--transition-duration) var(--transition-timing),
+    color var(--transition-duration) var(--transition-timing);
+  &:hover,
+  &:focus {
+    box-shadow: 2px 2px 5px rgb(161, 158, 158);
+    background-color: var(--accent-color);
+    color: var(--white-color);
+    border: transparent;
+  }
 }
 
-.button-modal__white:hover,
-.button-modal__white:focus {
-  box-shadow: 2px 2px 5px rgb(161, 158, 158);
+.button-modal__checked {
   background-color: var(--back-drop-bg-color);
 }
-
