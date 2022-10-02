@@ -13,24 +13,22 @@
   position: relative;
   width: 280px;
   max-width: 90vw;
-
+  border-radius: 5px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
-  padding: 48px 20px 40px;
-
+  padding: 40px 20px;
   background-color: #ffffff;
 
   @media screen and (min-width: 768px) {
-    width: 704px;
+    width: 360px;
 
-    padding: 40px 72px 40px 36px;
+    padding: 40px 60px 40px 60px;
   }
   @media screen and (min-width: 1280px) {
-    width: 806px;
+    width: 480px;
 
-    padding: 40px 12px;
+    // padding: 40px 100px;
   }
 }
 
@@ -66,26 +64,55 @@
   text-align: center;
 }
 .form__input {
+  padding-left: 5px;
+  border-color: var(--accent-color);
   display: block;
   margin-bottom: 30px;
   width: 240px;
-  height: 30px;
+  height: 35px;
+  border-radius: 5px;
+
+  @media screen and (min-width: 1280px) {
+    width: 360px;
+  }
 }
 label {
   color: var(--accent-color);
 }
+.form__button-wrap {
+  display: flex;
+  justify-content: space-around;
+}
 
 .form__button {
-  color: var(--accent-color);
+  color: var(--white-color);
+  background-color: var(--accent-color);
   border-radius: 5px;
   border-color: var(--white-color);
   width: 100px;
-  height: 40px;
+  height: 35px;
+  transition: background-color var(--transition-duration)
+    var(--transition-timing);
+  &:hover,
+  &:focus {
+    background-color: grey;
+  }
 }
-a {
-  display: block;
+.form__text {
   margin-top: 20px;
-  color: black;
+  text-align: center;
+}
+.authorization__link {
+  font-size: 20px;
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  color: rgb(153, 8, 8);
+  transition: color var(--transition-duration) var(--transition-timing);
+  &:hover,
+  &:focus {
+    color: var(--accent-color);
+  }
 }
 // стили регистрации
 .backdrop-modalRegistration {

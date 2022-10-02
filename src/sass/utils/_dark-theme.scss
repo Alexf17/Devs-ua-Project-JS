@@ -15,7 +15,7 @@
 .change_theme:focus {
   fill: var(--orange-hover);
   transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1),
-  fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @media screen and (min-width: 768px) {
@@ -24,13 +24,6 @@
     transform: scale(1); // 75% of original size
   }
 }
-
-
-
-
-
-
-
 
 button.change_theme[data-theme='onDark'] {
   display: block;
@@ -86,10 +79,30 @@ button.change_theme[data-theme='onLight'] {
   .ourteam__subtitle {
     color: var(--light-gray-color);
   }
-
-  // .team-logo {
-  //   // border-radius: 50%;
-  // }
+  // модалка авторизации---------------------
+  .authorization {
+    background-color: #5c5b5b;
+  }
+  .authorization__close {
+    fill: var(--light-gray-color);
+  }
+  .authorization__title {
+    color: var(--light-gray-color);
+    font-weight: 100;
+  }
+  .form__input {
+    background-color: #cec7c7;
+  }
+  .form__button {
+    background-color: rgb(211, 131, 85);
+    &:hover,
+    &:focus {
+      background-color: grey;
+    }
+  }
+  .registration__close {
+    fill: var(--light-gray-color);
+  }
 
   button.change_theme[data-theme='onDark'] {
     display: none;

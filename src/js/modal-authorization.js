@@ -5,6 +5,7 @@ export const refs = {
     modalAuthorizationLink: document.querySelector('.authorization__link'),
     modalRegistrationBackdrop: document.querySelector('.backdrop-modalRegistration'),
     modalCloseRegistration: document.querySelector('.registration__close'),
+    body: document.querySelector('body')
 }
 
 refs.authorizationBtn.addEventListener('click', onAuthorizationBtnClick);
@@ -13,12 +14,14 @@ refs.modalCloseAuthorozation.addEventListener('click', onModalCloseAuthorozation
 function onAuthorizationBtnClick(event) {
     event.preventDefault()
     refs.modalAuthorizationBackdrop.classList.remove('visually-hidden')
+    refs.body.classList.add('no-scroll')
 
 }
 
 function onModalCloseAuthorozationClick(event) {
      event.preventDefault()
-   refs.modalAuthorizationBackdrop.classList.add('visually-hidden') 
+    refs.modalAuthorizationBackdrop.classList.add('visually-hidden')
+   refs.body.classList.remove('no-scroll') 
 }
 
 
@@ -36,5 +39,7 @@ refs.modalCloseRegistration.addEventListener('click', onModalCloseRegistrationCl
 
 export default function onModalCloseRegistrationClick(event) {
     event.preventDefault();
-    refs.modalRegistrationBackdrop.classList.add('visually-hidden');
+    refs.modalRegistrationBackdrop.classList.add('visually-hidden')
+    refs.body.classList.remove('no-scroll') 
+
 }
