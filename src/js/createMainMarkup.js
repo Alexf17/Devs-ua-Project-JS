@@ -63,9 +63,13 @@ export async function createMainMarkup(fetchData) {
 createMainMarkup(api.fetchPopularsFilms());
 
 async function handlerPagination(evt) {
-  if (api.getFilmName() === '') {
+  console.log(api.filmName);
+
+  if (api.filmName) {
+    console.log('return');
     return;
   } else {
+    console.log('asd');
     if (evt.target.nodeName !== 'LI') {
       return;
     }
