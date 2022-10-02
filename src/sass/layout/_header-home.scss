@@ -302,3 +302,10 @@
 .header__form-input:focus ~ .header__search {
   stroke: var(--accent-color);
 }
+
+.header__error {
+  margin-top: 16px;
+  color: var(--red-color);
+  transition: opacity var(--transition-duration) var(--transition-timing);
+  opacity: 100%;
+}
