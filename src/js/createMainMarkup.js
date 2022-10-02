@@ -6,9 +6,8 @@ import pagination from './pagination';
 const api = new ApiFilmoteka();
 import { cleanerMarkup } from './cleanerMarkup';
 import { preloaderRefresh, preloaderRefreshOFF } from './preloader';
-
 import { refs } from './refs';
-
+export { api };
 refs.paginationBox.addEventListener('click', handlerPagination);
 
 let globalCurrentpage = 1;
@@ -63,8 +62,6 @@ export async function createMainMarkup(fetchData) {
 createMainMarkup(api.fetchPopularsFilms());
 
 async function handlerPagination(evt) {
-  console.log(api.filmName);
-
   if (api.filmName) {
     console.log('return');
     return;
