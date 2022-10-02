@@ -101,17 +101,15 @@ function errorMessage() {
 }
 
 async function handlerPaginationInput(evt) {
-  if (!api.getFIlmName()) {
+  if (!api.getFilmName()) {
     return;
   } else {
-    preloaderRefresh();
     if (evt.target.nodeName !== 'LI') {
       return;
     }
-
     if (evt.target.textContent === '🡸') {
       api.setPageNumber((globalCurrentpage -= 1));
-      api.getFIlmName();
+      api.getFilmName();
 
       const filesFromBackend = await api.fetchFilmsByName();
 
@@ -124,7 +122,7 @@ async function handlerPaginationInput(evt) {
     }
     if (evt.target.textContent === '🡺') {
       api.setPageNumber((globalCurrentpage += 1));
-      api.getFIlmName();
+      api.getFilmName();
       const filesFromBackend = await api.fetchFilmsByName();
 
       cleanerMarkup(refs.cardListEl);
@@ -137,7 +135,7 @@ async function handlerPaginationInput(evt) {
     if (evt.target.id === 'left-pagnDots') {
       api.setPageNumber((globalCurrentpage -= 3));
 
-      api.getFIlmName();
+      api.getFilmName();
       const filesFromBackend = await api.fetchFilmsByName();
 
       cleanerMarkup(refs.cardListEl);
@@ -150,7 +148,7 @@ async function handlerPaginationInput(evt) {
 
     if (evt.target.id === 'right-pagnDots') {
       api.setPageNumber((globalCurrentpage += 3));
-      api.getFIlmName();
+      api.getFilmName();
       const filesFromBackend = await api.fetchFilmsByName();
 
       cleanerMarkup(refs.cardListEl);

@@ -63,14 +63,67 @@ export async function createMainMarkup(fetchData) {
 createMainMarkup(api.fetchPopularsFilms());
 
 async function handlerPagination(evt) {
-  preloaderRefresh();
-  if (evt.target.nodeName !== 'LI') {
+  if (api.getFilmName() === '') {
     return;
-  }
+  } else {
+    if (evt.target.nodeName !== 'LI') {
+      return;
+    }
 
-  if (evt.target.textContent === '🡸') {
-    api.setPageNumber((globalCurrentpage -= 1));
+    if (evt.target.textContent === '🡸') {
+      api.setPageNumber((globalCurrentpage -= 1));
 
+      const filesFromBackend = await api.fetchPopularsFilms();
+
+      cleanerMarkup(refs.cardListEl);
+      createMainMarkup(filesFromBackend);
+
+      pagination(api.pageNumber, api.totalPages);
+      preloaderRefreshOFF();
+      return;
+    }
+
+    if (evt.target.textContent === '🡺') {
+      api.setPageNumber((globalCurrentpage += 1));
+
+      const filesFromBackend = await api.fetchPopularsFilms();
+
+      cleanerMarkup(refs.cardListEl);
+      createMainMarkup(filesFromBackend);
+
+      pagination(api.pageNumber, api.totalPages);
+      preloaderRefreshOFF();
+      return;
+    }
+
+    if (evt.target.id === 'left-pagnDots') {
+      api.setPageNumber((globalCurrentpage -= 3));
+
+      const filesFromBackend = await api.fetchPopularsFilms();
+
+      cleanerMarkup(refs.cardListEl);
+      createMainMarkup(filesFromBackend);
+
+      pagination(api.pageNumber, api.totalPages);
+      preloaderRefreshOFF();
+      return;
+    }
+
+    if (evt.target.id === 'right-pagnDots') {
+      api.setPageNumber((globalCurrentpage += 3));
+      const filesFromBackend = await api.fetchPopularsFilms();
+
+      cleanerMarkup(refs.cardListEl);
+      createMainMarkup(filesFromBackend);
+
+      pagination(api.pageNumber, api.totalPages);
+      preloaderRefreshOFF();
+      return;
+    }
+
+    const page = evt.target.textContent;
+
+    api.setPageNumber(Number(page));
     const filesFromBackend = await api.fetchPopularsFilms();
 
     cleanerMarkup(refs.cardListEl);
@@ -78,55 +131,5 @@ async function handlerPagination(evt) {
 
     pagination(api.pageNumber, api.totalPages);
     preloaderRefreshOFF();
-    return;
   }
-
-  if (evt.target.textContent === '🡺') {
-    api.setPageNumber((globalCurrentpage += 1));
-
-    const filesFromBackend = await api.fetchPopularsFilms();
-
-    cleanerMarkup(refs.cardListEl);
-    createMainMarkup(filesFromBackend);
-
-    pagination(api.pageNumber, api.totalPages);
-    preloaderRefreshOFF();
-    return;
-  }
-
-  if (evt.target.id === 'left-pagnDots') {
-    api.setPageNumber((globalCurrentpage -= 3));
-
-    const filesFromBackend = await api.fetchPopularsFilms();
-
-    cleanerMarkup(refs.cardListEl);
-    createMainMarkup(filesFromBackend);
-
-    pagination(api.pageNumber, api.totalPages);
-    preloaderRefreshOFF();
-    return;
-  }
-
-  if (evt.target.id === 'right-pagnDots') {
-    api.setPageNumber((globalCurrentpage += 3));
-    const filesFromBackend = await api.fetchPopularsFilms();
-
-    cleanerMarkup(refs.cardListEl);
-    createMainMarkup(filesFromBackend);
-
-    pagination(api.pageNumber, api.totalPages);
-    preloaderRefreshOFF();
-    return;
-  }
-
-  const page = evt.target.textContent;
-
-  api.setPageNumber(Number(page));
-  const filesFromBackend = await api.fetchPopularsFilms();
-
-  cleanerMarkup(refs.cardListEl);
-  createMainMarkup(filesFromBackend);
-
-  pagination(api.pageNumber, api.totalPages);
-  preloaderRefreshOFF();
 }
