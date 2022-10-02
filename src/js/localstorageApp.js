@@ -49,6 +49,7 @@ function onInfoFilmWrapClick(e) {
         } else {
           console.log('уже есть не записываю', 'localStorageData.length свойство watchedFilms:', localStorageData.watchedFilms.length);
           removeObjFilm(localStorageData.watchedFilms, idFilmWatched);
+          localStorage.removeItem('localStorageData');
           localStorage.setItem('localStorageData',JSON.stringify(localStorageData));
           setStatusAddToWatched(watchedBtn);
         }
@@ -85,6 +86,7 @@ function onInfoFilmWrapClick(e) {
         } else {
           console.log('уже есть не записываю', 'localStorageData.length свойство queueFilms:', localStorageData.queueFilms.length);
           removeObjFilm(localStorageData.queueFilms, idFilmQueue);
+          localStorage.removeItem('localStorageData');
           localStorage.setItem('localStorageData',JSON.stringify(localStorageData));
           setStatusAddToQueue(queueBtn);
           // console.log(localStorageData.queueFilms);
