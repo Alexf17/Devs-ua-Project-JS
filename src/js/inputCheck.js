@@ -7,18 +7,26 @@ import { renderFoo } from './renderMarkup';
 import { refs } from './refs';
 import { preloaderRefresh, preloaderRefreshOFF } from './preloader';
 
-//Initialize class instance
+import pagination from './pagination';
+
+let globalCurrentpage = 0;
 
 const api = new ApiFilmoteka();
+
+refs.paginationBox.addEventListener('click', handlerPaginationInput);
 refs.headerFormEl.addEventListener('submit', onFormSubmit);
 
-function onFormSubmit(event) {
+
+async function onFormSubmit(event) {
   event.preventDefault();
 
   let query = event.target.elements[0].value.trim();
+  refs.expFilmName = query;
+
   //Checking for query existance
   if (query) {
     preloaderRefresh();
+
     //Cleaning markup
     cleanerMarkup(refs.cardListEl);
     //Setting querry to api of ApiFilmoteka
@@ -78,6 +86,8 @@ async function createMainMarkup(fetchedData) {
     // Running render function
     renderFoo(filmCards, refs.cardListEl);
     preloaderRefreshOFF();
+    console.log(api.totalPages);
+    pagination(api.pageNumber, api.totalPages);
     return filmCards;
   }
 }
@@ -88,4 +98,56 @@ function errorMessage() {
   refs.headerErrorEl.classList.remove('visually-hidden');
   //Form element cleaning
   refs.headerFormEl.reset();
+}
+
+async function handlerPaginationInput(evt) {
+  if (!api.getFIlmName()) {
+    return;
+  } else {
+    preloaderRefresh();
+    if (evt.target.nodeName !== 'LI') {
+      return;
+    }
+
+    if (evt.target.textContent === '🡸') {
+      api.setPageNumber((globalCurrentpage -= 1));
+      api.getFIlmName();
+
+      const filesFromBackend = await api.fetchFilmsByName();
+
+      cleanerMarkup(cardListEl);
+      createMainMarkup(filesFromBackend);
+
+      pagination(api.pageNumber, api.totalPages);
+
+      return;
+    }
+    if (evt.target.textContent === '🡺') {
+      console.log(api.getFIlmName());
+      api.setPageNumber((globalCurrentpage += 1));
+      console.log(api.pageNumber);
+      api.getFIlmName();
+      const filesFromBackend = await api.fetchFilmsByName();
+
+      cleanerMarkup(cardListEl);
+      createMainMarkup(filesFromBackend);
+
+      pagination(api.pageNumber, api.totalPages);
+
+      return;
+    }
+    if (evt.target.textContent === '...') {
+      return;
+    }
+    const page = evt.target.textContent;
+
+    api.setPageNumber(Number(page));
+    const filesFromBackend = await api.fetchFilmsByName();
+
+    cleanerMarkup(cardListEl);
+    createMainMarkup(filesFromBackend);
+
+    pagination(api.pageNumber, api.totalPages);
+    preloaderRefreshOFF();
+  }
 }

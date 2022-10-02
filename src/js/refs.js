@@ -11,5 +11,6 @@ export const refs = {
   headerFormEl: document.querySelector('.header__form'),
   headerErrorEl: document.querySelector('.header__error'),
   libBtnContainerEl: document.querySelector('.btn-container'),
+  paginationBox: document.querySelector('.paginationBox'),
+  cardListEl: document.querySelector('ul.card__list'),
   
-};

@@ -21,6 +21,13 @@ export default class ApiFilmoteka {
   setFilmName(newName) {
     this.filmName = newName;
   }
+  getFIlmName() {
+    return this.filmName;
+  }
+
+  getPageNumber() {
+    return this.pageNumber;
+  }
 
   async fetchFilmsByName() {
     axios.defaults.baseURL = this.BASE_URL;
