@@ -1,5 +1,5 @@
 export const refs = {
-    authorizationBtn: document.querySelector('#headerAuthorization'),
+    authorizationBtn: document.querySelector('.icon-login'),
     modalAuthorizationBackdrop: document.querySelector('.backdrop-modalAuthorization'),
     modalCloseAuthorozation: document.querySelector('.authorization__close'),
     modalAuthorizationLink: document.querySelector('.authorization__link'),
