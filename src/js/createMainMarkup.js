@@ -29,7 +29,7 @@ export async function createMainMarkup(fetchData) {
         <a class="film__link" id="${id}">
   <div class="film__wrap">
       <img src=${
-        poster_path ? `https://image.tmdb.org/t/p/original${poster_path}` : img
+        poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : img
       } class="film-item__img" alt="${title}" width="300">
   </div>
   <div class="wrap__film>
