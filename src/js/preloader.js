@@ -10,18 +10,20 @@ export function preloaderRefresh() {
 }
 
 export function preloaderRefreshOFF() {
-  refs.bodyEl.classList.remove('no-scroll');
+  
   const arrElements = Array.from(refs.imgElArr);
   // console.log(arrElements);
 
   if (arrElements.length === 0) {
     refs.preloaderEl.classList.add('preloader--hide');
+    refs.bodyEl.classList.remove('no-scroll');
   }
 
   arrElements.forEach((el, index) => {
     el.onload = () => {
       if (index === arrElements.length - 1) {
         refs.preloaderEl.classList.add('preloader--hide');
+        refs.bodyEl.classList.remove('no-scroll');
         console.log('ВЫКЛ ПРЕЛОУДЕРА');
       }
       // console.log("мы молодцы")

@@ -4,7 +4,7 @@ import { refs } from './refs';
 // data-action="watched"
 
 // создаю и инициализирую переменную для работы с localstorage
-export let localStorageData = JSON.parse(
+let localStorageData = JSON.parse(
   localStorage.getItem('localStorageData')
 ) || {
   queueFilms: [],
@@ -15,7 +15,7 @@ refs.infoFilmWrapEl.addEventListener('click', onInfoFilmWrapClick);
 
 function onInfoFilmWrapClick(e) {
   // Get array of objects response
-  const fetchDataArr = refs.fetchDataValue;
+  let fetchDataArr = refs.fetchDataValue;
   // console.log(fetchDataArr)
 
   // фильтр собития только на кнопку
@@ -29,13 +29,13 @@ function onInfoFilmWrapClick(e) {
     let idFilmWatched = +e.target.id;
 
     // console.log('Click on e.target.dataset.action watchedBTN', watchedBtn);
-    // console.log('id кнопки :', idFilmWatched);
+    console.log('id кнопки :', idFilmWatched);
 
     for (const filmObj of fetchDataArr) {
       // console.log(filmObj.id);
       if (filmObj.id === idFilmWatched) {
         let filmWatchedObjAdd = filmObj;
-        // console.log(filmWatchedObjAdd);
+        console.log(filmWatchedObjAdd);
         // зSet watched velue to localsrorage
         if (!isExistsWatchedObjFilm(idFilmWatched)) {
           // console.log('сработало записывает');
@@ -47,8 +47,9 @@ function onInfoFilmWrapClick(e) {
           // console.log('Длина localStorageData свойство watchedFilms: ', localStorageData.watchedFilms.length);
           setStatusRemove(watchedBtn);
         } else {
-          // console.log('уже есть не записываю', 'localStorageData.length свойство watchedFilms:', localStorageData.watchedFilms.length);
+          console.log('уже есть не записываю', 'localStorageData.length свойство watchedFilms:', localStorageData.watchedFilms.length);
           removeObjFilm(localStorageData.watchedFilms, idFilmWatched);
+          localStorage.setItem('localStorageData',JSON.stringify(localStorageData));
           setStatusAddToWatched(watchedBtn);
         }
       }
@@ -82,8 +83,9 @@ function onInfoFilmWrapClick(e) {
           setStatusRemove(queueBtn);
           // queueBtn.textContent = 'remove';
         } else {
-          // console.log('уже есть не записываю', 'localStorageData.length свойство queueFilms:', localStorageData.queueFilms.length);
+          console.log('уже есть не записываю', 'localStorageData.length свойство queueFilms:', localStorageData.queueFilms.length);
           removeObjFilm(localStorageData.queueFilms, idFilmQueue);
+          localStorage.setItem('localStorageData',JSON.stringify(localStorageData));
           setStatusAddToQueue(queueBtn);
           // console.log(localStorageData.queueFilms);
         }
@@ -94,6 +96,7 @@ function onInfoFilmWrapClick(e) {
 
 export function isExistsWatchedObjFilm(id) {
   let answer = null;
+console.log(localStorageData.watchedFilms)
   for (const objFilm of localStorageData.watchedFilms) {
     if (objFilm.id === id) {
       answer = true;
@@ -107,6 +110,7 @@ export function isExistsWatchedObjFilm(id) {
 
 export function isExistsQueueObjFilm(id) {
   let answer = null;
+
   for (const objQueueFilm of localStorageData.queueFilms) {
     if (objQueueFilm.id === id) {
       answer = true;
