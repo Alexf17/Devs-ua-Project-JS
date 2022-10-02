@@ -11,7 +11,7 @@ import { refs } from './refs';
 
 refs.paginationBox.addEventListener('click', handlerPagination);
 
-let globalCurrentpage = 0;
+let globalCurrentpage = 1;
 
 // функция создания списка фильмов
 export async function createMainMarkup(fetchData) {
