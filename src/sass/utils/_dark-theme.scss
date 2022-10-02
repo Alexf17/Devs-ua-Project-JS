@@ -52,6 +52,11 @@ button.change_theme[data-theme='onLight'] {
   }
   .infoFilm__button {
     fill: var(--light-gray-color);
+    transition: fill var(--transition-duration) var(--transition-timing);
+    &:hover,
+    &:focus {
+      fill: var(--accent-color);
+    }
   }
   .button-modal__orange {
     color: var(--light-gray-color);
@@ -72,6 +77,11 @@ button.change_theme[data-theme='onLight'] {
   }
   .modal__close-button {
     fill: var(--light-gray-color);
+    transition: fill var(--transition-duration) var(--transition-timing);
+    &:hover,
+    &:focus {
+      fill: var(--accent-color);
+    }
   }
   .ourteam__title {
     color: var(--light-gray-color);
@@ -85,6 +95,11 @@ button.change_theme[data-theme='onLight'] {
   }
   .authorization__close {
     fill: var(--light-gray-color);
+    transition: fill var(--transition-duration) var(--transition-timing);
+    &:hover,
+    &:focus {
+      fill: var(--accent-color);
+    }
   }
   .authorization__title {
     color: var(--light-gray-color);
@@ -95,6 +110,8 @@ button.change_theme[data-theme='onLight'] {
   }
   .form__button {
     background-color: rgb(211, 131, 85);
+    transition: background-color var(--transition-duration)
+      var(--transiton-timing);
     &:hover,
     &:focus {
       background-color: grey;
@@ -102,6 +119,11 @@ button.change_theme[data-theme='onLight'] {
   }
   .registration__close {
     fill: var(--light-gray-color);
+    transition: fill var(--transition-duration) var(--transition-timing);
+    &:hover,
+    &:focus {
+      fill: var(--accent-color);
+    }
   }
 
   button.change_theme[data-theme='onDark'] {
