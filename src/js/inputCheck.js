@@ -7,12 +7,10 @@ import { renderFoo } from './renderMarkup';
 import { refs } from './refs';
 import { preloaderRefresh, preloaderRefreshOFF } from './preloader';
 
-const headerformEl = document.querySelector('.header__form');
-const cardListEl = document.querySelector('ul.card__list');
-const headerErrorEl = document.querySelector('.header__error');
 import pagination from './pagination';
 
 let globalCurrentpage = 0;
+
 const api = new ApiFilmoteka();
 
 refs.paginationBox.addEventListener('click', handlerPaginationInput);
@@ -59,13 +57,14 @@ async function createMainMarkup(fetchedData) {
           title,
           genre_ids,
           release_date,
-        }) => `<li class="film__item">
+        }) => `<li class="film__item"><div class="test">
         <a class="film__link" id="${id}">
   <div class="film__wrap">
   <img src=${
     poster_path ? `https://image.tmdb.org/t/p/original${poster_path}` : img
   } class="film-item__img" alt="${title}" width="300">
   </div>
+  <div class= "film__info">
   <div class="film__title-wrap">
   <h3 class="film__title">${title}</h3>
   </div>
@@ -74,10 +73,11 @@ async function createMainMarkup(fetchedData) {
     searchGenresById(genre_ids) ? searchGenresById(genre_ids) : 'Unknown genre'
   }</p>
   <p class="film__release-date">${
-    release_date ? new Date(release_date).getFullYear() : 'Nobody know'
+    release_date ? new Date(release_date).getFullYear() : 'Nobody knows'
   }</p>
+  </div>
   
-  
+   </div>
    </div>
    </a>
    </li>`

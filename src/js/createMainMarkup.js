@@ -42,7 +42,7 @@ export async function createMainMarkup(fetchData) {
   }</p>
   <p class="film__release-date">${
     //проверяем через тернарник
-    release_date ? new Date(release_date).getFullYear() : 'Nobody know'
+    release_date ? new Date(release_date).getFullYear() : 'Nobody knows'
   }</p>
 
    </div>
