@@ -1,52 +1,49 @@
-
-    <div class="container header__section-lib">
-      <nav class="site-nav">
-        <a href="./index.html" class="header__logo">
-          <svg class="header__icon" width="24" height="24">
-            <use href="/src/images/sprite.svg#header-logo"></use>
-          </svg>
-          <span class="header__logo-text">Filmoteka
-          </span>
+<div class="container header__section-lib">
+  <nav class="site-nav">
+    <a href="./index.html" class="header__logo">
+      <svg class="header__icon" width="24" height="24">
+        <use href="/src/images/sprite.svg#header-logo"></use>
+      </svg>
+      <span class="header__logo-text">Filmoteka </span>
+    </a>
+    <ul class="header__list">
+      <li class="header__list-item">
+        <a href="./index.html" class="header__list-link">HOME</a>
+      </li>
+      <li class="header__list-item">
+        <a
+          href="./my-library.html"
+          class="header__list-link header__list-link--accent library"
+        >
+          MY LIBRARY
         </a>
-        <ul class="header__list">
-          <li class="header__list-item">
-            <a
-              href="./index.html"
-              class="header__list-link "
-              >HOME</a
-            >
-          </li>
-          <li class="header__list-item">
-            <a href="./my-library.html" class="header__list-link header__list-link--accent library"> MY LIBRARY </a>
-          </li>
-          <li class="header__list-item" id="headerAuthorization">
-            <a href="./index.html" class="header__list-link auth-btn">
+      </li>
+      <li class="header__list-item" id="headerAuthorization">
+        <a href="./index.html" class="header__list-link auth-btn">
           <svg class="header__icon icon-autorization" width="24" height="24">
             <use href="/src/images/sprite.svg#icon-autorization"></use>
           </svg>
-            </a>
-          </li>
-        </ul>
-      </nav>
+        </a>
+      </li>
+    </ul>
+  </nav>
 
-      <div class="btn-container">
-        <button id= "watched" class="lib-btn watched current-btn">Watched</button>
-        <button id= "queue" class="lib-btn queue">Queue</button>
-      </div>
-      
-      <div>
-        <button class="change_theme" data-theme="onLight" >
-          <svg class="moon-icon" width="30" height="30">
-            <use href="/src/images/sprite.svg#icon-sun"></use>
-          </svg>
-        </button>
-      
-        <button class="change_theme" data-theme="onDark">
-          <svg class="moon-icon" width="30" height="30">
-            <use href="/src/images/sprite.svg#icon-moon"></use>
-          </svg>
-        </button>
-      </div>
+  <div class="btn-container">
+    <button id="watched" class="button button--transparent">Watched</button>
+    <button id="queue" class="button button--transparent">Queue</button>
+  </div>
 
-    </div>
-  
+  <div>
+    <button class="change_theme" data-theme="onLight">
+      <svg class="moon-icon" width="30" height="30">
+        <use href="/src/images/sprite.svg#icon-sun"></use>
+      </svg>
+    </button>
+
+    <button class="change_theme" data-theme="onDark">
+      <svg class="moon-icon" width="30" height="30">
+        <use href="/src/images/sprite.svg#icon-moon"></use>
+      </svg>
+    </button>
+  </div>
+</div>
