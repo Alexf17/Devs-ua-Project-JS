@@ -31,9 +31,10 @@ const signUpPass = document.querySelector('[name="sign-up-password"]')
 const loginEl = document.querySelector('.auth')
 const logoutEl = document.querySelector('#log-out')
 const myLibrary = document.querySelector('.library')
+const userCabinet = document.querySelector('.icon-autorization')
+const userLogout = document.querySelector('.icon-logout')
 
-formSignUp.addEventListener('submit', formSubmit)
-
+formSignUp.addEventListener('submit', formSubmit);
 function formSubmit(e) {
   e.preventDefault()
   const userName = signUpName.value;
@@ -43,9 +44,10 @@ function formSubmit(e) {
     Notify.warning('Please enter your email and password!');
     return;
 }
-  createNewAccount(auth, userEmail, userPass)
-  Notify.success(`Congratulation, ${userName}! You did it!`)
-  formSignUp.reset()
+  createNewAccount(auth, userEmail, userPass);
+  Notify.success(`Congratulation, ${userName}! You did it!`);
+  formSignUp.reset();
+  formSignUp.removeEventListener('submit', formSubmit);
   refs.modalRegistrationBackdrop.classList.add('visually-hidden');
 }
 
@@ -59,7 +61,6 @@ async function createNewAccount(auth, email, password) {
 // Log-in users
 loginEl.addEventListener('submit', onLoginPageSubmit);
 
-
 function onLoginPageSubmit(e) {
     e.preventDefault()
     const userEmail = mail.value;
@@ -70,19 +71,21 @@ function onLoginPageSubmit(e) {
         return;
     }
     loginIntoAccount(auth, userEmail, userPassword);
-    
-       
-    
-
     loginEl.reset();
+    loginEl.removeEventListener('submit', onLoginPageSubmit);
     refs.modalAuthorizationBackdrop.classList.add('visually-hidden');
+    
 }
 
 onAuthStateChanged(auth, user => {
     if (user) {
         myLibrary.classList.remove('visually-hidden');
+        userCabinet.classList.add('visually-hidden');
+        userLogout.classList.toggle('visually-hidden');
+        loginEl.removeEventListener('submit', onLoginPageSubmit);
     } else {
         myLibrary.classList.add('visually-hidden');
+        // refs.modalAuthorizationBackdrop.classList.add('visually-hidden');
     }
   });
 
@@ -99,11 +102,14 @@ async function loginIntoAccount(auth, email, password) {
 }
 
 // Log out users
-logoutEl.addEventListener('click', logOutFunction)
+userLogout.addEventListener('click', logOutFunction)
 
 function logOutFunction(e) {
      e.preventDefault()
     signOut(auth)
     Notify.failure('Sorry, you had to go! Come back soon.')
-    refs.modalAuthorizationBackdrop.classList.add('visually-hidden');
+    userLogout.classList.add('visually-hidden');
+    userCabinet.classList.remove('visually-hidden');
+    refs.modalRegistrationBackdrop.classList.add('visually-hidden');   
+
 }
