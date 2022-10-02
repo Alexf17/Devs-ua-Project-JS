@@ -4,7 +4,7 @@ import {
   isExistsQueueObjFilm,
   isExistsWatchedObjFilm,
 } from './localstorageApp';
-
+let localStorageData = JSON.parse(localStorage.getItem('localStorageData'));
 export function createModalMarkup(data) {
   // Делаем деструктуризацию полученных файлов с бэкэнда
   const {
@@ -51,11 +51,10 @@ export function createModalMarkup(data) {
   //  а так же присваиваем кнопкам значение каждого айди фильма, для будущей записи выбранных фильмов в локал сторедж.
   const filmModalMarkup = `<div class="infoFilm__left">
       <img
-          src=${
-            poster_path
-              ? `https://image.tmdb.org/t/p/original${poster_path}`
-              : img
-          } class="infoFilm__img" alt="${title}"
+          src=${poster_path
+      ? `https://image.tmdb.org/t/p/original${poster_path}`
+      : img
+    } class="infoFilm__img" alt="${title}"
           
         > 
       </div>
