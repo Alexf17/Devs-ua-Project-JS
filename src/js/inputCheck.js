@@ -119,7 +119,7 @@ async function handlerPaginationInput(evt) {
       createMainMarkup(filesFromBackend);
 
       pagination(api.pageNumber, api.totalPages);
-
+      preloaderRefreshOFF();
       return;
     }
     if (evt.target.textContent === '🡺') {
@@ -131,10 +131,33 @@ async function handlerPaginationInput(evt) {
       createMainMarkup(filesFromBackend);
 
       pagination(api.pageNumber, api.totalPages);
+      preloaderRefreshOFF();
+      return;
+    }
+    if (evt.target.id === 'left-pagnDots') {
+      api.setPageNumber((globalCurrentpage -= 3));
+
+      api.getFIlmName();
+      const filesFromBackend = await api.fetchFilmsByName();
+
+      cleanerMarkup(refs.cardListEl);
+      createMainMarkup(filesFromBackend);
+      preloaderRefreshOFF();
+      pagination(api.pageNumber, api.totalPages);
 
       return;
     }
-    if (evt.target.textContent === '...') {
+
+    if (evt.target.id === 'right-pagnDots') {
+      api.setPageNumber((globalCurrentpage += 3));
+      api.getFIlmName();
+      const filesFromBackend = await api.fetchFilmsByName();
+
+      cleanerMarkup(refs.cardListEl);
+      createMainMarkup(filesFromBackend);
+      preloaderRefreshOFF();
+      pagination(api.pageNumber, api.totalPages);
+
       return;
     }
     const page = evt.target.textContent;
