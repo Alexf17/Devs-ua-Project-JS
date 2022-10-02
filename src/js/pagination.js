@@ -35,8 +35,8 @@ export default function pagination(currentPage, allPages) {
     markup += `<li id="right-pagnDots">...</li>`;
   }
   if (allPages > currentPage) {
-    markup += `<li class="avd">${currentPage + 5}</li>`;
-    markup += `<li class="paginationRow">&#129146;<li>`;
+    markup += `<li>${currentPage + 5}</li>`;
+    markup += `<li class="paginationRow">&#129146;</li>`;
   }
 
   refs.paginationBox.innerHTML = markup;

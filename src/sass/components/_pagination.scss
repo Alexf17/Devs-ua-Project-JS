@@ -18,10 +18,6 @@
     height: 40px;
     transition: transform var(--transition-duration) var(--transition-timing),
       color var(--transition-duration) var(--transition-timing);
-    &:last-child {
-      cursor: auto;
-      pointer-events: none;
-    }
     &:hover,
     &:focus {
       transform: scale(1.02);

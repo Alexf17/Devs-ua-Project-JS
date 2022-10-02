@@ -1,67 +1,60 @@
-import { refs } from "./refs";
+import { refs } from './refs';
 
 export function preloaderRefresh() {
   refs.bodyEl.classList.add('no-scroll');
   refs.preloaderEl.classList.remove('preloader--hide');
   setTimeout(() => {
     refs.bodyEl.scrollIntoView({ top: 0, behavior: 'smooth' });
-  },100)
-  // console.log("ЗАПУСК ПРЕЛОУДЕРА");
+  }, 100);
+  console.log('ЗАПУСК ПРЕЛОУДЕРА');
 }
 
 export function preloaderRefreshOFF() {
   refs.bodyEl.classList.remove('no-scroll');
   const arrElements = Array.from(refs.imgElArr);
   // console.log(arrElements);
-  
+
   if (arrElements.length === 0) {
-      refs.preloaderEl.classList.add('preloader--hide');
+    refs.preloaderEl.classList.add('preloader--hide');
   }
-  
-    arrElements.forEach((el, index) => {
-      el.onload = () => {
 
-        if (index === arrElements.length - 1) {
-          refs.preloaderEl.classList.add('preloader--hide');
-          // console.log("ВЫКЛ ПРЕЛОУДЕРА");
-        }
-        // console.log("мы молодцы")
+  arrElements.forEach((el, index) => {
+    el.onload = () => {
+      if (index === arrElements.length - 1) {
+        refs.preloaderEl.classList.add('preloader--hide');
+        console.log('ВЫКЛ ПРЕЛОУДЕРА');
       }
-    });
+      // console.log("мы молодцы")
+    };
+  });
 }
-
-
 
 function preloaderOn() {
   refs.bodyEl.classList.add('no-scroll');
   refs.preloaderEl.classList.remove('preloader--hide');
-   window.addEventListener('load', onLoad);
-  }
-    
-function  onLoad(e) {
-    refs.preloaderEl.classList.add('preloader--hide');
-    refs.bodyEl.classList.remove('no-scroll');
-    window.removeEventListener('load', onLoad);
-    // console.log('C window слушатель успешно снят');
-  }
+  window.addEventListener('load', onLoad);
+}
+
+function onLoad(e) {
+  refs.preloaderEl.classList.add('preloader--hide');
+  refs.bodyEl.classList.remove('no-scroll');
+  window.removeEventListener('load', onLoad);
+  // console.log('C window слушатель успешно снят');
+}
 
 preloaderOn();
 
-
-
-
-
 // export class Preloader {
-  
+
 //   constructor() {
 //     this.preloaderEl = document.querySelector('.preloader');
-  
+
 //   }
 
 //   preloaderOn() {
 //    window.addEventListener('load', this.onLoad);
 //   }
-    
+
 //   onLoad(e) {
 //     console.log(this.preloaderEl.classList);
 //     this.preloaderEl.classList.add('preloader--hide');
@@ -69,18 +62,11 @@ preloaderOn();
 //     // console.log('C window слушатель успешно снят');
 //   }
 
-
 // }
 
 // const preloaderApp = new Preloader();
 // console.log(preloaderApp);
 // preloaderApp.preloaderOn()
-
-
-
-
-
-
 
 //  class Preloader {
 
@@ -113,12 +99,10 @@ preloaderOn();
 //          this.hidePreloader();
 //        }
 //      }, 100)
-    
+
 //   }
 
 // }
-
-
 
 // window.addEventListener('load', (e) => {
 //   // console.log("страничка загрузилась");
@@ -126,16 +110,15 @@ preloaderOn();
 //   // console.log(mediaFiles.length);
 //   // preloader.dataLength = mediaFiles.length;
 //   preloader.precentsLoader()
-  
-// })
 
+// })
 
 // export function prelouderOn() {
 //   window.addEventListener('DOMContentLoaded', loader);
 // }
 
 // function loader(e) {
-  
+
 //   setTimeout(() => {
 //     const preloaderRef = document.querySelector('.preloader');
 //     const precentsRef = document.querySelector('#precents');
@@ -145,30 +128,25 @@ preloaderOn();
 //     let i = 0;
 //     // console.log(e)
 //     console.log(mediaFiles);
-    
+
 //     Array.from(mediaFiles).forEach((el, index) => {
 //       el.onload = () => {
 //         i++
-        
+
 //         precentsRef.innerHTML = ((i * 100) / mediaFiles.length).toFixed();
 
 //         if (i === mediaFiles.length) {
 //           precentsRef.innerHTML = 100;
 //           preloaderRef.classList.add('preloader--hide');
-          
+
 //           window.removeEventListener('DOMContentLoaded', loader);
 //           // console.log("Cлушатель DOMContentLoaded c window снят!");
 //         }
 //       }
-    
+
 //     })
 //   },200)
 
 // }
 
 // prelouderOn()
-
-
-
-
-

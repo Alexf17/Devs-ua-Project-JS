@@ -21,7 +21,7 @@ export default class ApiFilmoteka {
   setFilmName(newName) {
     this.filmName = newName;
   }
-  getFIlmName() {
+  getFilmName() {
     return this.filmName;
   }
 
