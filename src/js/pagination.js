@@ -1,5 +1,5 @@
 import { refs } from './refs';
-let globalCurrentpage = 0;
+let globalCurrentpage = 1;
 
 export default function pagination(currentPage, allPages) {
   globalCurrentpage = currentPage;

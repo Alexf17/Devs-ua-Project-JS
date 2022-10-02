@@ -9,7 +9,7 @@ import { preloaderRefresh, preloaderRefreshOFF } from './preloader';
 
 import pagination from './pagination';
 
-let globalCurrentpage = 0;
+let globalCurrentpage = 1;
 
 const api = new ApiFilmoteka();
 
@@ -123,9 +123,7 @@ async function handlerPaginationInput(evt) {
       return;
     }
     if (evt.target.textContent === '🡺') {
-      console.log(api.getFIlmName());
       api.setPageNumber((globalCurrentpage += 1));
-      console.log(api.pageNumber);
       api.getFIlmName();
       const filesFromBackend = await api.fetchFilmsByName();
 
