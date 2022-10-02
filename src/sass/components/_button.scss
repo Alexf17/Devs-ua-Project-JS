@@ -61,6 +61,8 @@
 
   border: 1px solid #ffffff;
   border-radius: 5px;
+  transition: background-color var(--transition-duration)
+    var(--transition-timing);
   &:not(:last-child) {
     margin-right: 20px;
   }
@@ -79,5 +81,6 @@
 .button-modal__white:hover,
 .button-modal__white:focus {
   box-shadow: 2px 2px 5px rgb(161, 158, 158);
-  background-color: var(--back-drop-bg-color);
+  // background-color: var(--back-drop-bg-color);
+  background-color: var(--accent-color);
 }
