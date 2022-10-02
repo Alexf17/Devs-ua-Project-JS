@@ -21,6 +21,8 @@ function onLibBtnClick(e) {
 
 let localStorageData = JSON.parse(localStorage.getItem('localStorageData'));
 
+//Рендер коолекциии из watch
+createLibraryMarkup('watched')
 
 async function createLibraryMarkup(onBtnClick) {
   //получаем список фильмов по запросу
