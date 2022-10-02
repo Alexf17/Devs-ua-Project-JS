@@ -1,24 +1,24 @@
 // Import
-import ApiFilmoteka from './filmotekaApi';
+// import ApiFilmoteka from './filmotekaApi';
 import img from '../images/filmWrap.jpg';
 import { cleanerMarkup } from './cleanerMarkup';
 import { searchGenresById } from './genresList';
 import { renderFoo } from './renderMarkup';
 import { refs } from './refs';
 import { preloaderRefresh, preloaderRefreshOFF } from './preloader';
-
+import { api } from './createMainMarkup';
 import pagination from './pagination';
 
 let globalCurrentpage = 1;
 
-const api = new ApiFilmoteka();
+// const api = new ApiFilmoteka();
 
 refs.headerFormEl.addEventListener('submit', onFormSubmit);
 refs.paginationBox.addEventListener('click', handlerPaginationInput);
 
 async function onFormSubmit(event) {
   event.preventDefault();
-
+  api.setPageNumber(1);
   let query = event.target.elements[0].value.trim();
   refs.expFilmName = query;
 
