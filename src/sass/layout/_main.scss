@@ -27,6 +27,14 @@ main {
   border-radius: 5px;
   display: inline-block;
   flex-grow: 1;
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: scale 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover,
+  &:focus {
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
+      1px 4px 6px rgba(0, 0, 0, 0.16);
+    scale: 1.02;
+  }
   @media screen and (max-width: 767px) {
     &:not(:last-child) {
       margin-bottom: 20px;
@@ -37,16 +45,18 @@ main {
     margin-bottom: 0px;
   }
 }
+
 .film__link {
   display: block;
-  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  transition: scale 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  &:hover,
-  &:focus {
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
-      1px 4px 6px rgba(0, 0, 0, 0.16);
-    scale: 1.02;
-  }
+  // flex-grow: 1;
+  // transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  // transition: scale 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  // &:hover,
+  // &:focus {
+  //   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
+  //     1px 4px 6px rgba(0, 0, 0, 0.16);
+  //   scale: 1.02;
+  // }
 }
 
 .film__wrap {
@@ -68,6 +78,15 @@ main {
   @media screen and (min-width: 1280px) {
     height: 574px;
   }
+}
+
+.film__info {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-between;
+  flex-grow: 1;
 }
 .film__title-wrap {
   text-align: left;
