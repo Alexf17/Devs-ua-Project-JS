@@ -13,9 +13,8 @@ let globalCurrentpage = 0;
 
 const api = new ApiFilmoteka();
 
-refs.paginationBox.addEventListener('click', handlerPaginationInput);
 refs.headerFormEl.addEventListener('submit', onFormSubmit);
-
+refs.paginationBox.addEventListener('click', handlerPaginationInput);
 
 async function onFormSubmit(event) {
   event.preventDefault();
@@ -32,6 +31,7 @@ async function onFormSubmit(event) {
     //Setting querry to api of ApiFilmoteka
     api.setFilmName(query);
     createMainMarkup(api.fetchFilmsByName());
+    refs.headerFormEl.reset();
   } else {
     //Running error message function
     errorMessage();
@@ -86,7 +86,6 @@ async function createMainMarkup(fetchedData) {
     // Running render function
     renderFoo(filmCards, refs.cardListEl);
     preloaderRefreshOFF();
-    console.log(api.totalPages);
     pagination(api.pageNumber, api.totalPages);
     return filmCards;
   }
@@ -115,7 +114,7 @@ async function handlerPaginationInput(evt) {
 
       const filesFromBackend = await api.fetchFilmsByName();
 
-      cleanerMarkup(cardListEl);
+      cleanerMarkup(refs.cardListEl);
       createMainMarkup(filesFromBackend);
 
       pagination(api.pageNumber, api.totalPages);
@@ -129,7 +128,7 @@ async function handlerPaginationInput(evt) {
       api.getFIlmName();
       const filesFromBackend = await api.fetchFilmsByName();
 
-      cleanerMarkup(cardListEl);
+      cleanerMarkup(refs.cardListEl);
       createMainMarkup(filesFromBackend);
 
       pagination(api.pageNumber, api.totalPages);
@@ -144,7 +143,7 @@ async function handlerPaginationInput(evt) {
     api.setPageNumber(Number(page));
     const filesFromBackend = await api.fetchFilmsByName();
 
-    cleanerMarkup(cardListEl);
+    cleanerMarkup(refs.cardListEl);
     createMainMarkup(filesFromBackend);
 
     pagination(api.pageNumber, api.totalPages);

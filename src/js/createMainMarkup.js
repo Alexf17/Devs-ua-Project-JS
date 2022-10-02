@@ -10,6 +10,7 @@ import { preloaderRefresh, preloaderRefreshOFF } from './preloader';
 import { refs } from './refs';
 
 refs.paginationBox.addEventListener('click', handlerPagination);
+
 let globalCurrentpage = 0;
 
 // функция создания списка фильмов
@@ -54,7 +55,7 @@ export async function createMainMarkup(fetchData) {
 
   // возвращаем строку
   renderFoo(filmCards, refs.cardListEl);
-  
+
   await pagination(api.pageNumber, api.totalPages);
   return filmCards;
 }
@@ -70,40 +71,60 @@ async function handlerPagination(evt) {
   if (evt.target.textContent === '🡸') {
     api.setPageNumber((globalCurrentpage -= 1));
 
-    const filesFromBackend = await api.fetchPopularsFilmsh();
-
-    cleanerMarkup(cardListEl);
-    createMainMarkup(filesFromBackend);
-
-    pagination(api.pageNumber, api.totalPages);
-    preloaderRefreshOFF();
-    return;
-  }
-  if (evt.target.textContent === '🡺') {
-    api.setPageNumber((globalCurrentpage += 1));
-    console.log(api.pageNumber);
-
-    api.getFIlm();
-    console.log(api.filmName);
     const filesFromBackend = await api.fetchPopularsFilms();
 
-    cleanerMarkup(cardListEl);
+    cleanerMarkup(refs.cardListEl);
     createMainMarkup(filesFromBackend);
 
     pagination(api.pageNumber, api.totalPages);
     preloaderRefreshOFF();
     return;
   }
-  if (evt.target.textContent === '...') {
+
+  if (evt.target.textContent === '🡺') {
+    api.setPageNumber((globalCurrentpage += 1));
+
+    const filesFromBackend = await api.fetchPopularsFilms();
+
+    cleanerMarkup(refs.cardListEl);
+    createMainMarkup(filesFromBackend);
+
+    pagination(api.pageNumber, api.totalPages);
     preloaderRefreshOFF();
     return;
   }
+
+  if (evt.target.id === 'left-pagnDots') {
+    api.setPageNumber((globalCurrentpage -= 3));
+
+    const filesFromBackend = await api.fetchPopularsFilms();
+
+    cleanerMarkup(refs.cardListEl);
+    createMainMarkup(filesFromBackend);
+
+    pagination(api.pageNumber, api.totalPages);
+    preloaderRefreshOFF();
+    return;
+  }
+
+  if (evt.target.id === 'right-pagnDots') {
+    api.setPageNumber((globalCurrentpage += 3));
+    const filesFromBackend = await api.fetchPopularsFilms();
+
+    cleanerMarkup(refs.cardListEl);
+    createMainMarkup(filesFromBackend);
+
+    pagination(api.pageNumber, api.totalPages);
+    preloaderRefreshOFF();
+    return;
+  }
+
   const page = evt.target.textContent;
 
   api.setPageNumber(Number(page));
   const filesFromBackend = await api.fetchPopularsFilms();
 
-  cleanerMarkup(cardListEl);
+  cleanerMarkup(refs.cardListEl);
   createMainMarkup(filesFromBackend);
 
   pagination(api.pageNumber, api.totalPages);

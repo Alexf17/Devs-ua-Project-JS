@@ -1,6 +1,4 @@
-
 import { refs } from './refs';
-
 let globalCurrentpage = 0;
 
 export default function pagination(currentPage, allPages) {
@@ -18,7 +16,7 @@ export default function pagination(currentPage, allPages) {
   }
 
   if (currentPage > 4) {
-    markup += `<li>...</li>`;
+    markup += `<li id="left-pagnDots">...</li>`;
   }
   if (currentPage > 3) {
     markup += `<li>${beforeTwoPage}</li>`;
@@ -34,7 +32,7 @@ export default function pagination(currentPage, allPages) {
     markup += `<li>${afterTwoPage}</li>`;
   }
   if (allPages - 3 > currentPage) {
-    markup += `<li>...</li>`;
+    markup += `<li id="right-pagnDots">...</li>`;
   }
   if (allPages > currentPage) {
     markup += `<li class="avd">${currentPage + 5}</li>`;
