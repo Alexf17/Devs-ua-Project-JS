@@ -97,6 +97,7 @@ function errorMessage() {
   refs.headerErrorEl.classList.remove('visually-hidden');
   //Form element cleaning
   refs.headerFormEl.reset();
+  cleanerMarkup(refs.paginationBox);
 }
 
 async function handlerPaginationInput(evt) {
