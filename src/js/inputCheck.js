@@ -6,16 +6,18 @@ import { searchGenresById } from './genresList';
 import { renderFoo } from './renderMarkup';
 import { refs } from './refs';
 import { preloaderRefresh, preloaderRefreshOFF } from './preloader';
+
 const headerformEl = document.querySelector('.header__form');
 const cardListEl = document.querySelector('ul.card__list');
 const headerErrorEl = document.querySelector('.header__error');
 import pagination from './pagination';
-//Initialize class instance
-let globalCurrentpage = 0;
 
+let globalCurrentpage = 0;
 const api = new ApiFilmoteka();
-headerformEl.addEventListener('submit', onFormSubmit);
+
 refs.paginationBox.addEventListener('click', handlerPaginationInput);
+refs.headerFormEl.addEventListener('submit', onFormSubmit);
+
 
 async function onFormSubmit(event) {
   event.preventDefault();
@@ -28,7 +30,7 @@ async function onFormSubmit(event) {
     preloaderRefresh();
 
     //Cleaning markup
-    cleanerMarkup(cardListEl);
+    cleanerMarkup(refs.cardListEl);
     //Setting querry to api of ApiFilmoteka
     api.setFilmName(query);
     createMainMarkup(api.fetchFilmsByName());
@@ -42,11 +44,12 @@ async function onFormSubmit(event) {
 async function createMainMarkup(fetchedData) {
   //Getting results from API
   const results = await fetchedData;
+  refs.fetchDataValue = results;
   //Chegking response from API
   if (!results.length) {
     await errorMessage();
   } else {
-    headerErrorEl.classList.add('visually-hidden');
+    refs.headerErrorEl.classList.add('visually-hidden');
     // получаем массив из елементов 'li' , переводим в строку с помощю join
     const filmCards = results
       .map(
@@ -67,7 +70,9 @@ async function createMainMarkup(fetchedData) {
   <h3 class="film__title">${title}</h3>
   </div>
   <div class="film__genres-and-date">
-  <p class="film__genres">${searchGenresById(genre_ids)}</p>
+  <p class="film__genres">${
+    searchGenresById(genre_ids) ? searchGenresById(genre_ids) : 'Unknown genre'
+  }</p>
   <p class="film__release-date">${
     release_date ? new Date(release_date).getFullYear() : 'Nobody know'
   }</p>
@@ -79,7 +84,7 @@ async function createMainMarkup(fetchedData) {
       )
       .join('');
     // Running render function
-    renderFoo(filmCards, cardListEl);
+    renderFoo(filmCards, refs.cardListEl);
     preloaderRefreshOFF();
     console.log(api.totalPages);
     pagination(api.pageNumber, api.totalPages);
@@ -90,9 +95,9 @@ async function createMainMarkup(fetchedData) {
 function errorMessage() {
   preloaderRefreshOFF();
   //Making message visible
-  headerErrorEl.classList.remove('visually-hidden');
+  refs.headerErrorEl.classList.remove('visually-hidden');
   //Form element cleaning
-  headerformEl.reset();
+  refs.headerFormEl.reset();
 }
 
 async function handlerPaginationInput(evt) {

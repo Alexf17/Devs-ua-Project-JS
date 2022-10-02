@@ -3,9 +3,10 @@ import { getAuth,signOut,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   setPersistence,
-  browserLocalPersistence,
+  browserLocalPersistence,onAuthStateChanged
 } from "firebase/auth";
 import {Notify} from "notiflix";
+import {refs} from './modal-authorization';
 
 const firebaseConfig = initializeApp({
   apiKey: "AIzaSyBMQEt78CaPaq3dSOfApmBG4vPslBGp6pQ",
@@ -24,19 +25,28 @@ const auth = getAuth(firebaseConfig);
 const formSignUp = document.querySelector('.registration');
 const mail = document.querySelector('[name="email"]');
 const pass = document.querySelector('[name="password"]')
+const signUpName = document.querySelector('[name="sign-up-name"]');
+const signUpEmail = document.querySelector('[name="sign-up-email"]');
+const signUpPass = document.querySelector('[name="sign-up-password"]')
 const loginEl = document.querySelector('.auth')
-const logoutEl = document.querySelector('.logout-btn')
-
+const logoutEl = document.querySelector('#log-out')
+const myLibrary = document.querySelector('.library')
 
 formSignUp.addEventListener('submit', formSubmit)
 
 function formSubmit(e) {
   e.preventDefault()
-  const userName = mail.value;
-  const userPass = pass.value;
-  createNewAccount(auth, userName, userPass)
-  console.log(userName);
+  const userName = signUpName.value;
+  const userEmail = signUpEmail.value;
+  const userPass = signUpPass.value;
+  if (!userEmail || !userPass) {
+    Notify.warning('Please enter your email and password!');
+    return;
+}
+  createNewAccount(auth, userEmail, userPass)
+  Notify.success(`Congratulation, ${userName}! You did it!`)
   formSignUp.reset()
+  refs.modalRegistrationBackdrop.classList.add('visually-hidden');
 }
 
 async function createNewAccount(auth, email, password) {
@@ -49,6 +59,7 @@ async function createNewAccount(auth, email, password) {
 // Log-in users
 loginEl.addEventListener('submit', onLoginPageSubmit);
 
+
 function onLoginPageSubmit(e) {
     e.preventDefault()
     const userEmail = mail.value;
@@ -59,27 +70,40 @@ function onLoginPageSubmit(e) {
         return;
     }
     loginIntoAccount(auth, userEmail, userPassword);
-    Notify.info('You logged in')
+    
+       
+    
+
     loginEl.reset();
+    refs.modalAuthorizationBackdrop.classList.add('visually-hidden');
 }
 
+onAuthStateChanged(auth, user => {
+    if (user) {
+        myLibrary.classList.remove('visually-hidden');
+    } else {
+        myLibrary.classList.add('visually-hidden');
+    }
+  });
 
 async function loginIntoAccount(auth, email, password) {
   try {
     auth = getAuth(firebaseConfig);
     await setPersistence(auth, browserLocalPersistence);
     await signInWithEmailAndPassword(auth, email, password);
-
-    
+    Notify.info(`You successfully logged in`)
   } catch (error) {
     console.log(error);
+    Notify.warning("Email or password wrong! Please, try again.");
   }
 }
 
 // Log out users
-// logoutEl.addEventListener('click', logOutFunction)
+logoutEl.addEventListener('click', logOutFunction)
 
-// function logOutFunction(e) {
-//      e.preventDefault()
-//     signOut(auth)
-// }
+function logOutFunction(e) {
+     e.preventDefault()
+    signOut(auth)
+    Notify.failure('Sorry, you had to go! Come back soon.')
+    refs.modalAuthorizationBackdrop.classList.add('visually-hidden');
+}

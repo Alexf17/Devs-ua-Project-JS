@@ -3,52 +3,19 @@ import ApiFilmoteka from './filmotekaApi';
 import { renderFoo } from './renderMarkup';
 import img from '../images/filmWrap.jpg';
 import pagination from './pagination';
-import { refs } from './refs';
 const api = new ApiFilmoteka();
 import { cleanerMarkup } from './cleanerMarkup';
 import { preloaderRefresh, preloaderRefreshOFF } from './preloader';
 
-const cardListEl = document.querySelector('ul.card__list');
+import { refs } from './refs';
+
 refs.paginationBox.addEventListener('click', handlerPagination);
 let globalCurrentpage = 0;
 
-// создаем обьект жанров фильмов ключ: значения.
-// const genresList = {
-//   28: 'Action',
-//   12: 'Adventure',
-//   16: 'Animation',
-//   35: 'Comedy',
-//   80: 'Crime',
-//   99: 'Documentary',
-//   18: 'Drama',
-//   10751: 'Family',
-//   14: 'Fantasy',
-//   27: 'Horror',
-//   36: 'History',
-//   10402: 'Music',
-//   9648: 'Mystery',
-//   10749: 'Romance',
-//   878: 'Science Fiction',
-//   10770: 'TV Movie',
-//   53: 'Thriller',
-//   10752: 'War',
-//   37: 'Western',
-// };
-
-// //создаем функцию searchGenresById, которая возвращает строку с жанрами на основе  genre_ids,
-// const searchGenresById = idArrayList => {
-//   return idArrayList
-//     .map(item => {
-//       return genresList[item];
-//     })
-//     .join(', ');
-// };
-
 // функция создания списка фильмов
 export async function createMainMarkup(fetchData) {
-  //получаем список фильмов по запросу
   const results = await fetchData;
-
+  refs.fetchDataValue = results;
   // получаем массив из елементов 'li' , переводим в строку с помощю join
   const filmCards = results
     .map(
@@ -70,7 +37,9 @@ export async function createMainMarkup(fetchData) {
   <h3 class="film__title">${title}</h3>
   </div>
   <div class="film__genres-and-date">
-  <p class="film__genres">${searchGenresById(genre_ids)}</p>
+  <p class="film__genres">${
+    searchGenresById(genre_ids) ? searchGenresById(genre_ids) : 'Unknown genre'
+  }</p>
   <p class="film__release-date">${
     //проверяем через тернарник
     release_date ? new Date(release_date).getFullYear() : 'Nobody know'
@@ -84,7 +53,8 @@ export async function createMainMarkup(fetchData) {
     .join('');
 
   // возвращаем строку
-  renderFoo(filmCards, cardListEl);
+  renderFoo(filmCards, refs.cardListEl);
+  
   await pagination(api.pageNumber, api.totalPages);
   return filmCards;
 }

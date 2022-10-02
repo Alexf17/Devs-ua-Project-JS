@@ -1,4 +1,8 @@
 // Объявляем функцию, которая создает разметку одного модального окна при нажатии на карточку фильма
+import img from '../images/filmWrap.jpg';
+import { isExistsQueueObjFilm, isExistsWatchedObjFilm } from './localstorageApp';
+
+
 export function createModalMarkup(data) {
   // Делаем деструктуризацию полученных файлов с бэкэнда
   const {
@@ -12,7 +16,14 @@ export function createModalMarkup(data) {
     genres,
     id,
   } = data;
-
+  
+  
+  let text_btn_watch = '';
+  let text_btn_queue = '';
+  
+  isExistsWatchedObjFilm(id) ? text_btn_watch = 'remove' : text_btn_watch = 'add to watched';
+  isExistsQueueObjFilm(id) ? text_btn_queue = 'remove' : text_btn_queue = 'add to queue';
+  
   //   Выстаскиваем из полученного объекта названия жанров
   const genresList = genres.map(({ name }) => name).join(', ');
 
@@ -20,10 +31,13 @@ export function createModalMarkup(data) {
   //  а так же присваиваем кнопкам значение каждого айди фильма, для будущей записи выбранных фильмов в локал сторедж.
   const filmModalMarkup = `<div class="infoFilm__left">
       <img
-          src="https://image.tmdb.org/t/p/original${poster_path}"
-          alt="${title}"
-          class="infoFilm__img"
-        /> 
+          src=${
+            poster_path
+              ? `https://image.tmdb.org/t/p/original${poster_path}`
+              : img
+          } class="infoFilm__img" alt="${title}"
+          
+        > 
       </div>
       <div class="infoFilm__right">
         <h2 class="infoFilm___title">"${title}"</h2>
@@ -57,8 +71,9 @@ export function createModalMarkup(data) {
               type="button"
               id="${id}"
               class="button-list__button button-modal__orange"
+              data-action="watched"
             >
-              Add to watched
+              ${text_btn_watch}
             </button>
           </li>
           <li class="button-list__item">
@@ -66,8 +81,9 @@ export function createModalMarkup(data) {
               type="button"
             id="${id}"
               class="button-list__button button-modal__white"
+              data-action="queue"
             >
-              Add to queue
+              ${text_btn_queue}
             </button>
           </li>
         </ul>

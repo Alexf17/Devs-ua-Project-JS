@@ -6,12 +6,17 @@
       </svg>
     </button>
 
-    <h2 class="authorization__title">login in</h2>
+    <h2 class="authorization__title">Sign in</h2>
     <form autocomplete="off" class="auth">
-
       <label>
         Email
-        <input class="form__input" type="email" name="email" id="email" />
+        <input
+          class="form__input"
+          type="email"
+          name="email"
+          id="email"
+          placeholder="please, enter your email "
+        />
       </label>
 
       <label>
@@ -21,14 +26,18 @@
           type="password"
           name="password"
           id="password"
+          placeholder="please, enter your password "
         />
       </label>
 
-      <button class="form__button" type="submit" id="login">Login in</button>
+      <div class="form__button-wrap">
+        <button class="form__button" type="submit" id="login">Sign in</button>
+        <button class="form__button" type="submit" id="log-out">Sign out</button>
+      </div>
+
     </form>
-    <a class="authorization__link" href=""
-      >"You still don't have an account? Registration here".</a
-    >
+    <p class="form__text">You still don't have an account?</p>
+    <a class="authorization__link" href=""> Registration here</a>
   </div>
 </div>
 
@@ -42,25 +51,41 @@
       </svg>
     </button>
 
-    <h2 class="authorization__title">sign in</h2>
+    <h2 class="authorization__title">Sign up</h2>
     <form autocomplete="off" class="registration">
-
       <label>
         Name
-        <input class="form__input" type="name" name="name" id="name" />
+        <input
+          class="form__input"
+          type="user-name"
+          name="sign-up-name"
+          id="name"
+          placeholder="please, enter your name "
+        />
       </label>
 
       <label>
         Email
-        <input class="form__input" type="email" name="email" />
+        <input
+          class="form__input"
+          type="email"
+          name="sign-up-email"
+          placeholder="please, enter your email "
+        />
       </label>
 
       <label>
         Password
-        <input class="form__input" type="password" name="password" />
+        <input
+          class="form__input"
+          type="password"
+          name="sign-up-password"
+          placeholder="please, enter your password "
+        />
       </label>
-
-      <button class="form__button" type="submit">Sign in</button>
+      <div class="form__button-wrap">
+        <button class="form__button" type="submit">Sign in</button>
+      </div>
     </form>
   </div>
 </div>

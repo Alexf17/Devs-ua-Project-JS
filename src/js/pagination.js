@@ -1,10 +1,5 @@
-import ApiFilmoteka from './filmotekaApi';
-
-import { preloaderRefresh, preloaderRefreshOFF } from './preloader';
-const apiFilmoteka = new ApiFilmoteka();
 
 import { refs } from './refs';
-import { cleanerMarkup } from './cleanerMarkup';
 
 let globalCurrentpage = 0;
 
@@ -48,49 +43,3 @@ export default function pagination(currentPage, allPages) {
 
   refs.paginationBox.innerHTML = markup;
 }
-
-// Import
-
-// import ApiFilmoteka from './filmotekaApi';
-// import { cleanerMarkup } from './cleanerMarkup';
-// import { searchGenresById } from './genresList';
-// import { renderFoo } from './renderMarkup';
-// import { refs } from './refs';
-// const cardListEl = document.querySelector('ul.card__list');
-// //Initialize class instance
-// // const api = new ApiFilmoteka();
-
-// export function createMainMarkup(fetchedData) {
-//   const filmCards = fetchedData
-//     .map(
-//       ({
-//         id,
-//         poster_path,
-//         title,
-//         genre_ids,
-//         release_date,
-//       }) => `<li class="film__item">
-//         <a class="film__link" id="${id}">
-//   <div class="film__wrap">
-//   <img src=${
-//     poster_path ? `https://image.tmdb.org/t/p/original${poster_path}` : img
-//   } class="film-item__img" alt="${title}" width="300">
-//   </div>
-//   <div>
-//   <h3 class="film__title">${title}</h3>
-//   </div>
-//   <div class="film__genres-and-date">
-//   <p class="film__genres">${searchGenresById(genre_ids)}</p>
-//   <p class="film__release-date">${
-//     release_date ? new Date(release_date).getFullYear() : 'Nobody know'
-//   }</p>
-//    </div>
-//    </a>
-//    </li>`
-//     )
-//     .join('');
-
-//   // Running render function
-//   renderFoo(filmCards, cardListEl);
-//   return filmCards;
-// }
