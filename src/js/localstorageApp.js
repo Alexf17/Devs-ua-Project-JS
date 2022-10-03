@@ -49,7 +49,7 @@ let localStorageData = JSON.parse(localStorage.getItem('localStorageData')) || {
 };
 
 refs.infoFilmWrapEl.addEventListener('click', onInfoFilmWrapClick);
-
+console.log(window.location.pathname)
 function onInfoFilmWrapClick(e) {
   // const isMainPage = refs.mainList;
 
@@ -89,7 +89,7 @@ function onInfoFilmWrapClick(e) {
           );
           // console.log('Длина localStorageData свойство watchedFilms: ', localStorageData.watchedFilms.length);
           setStatusRemove(watchedBtn);
-          if (window.location.pathname === '/my-library.html') {
+          if (window.location.pathname === '/Devs-ua-Project-JS/my-library.html' || '/my-library.html') {
             if (localStorage.getItem('Library') === 'watched') {
               addCard(filmObj);
             }
@@ -103,7 +103,7 @@ function onInfoFilmWrapClick(e) {
           );
           removeObjFilm(localStorageData.watchedFilms, idFilmWatched);
           localStorage.removeItem('localStorageData');
-          if (window.location.pathname === '/my-library.html') {
+          if (window.location.pathname === '/Devs-ua-Project-JS/my-library.html' || '/my-library.html') {
             console.log('filmObj.id', filmObj.id);
             cleanerElement(document.getElementById(filmObj.id + '_wrap'));
           }
@@ -143,7 +143,7 @@ function onInfoFilmWrapClick(e) {
           );
           // console.log('Длина localStorageData свойство queueFilms: ', localStorageData.queueFilms.length);
           setStatusRemove(queueBtn);
-          if (window.location.pathname === '/my-library.html') {
+          if (window.location.pathname === '/Devs-ua-Project-JS/my-library.html' || '/my-library.html') {
             if (localStorage.getItem('Library') === 'queue') {
               addCard(filmObj);
             }
@@ -157,7 +157,7 @@ function onInfoFilmWrapClick(e) {
           );
           removeObjFilm(localStorageData.queueFilms, idFilmQueue);
           localStorage.removeItem('localStorageData');
-          if (window.location.pathname === '/my-library.html') {
+          if (window.location.pathname === '/Devs-ua-Project-JS/my-library.html' || '/my-library.html') {
             console.log('filmObj.id', filmObj.id);
             cleanerElement(document.getElementById(filmObj.id + '_wrap'));
           }
