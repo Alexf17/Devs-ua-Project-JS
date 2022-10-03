@@ -14,4 +14,7 @@ export const refs = {
   paginationBox: document.querySelector('.paginationBox'),
   btnWatched: document.querySelector('#watched'),
   btnQueue: document.querySelector('#queue'),
+  youTubeWrap: document.querySelector('.iframe-wrap'),
+  youTubeBackdrop: document.querySelector('.backdrop-youtube'),
+  youTubeCloseBtn: document.querySelector('.iframe__button'),
 };

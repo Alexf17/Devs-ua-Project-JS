@@ -1,6 +1,7 @@
 import { refs } from './refs';
 import { renderFoo } from './renderMarkup';
 import img from '../images/filmWrap.jpg';
+import youtube from '../images/sprite.svg';
 import { searchGenresById } from './genresList';
 import { cleanerMarkup } from './cleanerMarkup';
 let libBtnId = '';
@@ -15,13 +16,13 @@ function onLibBtnClick(e) {
   if (e.target.nodeName !== 'BUTTON') {
     return;
   }
-  
+
   if (e.target.id === 'queue') {
-    refs.btnWatched.classList.remove('button--orange')
-    refs.btnQueue.classList.add('button--orange')
+    refs.btnWatched.classList.remove('button--orange');
+    refs.btnQueue.classList.add('button--orange');
   } else {
-    refs.btnQueue.classList.remove('button--orange')
-    refs.btnWatched.classList.add('button--orange')
+    refs.btnQueue.classList.remove('button--orange');
+    refs.btnWatched.classList.add('button--orange');
   }
   // console.log('e.target.id', e.target.id);
   libBtnId = e.target.id;
@@ -86,6 +87,13 @@ export async function createLibraryMarkup(onBtnClick, isWatched = false) {
    </div>
    </div>
    </a>
+   <div class="wrap-youtube">
+  <button type="button" class="btn-youtube" id="${id}">
+    <svg class="svg-youtube">
+      <use href="${youtube}#icon-youtube"></use>
+    </svg>
+  </button>
+</div>
    </li>`
     )
     .join('');

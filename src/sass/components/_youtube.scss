@@ -1,0 +1,84 @@
+.backdrop-youtube {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--back-drop-bg-color);
+  opacity: 1;
+  transition: opacity var(--transition--duration) var(--transition-timing);
+}
+
+.youtube-modal {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 280px;
+  height: 250px;
+
+  @media screen and (min-width: 768px) {
+    height: 500px;
+    width: 704px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 850px;
+    height: 600px;
+  }
+}
+
+.iframe-wrap {
+  background-color: transparent;
+}
+
+.iframe {
+  border-radius: 15px;
+  width: 280px;
+  height: 250px;
+  @media screen and (min-width: 768px) {
+    height: 500px;
+    width: 704px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 850px;
+    height: 600px;
+  }
+}
+
+.iframe__button {
+  cursor: pointer;
+
+  z-index: 5;
+  padding: 4px;
+  fill: var(--accent-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  border: 1px solid var(--accent-color);
+  border-radius: 50%;
+
+  right: 1px;
+  top: 1px;
+
+  background-color: transparent;
+
+  transition: fill var(--transition-duration) var(--transition-timing),
+    border-color var(--transition-duration) var(--transition-timing);
+
+  &:hover,
+  &:focus {
+    fill: var(--white-color);
+    border-color: var(--white-color);
+  }
+}
+
+.iframe__svg {
+  width: 20px;
+  height: 20px;
+  @media screen and (min-width: 768px) {
+    width: 25px;
+    height: 25px;
+  }
+}

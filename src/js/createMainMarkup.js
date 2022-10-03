@@ -2,12 +2,14 @@ import { searchGenresById } from './genresList';
 import ApiFilmoteka from './filmotekaApi';
 import { renderFoo } from './renderMarkup';
 import img from '../images/filmWrap.jpg';
+import youtube from '../images/sprite.svg';
 import pagination from './pagination';
 const api = new ApiFilmoteka();
 import { cleanerMarkup } from './cleanerMarkup';
 import { preloaderRefresh, preloaderRefreshOFF } from './preloader';
 import { refs } from './refs';
 export { api };
+
 refs.paginationBox.addEventListener('click', handlerPagination);
 
 let globalCurrentpage = 1;
@@ -49,6 +51,13 @@ export async function createMainMarkup(fetchData) {
    </div>
    </div>
    </a>
+   <div class="wrap-youtube">
+  <button type="button" class="btn-youtube" id="${id}">
+    <svg class="svg-youtube">
+      <use href="${youtube}#icon-youtube"></use>
+    </svg>
+  </button>
+</div>
    </li>`
     )
     .join('');

@@ -82,4 +82,17 @@ export default class ApiFilmoteka {
     }
     return data.results;
   }
+
+  async fetchTrailers() {
+    axios.defaults.baseURL = this.BASE_URL;
+    try {
+      const { data } = await axios.get(
+        `movie/${this.filmId}/videos?api_key=${this.API_KEY}&language=en-US`
+      );
+      return data.results;
+    } catch (error) {
+      console.log(error);
+    }
+    return data.results;
+  }
 }
