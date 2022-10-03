@@ -8,7 +8,7 @@ import { searchGenresById } from './genresList';
 
 const addCard = data => {
   // alert(5);
-  console.log(data, 'data123123');
+  // console.log(data, 'data123123');
   const card = `<li class="film__item" id=${data.id}_wrap>
         <a class="film__link" id="${data.id}">
   <div class="film__wrap">
@@ -49,12 +49,12 @@ let localStorageData = JSON.parse(localStorage.getItem('localStorageData')) || {
 };
 
 refs.infoFilmWrapEl.addEventListener('click', onInfoFilmWrapClick);
-console.log(window.location.pathname)
+// console.log(window.location.pathname)
 function onInfoFilmWrapClick(e) {
   // const isMainPage = refs.mainList;
 
   // console.log('isMainPage', isMainPage.getAttribute('data-action'));
-  console.log(window.location);
+  // console.log(window.location);
   // Get array of objects response
   let fetchDataArr = refs.fetchDataValue;
   // console.log(fetchDataArr)
@@ -72,13 +72,13 @@ function onInfoFilmWrapClick(e) {
     let idFilmWatched = +e.target.id;
 
     // console.log('Click on e.target.dataset.action watchedBTN', watchedBtn);
-    console.log('id кнопки :', idFilmWatched);
-    console.log('fetchDataArr', fetchDataArr);
+    // console.log('id кнопки :', idFilmWatched);
+    // console.log('fetchDataArr', fetchDataArr);
     for (const filmObj of fetchDataArr) {
       // console.log(filmObj.id);
       if (filmObj.id === idFilmWatched) {
         let filmWatchedObjAdd = filmObj;
-        console.log(filmWatchedObjAdd);
+        // console.log(filmWatchedObjAdd);
         // зSet watched velue to localsrorage
         if (!isExistsWatchedObjFilm(idFilmWatched)) {
           // console.log('сработало записывает');
@@ -96,15 +96,15 @@ function onInfoFilmWrapClick(e) {
           }
           // createLibraryMarkup('watched');
         } else {
-          console.log(
-            'уже есть не записываю',
-            'localStorageData.length свойство watchedFilms:',
-            localStorageData.watchedFilms.length
-          );
+          // console.log(
+          //   'уже есть не записываю',
+          //   'localStorageData.length свойство watchedFilms:',
+          //   localStorageData.watchedFilms.length
+          // );
           removeObjFilm(localStorageData.watchedFilms, idFilmWatched);
           localStorage.removeItem('localStorageData');
           if (window.location.pathname === '/Devs-ua-Project-JS/my-library.html' || '/my-library.html') {
-            console.log('filmObj.id', filmObj.id);
+            // console.log('filmObj.id', filmObj.id);
             cleanerElement(document.getElementById(filmObj.id + '_wrap'));
           }
 
@@ -150,15 +150,15 @@ function onInfoFilmWrapClick(e) {
           }
           // queueBtn.textContent = 'remove';
         } else {
-          console.log(
-            'уже есть не записываю',
-            'localStorageData.length свойство queueFilms:',
-            localStorageData.queueFilms.length
-          );
+          // console.log(
+          //   'уже есть не записываю',
+          //   'localStorageData.length свойство queueFilms:',
+          //   localStorageData.queueFilms.length
+          // );
           removeObjFilm(localStorageData.queueFilms, idFilmQueue);
           localStorage.removeItem('localStorageData');
           if (window.location.pathname === '/Devs-ua-Project-JS/my-library.html' || '/my-library.html') {
-            console.log('filmObj.id', filmObj.id);
+            // console.log('filmObj.id', filmObj.id);
             cleanerElement(document.getElementById(filmObj.id + '_wrap'));
           }
           localStorage.setItem(
@@ -174,15 +174,15 @@ function onInfoFilmWrapClick(e) {
 }
 
 export function isExistsWatchedObjFilm(id) {
-  console.log('id', id);
+  // console.log('id', id);
   let answer = false;
-  console.log(localStorageData.watchedFilms);
+  // console.log(localStorageData.watchedFilms);
   for (const objFilm of localStorageData.watchedFilms) {
     if (objFilm.id === id) {
       answer = true;
     }
   }
-  console.log('answer', answer);
+  // console.log('answer', answer);
 
   return answer;
 }

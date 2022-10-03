@@ -7,7 +7,7 @@ import {
 import { refs } from './refs';
 let localStorageData = JSON.parse(localStorage.getItem('localStorageData'));
 export function createModalMarkup(data) {
-  console.log('data', data);
+  // console.log('data', data);
   // refs.fetchDataValue = data;
   // Делаем деструктуризацию полученных файлов с бэкэнда
   const {

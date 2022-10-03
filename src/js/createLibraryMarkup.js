@@ -15,7 +15,15 @@ function onLibBtnClick(e) {
   if (e.target.nodeName !== 'BUTTON') {
     return;
   }
-  console.log('e.target.id', e.target.id);
+  
+  if (e.target.id === 'queue') {
+    refs.btnWatched.classList.remove('button--orange')
+    refs.btnQueue.classList.add('button--orange')
+  } else {
+    refs.btnQueue.classList.remove('button--orange')
+    refs.btnWatched.classList.add('button--orange')
+  }
+  // console.log('e.target.id', e.target.id);
   libBtnId = e.target.id;
   // console.log('ID c onLibBtnClick :', libBtnId);
   createLibraryMarkup(libBtnId);

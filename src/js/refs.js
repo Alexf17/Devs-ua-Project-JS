@@ -12,4 +12,6 @@ export const refs = {
   headerErrorEl: document.querySelector('.header__error'),
   libBtnContainerEl: document.querySelector('.btn-container'),
   paginationBox: document.querySelector('.paginationBox'),
+  btnWatched: document.querySelector('#watched'),
+  btnQueue: document.querySelector('#queue'),
 };
