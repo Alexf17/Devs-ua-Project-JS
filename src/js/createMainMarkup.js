@@ -15,7 +15,7 @@ let globalCurrentpage = 1;
 // функция создания списка фильмов
 export async function createMainMarkup(fetchData) {
   const results = await fetchData;
-  console.log('results', results);
+  // console.log('results', results);
   refs.fetchDataValue = results;
   // получаем массив из елементов 'li' , переводим в строку с помощю join
   const filmCards = results
@@ -64,10 +64,10 @@ createMainMarkup(api.fetchPopularsFilms());
 
 async function handlerPagination(evt) {
   if (api.filmName) {
-    console.log('return');
+    // console.log('return');
     return;
   } else {
-    console.log('asd');
+    // console.log('asd');
     if (evt.target.nodeName !== 'LI') {
       return;
     }

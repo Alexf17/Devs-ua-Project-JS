@@ -19,21 +19,7 @@
     width: 148px;
   }
 }
-.button--orange {
-  background-color: var(--accent-color);
 
-  color: var(--white-color);
-  border: none;
-}
-
-.button--orange:hover,
-.button--orange:focus {
-  border: 1px solid var(--white-color);
-
-  background-color: transparent;
-
-
-}
 
 .button--transparent {
   background-color: transparent;
@@ -84,3 +70,16 @@
 }
 
 
+.button--orange {
+  background-color: var(--accent-color);
+
+  color: var(--white-color);
+  border: none;
+}
+
+// .button--orange:hover,
+// .button--orange:focus {
+//   border: 1px solid var(--white-color);
+
+//   background-color: transparent;
+// }
