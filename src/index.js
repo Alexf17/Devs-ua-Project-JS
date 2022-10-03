@@ -9,7 +9,6 @@ import './js/changeTheme';
 import './js/modal-team';
 import './js/modal-authorization';
 
-import './js/library-main'
+import './js/library-main';
 
 import './js/auth-firebase';
-

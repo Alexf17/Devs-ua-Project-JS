@@ -2,7 +2,7 @@ import { refs } from './refs';
 import { renderFoo } from './renderMarkup';
 import img from '../images/filmWrap.jpg';
 import { searchGenresById } from './genresList';
-import {cleanerMarkup} from './cleanerMarkup';
+import { cleanerMarkup } from './cleanerMarkup';
 let libBtnId = '';
 
 refs.libBtnContainerEl.addEventListener('click', onLibBtnClick);
@@ -10,23 +10,28 @@ refs.libBtnContainerEl.addEventListener('click', onLibBtnClick);
 //До выбора списка избранного , отображаем фильмы из watched
 
 function onLibBtnClick(e) {
+  // alert(2);
   e.preventDefault();
   if (e.target.nodeName !== 'BUTTON') {
-    return
+    return;
   }
+  console.log('e.target.id', e.target.id);
   libBtnId = e.target.id;
   // console.log('ID c onLibBtnClick :', libBtnId);
   createLibraryMarkup(libBtnId);
+  localStorage.setItem('Library', libBtnId);
 }
 
-let localStorageData = JSON.parse(localStorage.getItem('localStorageData'));
-
 //Рендер коолекциии из watch
-createLibraryMarkup('watched')
+createLibraryMarkup('watched', true);
 
-async function createLibraryMarkup(onBtnClick) {
+export async function createLibraryMarkup(onBtnClick, isWatched = false) {
   //получаем список фильмов по запросу
   let results = null;
+  if (isWatched) {
+    localStorage.setItem('Library', 'watched');
+  }
+  let localStorageData = JSON.parse(localStorage.getItem('localStorageData'));
 
   if (onBtnClick === 'watched') {
     results = localStorageData.watchedFilms;
@@ -35,6 +40,9 @@ async function createLibraryMarkup(onBtnClick) {
   if (onBtnClick === 'queue') {
     results = localStorageData.queueFilms;
   }
+
+  refs.fetchDataValue = results;
+  // cleanerMarkup(results.id);
 
   // console.log(results);
   // получаем массив из елементов 'li' , переводим в строку с помощю join
@@ -46,7 +54,8 @@ async function createLibraryMarkup(onBtnClick) {
         title,
         genre_ids,
         release_date,
-      }) => `<li class="film__item">
+        vote_average,
+      }) => `<li class="film__item" id=${id}_wrap>
         <a class="film__link" id="${id}">
   <div class="film__wrap">
       <img src=${
@@ -65,7 +74,7 @@ async function createLibraryMarkup(onBtnClick) {
     //проверяем через тернарник
     release_date ? new Date(release_date).getFullYear() : 'Nobody know'
   }</p>
-
+  <span class="blabla">${vote_average}</span>
    </div>
    </div>
    </a>
@@ -76,5 +85,4 @@ async function createLibraryMarkup(onBtnClick) {
   cleanerMarkup(refs.cardListEl);
   // возвращаем строку
   renderFoo(filmCards, refs.cardListEl);
-
 }
