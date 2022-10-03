@@ -8,19 +8,21 @@
 
     <h2 class="authorization__title">Sign in</h2>
     <form autocomplete="off" class="auth">
-      <label>
-        Email
+      <div class="input__wrap">
+        <label class="form__label"> Email </label>
         <input
-          class="form__input"
+          class="form__input input__email"
           type="email"
           name="email"
           id="email"
           placeholder="please, enter your email "
         />
-      </label>
-
-      <label>
-        Password
+        <svg class="form__svg">
+          <use href="/src/images/sprite.svg#icon-mail"></use>
+        </svg>
+      </div>
+      <div class="input__wrap">
+        <label class="form__label"> Password </label>
         <input
           class="form__input"
           type="password"
@@ -28,13 +30,15 @@
           id="password"
           placeholder="please, enter your password "
         />
-      </label>
+        <svg class="form__svg">
+          <use href="/src/images/sprite.svg#icon-key"></use>
+        </svg>
+      </div>
 
       <div class="form__button-wrap">
         <button class="form__button" type="submit" id="login">Sign in</button>
         <!-- <button class="form__button" type="submit" id="log-out">Sign out</button> -->
       </div>
-
     </form>
     <p class="form__text">You still don't have an account?</p>
     <a class="authorization__link" href=""> Registration here</a>
@@ -53,8 +57,8 @@
 
     <h2 class="authorization__title">Sign up</h2>
     <form autocomplete="off" class="registration">
-      <label>
-        Name
+      <div class="input__wrap">
+        <label class="form__label">Name</label>
         <input
           class="form__input"
           type="user-name"
@@ -62,27 +66,34 @@
           id="name"
           placeholder="please, enter your name "
         />
-      </label>
-
-      <label>
-        Email
+        <svg class="form__svg">
+          <use href="/src/images/sprite.svg#icon-user"></use>
+        </svg>
+      </div>
+      <div class="input__wrap">
+        <label class="form__label">Email</label>
         <input
           class="form__input"
           type="email"
           name="sign-up-email"
           placeholder="please, enter your email "
         />
-      </label>
-
-      <label>
-        Password
+        <svg class="form__svg">
+          <use href="/src/images/sprite.svg#icon-mail"></use>
+        </svg>
+      </div>
+      <div class="input__wrap">
+        <label class="form__label">Password</label>
         <input
           class="form__input"
           type="password"
           name="sign-up-password"
           placeholder="please, enter your password "
         />
-      </label>
+        <svg class="form__svg">
+          <use href="/src/images/sprite.svg#icon-key"></use>
+        </svg>
+      </div>
       <div class="form__button-wrap">
         <button class="form__button" type="submit">Sign in</button>
       </div>

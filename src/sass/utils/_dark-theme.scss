@@ -103,18 +103,23 @@ button.change_theme[data-theme='onLight'] {
   }
   .authorization__title {
     color: var(--light-gray-color);
-    font-weight: 100;
   }
+  .form__label {
+    background-color: transparent;
+    top: -20px;
+  }
+
   .form__input {
     background-color: #cec7c7;
   }
   .form__button {
-    background-color: rgb(211, 131, 85);
+    background-color: transparent;
+    border-color: var(--white-color);
     transition: background-color var(--transition-duration)
-      var(--transiton-timing);
+      var(--transition-timing);
     &:hover,
     &:focus {
-      background-color: grey;
+      background-color: var(--accent-color);
     }
   }
   .registration__close {
@@ -123,6 +128,16 @@ button.change_theme[data-theme='onLight'] {
     &:hover,
     &:focus {
       fill: var(--accent-color);
+    }
+  }
+  .form__text {
+    color: var(--white-color);
+  }
+  .authorization__link {
+    color: var(--red-color);
+    &:hover,
+    &:focus {
+      color: var(--accent-color);
     }
   }
 

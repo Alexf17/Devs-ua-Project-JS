@@ -62,26 +62,81 @@
 
 .authorization__title {
   text-align: center;
+  margin-bottom: 20px;
+  font-weight: 500;
+  font-size: 25px;
+  text-shadow: 1px 1px 1px var(--back-drop-bg-color);
+  @media screen and (min-width: 768px) {
+    font-size: 30px;
+    margin-bottom: 30px;
+  }
 }
 .form__input {
-  padding-left: 5px;
+  padding-left: 38px;
   border-color: var(--accent-color);
   display: block;
-  margin-bottom: 30px;
-  width: 240px;
-  height: 35px;
+
+  width: 100%;
+  height: 40px;
   border-radius: 5px;
+  &::placeholder {
+    font-size: 12px;
+    @media screen and (min-width: 768px) {
+      font-size: 15px;
+    }
+    @media screen and (min-width: 1280px) {
+      font-size: 17px;
+    }
+  }
 
   @media screen and (min-width: 1280px) {
     width: 360px;
   }
 }
-label {
-  color: var(--accent-color);
+
+.form__svg {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 50%;
+  left: 7px;
+  transform: translateY(-50%);
+  .form__input + & {
+    transition: fill var(--transition-duration) var(--transition-timing);
+  }
+  .form__input:hover + & {
+    fill: var(--accent-color);
+  }
+  .form__input:focus + & {
+    fill: var(--accent-color);
+  }
 }
+
+.input__wrap {
+  position: relative;
+  margin-bottom: 20px;
+  @media screen and (min-width: 768px) {
+    margin-bottom: 30px;
+  }
+}
+
+.form__label {
+  color: var(--accent-color);
+  font-size: 14px;
+  position: absolute;
+  top: -17px;
+  left: 4px;
+  background-color: white;
+  padding: 4px 4px;
+  border-radius: 5px;
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+  }
+}
+
 .form__button-wrap {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .form__button {
@@ -89,29 +144,63 @@ label {
   background-color: var(--accent-color);
   border-radius: 5px;
   border-color: var(--white-color);
-  width: 100px;
-  height: 35px;
+  max-width: 110px;
+  padding: 0px 15px;
+  height: 40px;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+
+  border-radius: 5px;
   transition: background-color var(--transition-duration)
-    var(--transition-timing);
+      var(--transition-timing),
+    border var(--transition-duration) var(--transition-timing),
+    box-shadow var(--transition-duration) var(--transition-timing);
+
+  @media screen and (min-width: 768px) {
+    max-width: 125px;
+    width: 125px;
+    font-size: 14px;
+    height: 44px;
+  }
+  @media screen and (min-width: 1280px) {
+    max-width: 136px;
+    width: 136px;
+  }
   &:hover,
   &:focus {
     background-color: grey;
+    border: rgba(0, 0, 0, 0);
+    box-shadow: rgb(161 158 158) 2px 2px 5px;
   }
 }
 .form__text {
   margin-top: 20px;
+  font-weight: 500;
   text-align: center;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 30px;
+    font-size: 18px;
+  }
 }
 .authorization__link {
-  font-size: 20px;
+  font-weight: 500;
+  font-size: 16px;
   display: block;
   text-align: center;
-  margin-top: 20px;
+  margin-top: 15px;
   color: rgb(153, 8, 8);
-  transition: color var(--transition-duration) var(--transition-timing);
+  transition: color var(--transition-duration) var(--transition-timing),
+    text-shadow var(--transition-duration) var(--transition-timing);
+  @media screen and (min-width: 768px) {
+    font-size: 20px;
+  }
   &:hover,
   &:focus {
     color: var(--accent-color);
+    text-shadow: 1px 1px 1px var(--back-drop-bg-color);
   }
 }
 // стили регистрации
