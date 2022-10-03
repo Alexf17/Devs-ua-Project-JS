@@ -15,6 +15,7 @@ let globalCurrentpage = 1;
 // функция создания списка фильмов
 export async function createMainMarkup(fetchData) {
   const results = await fetchData;
+  console.log('results', results);
   refs.fetchDataValue = results;
   // получаем массив из елементов 'li' , переводим в строку с помощю join
   const filmCards = results
