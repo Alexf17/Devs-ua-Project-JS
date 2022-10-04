@@ -313,3 +313,35 @@
     opacity: 100%;
   }
 }
+
+.header__icon.film__tape {
+  stroke-opacity: .5;
+  animation-duration: 2s;
+  animation-name: pulse;
+  animation-iteration-count: infinite;
+  transform-origin: 50% 50%;
+  transform-box: fill-box;
+  animation-timing-function: linear;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale3d(0.25, 0.25, 0.25);
+    }
+    
+    25% {
+      transform: scale3d(0.25, 0.25, 0.25);
+    }
+    
+    50% {
+      transform: scale3d(0.5, 0.5, 0.5);
+    }
+  
+    75% {
+      transform: scale3d(0.75, 0.75, 0.75);
+    }
+  
+    100% {
+      transform: scale3d(1, 1, 1);
+    }
+  }
