@@ -68,14 +68,14 @@ export function createModalMarkup(data) {
   <tr>
     <td class="about-film__left">Vote / Votes</td>
     <td class="about-film__right">
-      <span class="vote-average">${vote_average}</span
+    <span class="vote-average">${vote_average.toFixed(1)}</span
       ><span class="separator">/</span
-      ><span class="votes-count">${vote_count}</span>
+      ><span class="votes-count">${Math.round(vote_count)}</span>
     </td>
   </tr>
   <tr>
     <td class="about-film__left">Popularity</td>
-    <td class="about-film__right">${popularity}</td>
+    <td class="about-film__right">${popularity.toFixed(1)}</td>
   </tr>
   <tr>
     <td class="about-film__left">Original Title</td>
