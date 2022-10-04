@@ -27,17 +27,15 @@ refs.ModalFilmBackdrop.addEventListener('click', onBackdropClose);
 // Функция открытия и отображения содержимого модального окна
 
 async function onFilmCardClick(e) {
-  if (e.target.parentNode.parentElement.nodeName !== 'A') {
-    return;
+  if (e.target.parentNode.parentElement.nodeName === 'A') {
+    let filmId = e.target.parentNode.parentElement.id;
+    apiFilmoteka.filmId = filmId;
+    const dataBackEnd = await apiFilmoteka.fetchFilmsById();
+
+    const markup = createModalMarkup(dataBackEnd);
+    renderFoo(markup, refs.ModalFilmWrap);
+    openModal();
   }
-
-  let filmId = e.target.parentNode.parentElement.id;
-  apiFilmoteka.filmId = filmId;
-  const dataBackEnd = await apiFilmoteka.fetchFilmsById();
-
-  const markup = createModalMarkup(dataBackEnd);
-  renderFoo(markup, refs.ModalFilmWrap);
-  openModal();
 }
 
 //  Функция закрытия модального окна и очистка разметки модального окна при нажатии на кнопку закрытия

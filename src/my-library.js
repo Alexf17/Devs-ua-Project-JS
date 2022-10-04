@@ -6,3 +6,4 @@ import './js/createLibraryMarkup';
 import './js/auth-firebase';
 import './js/modal-film-info';
 import './js/createModalMarkup';
+import './js/youTube';

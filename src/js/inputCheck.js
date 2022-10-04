@@ -1,6 +1,7 @@
 // Import
 // import ApiFilmoteka from './filmotekaApi';
 import img from '../images/filmWrap.jpg';
+import youtube from '../images/sprite.svg';
 import { cleanerMarkup } from './cleanerMarkup';
 import { searchGenresById } from './genresList';
 import { renderFoo } from './renderMarkup';
@@ -80,6 +81,13 @@ async function createMainMarkup(fetchedData) {
    </div>
    </div>
    </a>
+   <div class="wrap-youtube">
+  <button type="button" class="btn-youtube" id="${id}">
+    <svg class="svg-youtube">
+      <use href="${youtube}#icon-youtube"></use>
+    </svg>
+  </button>
+</div>
    </li>`
       )
       .join('');
