@@ -5,7 +5,7 @@ import { renderFoo } from './renderMarkup';
 import { cleanerMarkup } from './cleanerMarkup';
 import { Notify } from 'notiflix';
 
-if (window.location.pathname === '/index.html') {
+if (window.location.pathname === '/Devs-ua-Project-JS/index.html') {
   refs.cardListEl.addEventListener('click', onYoutubeClick);
 }
 
