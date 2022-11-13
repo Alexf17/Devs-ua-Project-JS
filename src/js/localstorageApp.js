@@ -68,9 +68,7 @@ function onInfoFilmWrapClick(e) {
 
           setStatusRemove(watchedBtn);
           if (
-            window.location.pathname ===
-              '/Devs-ua-Project-JS/my-library.html' ||
-            '/my-library.html'
+            window.location.pathname === '/Devs-ua-Project-JS/my-library.html'
           ) {
             if (localStorage.getItem('Library') === 'watched') {
               addCard(filmObj);
@@ -80,9 +78,7 @@ function onInfoFilmWrapClick(e) {
           removeObjFilm(localStorageData.watchedFilms, idFilmWatched);
           // localStorage.removeItem('localStorageData');
           if (
-            window.location.pathname ===
-              '/Devs-ua-Project-JS/my-library.html' ||
-            '/my-library.html'
+            window.location.pathname === '/Devs-ua-Project-JS/my-library.html'
           ) {
             cleanerElement(document.getElementById(filmObj.id + '_wrap'));
           }
@@ -117,9 +113,7 @@ function onInfoFilmWrapClick(e) {
 
           setStatusRemove(queueBtn);
           if (
-            window.location.pathname ===
-              '/Devs-ua-Project-JS/my-library.html' ||
-            '/my-library.html'
+            window.location.pathname === '/Devs-ua-Project-JS/my-library.html'
           ) {
             if (localStorage.getItem('Library') === 'queue') {
               addCard(filmObj);
@@ -129,9 +123,7 @@ function onInfoFilmWrapClick(e) {
           removeObjFilm(localStorageData.queueFilms, idFilmQueue);
           localStorage.removeItem('localStorageData');
           if (
-            window.location.pathname ===
-              '/Devs-ua-Project-JS/my-library.html' ||
-            '/my-library.html'
+            window.location.pathname === '/Devs-ua-Project-JS/my-library.html'
           ) {
             cleanerElement(document.getElementById(filmObj.id + '_wrap'));
           }
