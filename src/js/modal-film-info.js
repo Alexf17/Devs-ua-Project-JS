@@ -20,11 +20,17 @@ export const refs = {
 };
 
 // Добавление слушателей для открытия/закрытия модального окна
-if (window.location.pathname === '/index.html') {
+if (
+  window.location.pathname === '/Devs-ua-Project-JS/index.html' ||
+  '/index.html'
+) {
   refs.filmList.addEventListener('click', onFilmCardClick);
 }
 
-if (window.location.pathname === '/my-library.html') {
+if (
+  window.location.pathname === '/Devs-ua-Project-JS/my-library.html' ||
+  '/my-library.html'
+) {
   console.log(window.location.pathname);
   refs.cardListElLibrary.addEventListener('click', onFilmCardClick);
   // refs.filmList.removeEventListener('click', onFilmCardClick);

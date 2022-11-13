@@ -67,7 +67,11 @@ function onInfoFilmWrapClick(e) {
           );
 
           setStatusRemove(watchedBtn);
-          if (window.location.pathname === '/my-library.html') {
+          if (
+            window.location.pathname ===
+              '/Devs-ua-Project-JS/my-library.html' ||
+            '/my-library.html'
+          ) {
             if (localStorage.getItem('Library') === 'watched') {
               addCard(filmObj);
             }
@@ -112,7 +116,11 @@ function onInfoFilmWrapClick(e) {
           );
 
           setStatusRemove(queueBtn);
-          if (window.location.pathname === '/my-library.html') {
+          if (
+            window.location.pathname ===
+              '/Devs-ua-Project-JS/my-library.html' ||
+            '/my-library.html'
+          ) {
             if (localStorage.getItem('Library') === 'queue') {
               addCard(filmObj);
             }
@@ -120,7 +128,11 @@ function onInfoFilmWrapClick(e) {
         } else {
           removeObjFilm(localStorageData.queueFilms, idFilmQueue);
           localStorage.removeItem('localStorageData');
-          if (window.location.pathname === '/my-library.html') {
+          if (
+            window.location.pathname ===
+              '/Devs-ua-Project-JS/my-library.html' ||
+            '/my-library.html'
+          ) {
             cleanerElement(document.getElementById(filmObj.id + '_wrap'));
           }
           localStorage.setItem(
