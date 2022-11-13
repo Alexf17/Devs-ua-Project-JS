@@ -18,4 +18,16 @@ export const refs = {
   youTubeWrap: document.querySelector('.iframe-wrap'),
   youTubeBackdrop: document.querySelector('.backdrop-youtube'),
   youTubeCloseBtn: document.querySelector('.iframe__button'),
+  authorizationBtn: document.querySelector('.icon-login'),
+  modalAuthorizationBackdrop: document.querySelector(
+    '.backdrop-modalAuthorization'
+  ),
+  modalCloseAuthorozation: document.querySelector('.authorization__close'),
+  modalAuthorizationLink: document.querySelector('.authorization__link'),
+  modalRegistrationBackdrop: document.querySelector(
+    '.backdrop-modalRegistration'
+  ),
+  modalCloseRegistration: document.querySelector('.registration__close'),
+  body: document.querySelector('body'),
+  isLogin: false,
 };

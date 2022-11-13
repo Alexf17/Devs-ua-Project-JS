@@ -1,6 +1,7 @@
 import { refs } from './refs';
 import { cleanerElement } from './cleanerMarkup';
 import { searchGenresById } from './genresList';
+import { Notify } from 'notiflix';
 
 const addCard = data => {
   const card = `<li class="film__item" id=${data.id}_wrap>
@@ -27,7 +28,7 @@ const addCard = data => {
       ? new Date(data.release_date).getFullYear()
       : 'Nobody know'
   }</p>
-  <span class="blabla">${data.vote_average}</span>
+  <span class="film__vote">${data.vote_average}</span>
    </div>
    </div>
    </a>
@@ -51,6 +52,10 @@ function onInfoFilmWrapClick(e) {
   }
   // Get link on watchedBtn
   if (e.target.dataset.action === 'watched') {
+    if (!refs.isLogin) {
+      Notify.warning('Please Sign in');
+      return;
+    }
     let watchedBtn = e.target;
     // Get id btn watched
     let idFilmWatched = +e.target.id;
@@ -84,7 +89,10 @@ function onInfoFilmWrapClick(e) {
               '/Devs-ua-Project-JS/my-library.html' ||
             window.location.pathname === '/my-library.html'
           ) {
-            cleanerElement(document.getElementById(filmObj.id + '_wrap'));
+            if (localStorage.getItem('Library') === 'watched') {
+              cleanerElement(document.getElementById(filmObj.id + '_wrap'));
+            }
+            // cleanerElement(document.getElementById(filmObj.id + '_wrap'));
           }
 
           localStorage.setItem(
@@ -98,6 +106,10 @@ function onInfoFilmWrapClick(e) {
   }
 
   if (e.target.dataset.action === 'queue') {
+    if (!refs.isLogin) {
+      Notify.warning('Please Sign in');
+      return;
+    }
     let queueBtn = e.target;
 
     let idFilmQueue = +e.target.id;
@@ -133,7 +145,9 @@ function onInfoFilmWrapClick(e) {
               '/Devs-ua-Project-JS/my-library.html' ||
             window.location.pathname === '/my-library.html'
           ) {
-            cleanerElement(document.getElementById(filmObj.id + '_wrap'));
+            if (localStorage.getItem('Library') === 'queue') {
+              cleanerElement(document.getElementById(filmObj.id + '_wrap'));
+            }
           }
           localStorage.setItem(
             'localStorageData',
@@ -176,34 +190,12 @@ function removeObjFilm(localStorageOld, checkId) {
       localStorageOld.splice(i, 1);
     }
   }
-  // localStorageOld.filter(film => film.id !== checkId);
-  // const actualLocalStorage = JSON.parse(
-  //   localStorage.getItem('localStorageData')
-  // );
-
-  // const newArr = actualLocalStorage[target].filter(film => film.id !== checkId);
-  // console.log('actual', actualLocalStorage[target]);
-
-  // actualLocalStorage[target] = newArr;
-
-  // removeObjFilm(
-  //   localStorageData.queueFilms,
-  //   idFilmQueue,
-  //   localStorageData.queueFilms
-  // );
-
-  // localStorageData.watchedFilms.push(filmWatchedObjAdd);
-  // localStorage.setItem( 'localStorageData',JSON.stringify(localStorageData))
-
-  // console.log(actualLocalStorage);
-  // localStorage[target] = [];
-  // localStorage.setItem('localStorageData', JSON.stringify(actualLocalStorage));
-  // target.push(...target, ...newArr);
-  // localStorage.setItem('localStorageData', JSON.stringify(newArr));
 }
 
 function setStatusRemove(btnRef) {
-  btnRef.textContent = 'remove';
+  btnRef.textContent = 'add to queue'
+    ? (btnRef.textContent = 'remove from queue')
+    : (btnRef.textContent = 'remove from watched');
   btnRef.classList.add('button-modal__checked');
 }
 

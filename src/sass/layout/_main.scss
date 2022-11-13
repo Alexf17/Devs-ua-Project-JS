@@ -10,7 +10,7 @@ main {
   flex-grow: 1;
 }
 
-.card__list {
+.card__list,.library_card__list {
   width: 100%;
   text-align: center;
   @media screen and(min-width:768px) {
@@ -23,6 +23,7 @@ main {
     grid-template-columns: repeat(3, calc((100% - 32px) / 3));
   }
 }
+
 .film__item {
   position: relative;
   border-radius: 5px;

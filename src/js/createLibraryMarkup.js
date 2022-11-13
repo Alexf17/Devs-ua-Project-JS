@@ -4,6 +4,8 @@ import img from '../images/filmWrap.jpg';
 import youtube from '../images/sprite.svg';
 import { searchGenresById } from './genresList';
 import { cleanerMarkup } from './cleanerMarkup';
+import empty from '../images/page-empty-page.jpg';
+
 let libBtnId = '';
 
 refs.libBtnContainerEl.addEventListener('click', onLibBtnClick);
@@ -31,7 +33,13 @@ function onLibBtnClick(e) {
   localStorage.setItem('Library', libBtnId);
 }
 
-//Рендер коолекциии из watch
+//Рендер коллекции из watch
+if (JSON.parse(localStorage.getItem('localStorageData')) === null) {
+  const img = `<img src=${empty} alt="empty">`;
+  renderFoo(img, refs.cardListElLibrary);
+  return;
+}
+
 createLibraryMarkup('watched', true);
 
 export async function createLibraryMarkup(onBtnClick, isWatched = false) {
@@ -43,10 +51,28 @@ export async function createLibraryMarkup(onBtnClick, isWatched = false) {
   let localStorageData = JSON.parse(localStorage.getItem('localStorageData'));
 
   if (onBtnClick === 'watched') {
+    if (
+      JSON.parse(localStorage.getItem('localStorageData')).watchedFilms
+        .length === 0
+    ) {
+      const img = `<img src=${empty} alt="empty">`;
+      cleanerMarkup(refs.cardListElLibrary);
+      renderFoo(img, refs.cardListElLibrary);
+      return;
+    }
     results = localStorageData.watchedFilms;
   }
 
   if (onBtnClick === 'queue') {
+    if (
+      JSON.parse(localStorage.getItem('localStorageData')).queueFilms.length ===
+      0
+    ) {
+      const img = `<img src=${empty} alt="empty">`;
+      cleanerMarkup(refs.cardListElLibrary);
+      renderFoo(img, refs.cardListElLibrary);
+      return;
+    }
     results = localStorageData.queueFilms;
   }
 
@@ -54,7 +80,7 @@ export async function createLibraryMarkup(onBtnClick, isWatched = false) {
   // cleanerMarkup(results.id);
 
   // console.log(results);
-  // получаем массив из елементов 'li' , переводим в строку с помощю join
+  // получаем массив из элементов 'li' , переводим в строку с помощью join
   const filmCards = results
     .map(
       ({
@@ -83,7 +109,7 @@ export async function createLibraryMarkup(onBtnClick, isWatched = false) {
     //проверяем через тернарник
     release_date ? new Date(release_date).getFullYear() : 'Nobody know'
   }</p>
-  <span class="blabla">${vote_average}</span>
+  <span class="film__vote">${vote_average}</span>
    </div>
    </div>
    </a>

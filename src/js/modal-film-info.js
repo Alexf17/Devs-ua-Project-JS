@@ -31,7 +31,6 @@ if (
   window.location.pathname === '/Devs-ua-Project-JS/my-library.html' ||
   window.location.pathname === '/my-library.html'
 ) {
-  console.log(window.location.pathname);
   refs.cardListElLibrary.addEventListener('click', onFilmCardClick);
   // refs.filmList.removeEventListener('click', onFilmCardClick);
 }

@@ -35,13 +35,13 @@ export function createModalMarkup(data) {
   //   : (text_btn_queue = 'add to queue');
 
   if (isExistsWatchedObjFilm(id)) {
-    text_btn_watch = 'remove';
+    text_btn_watch = 'remove from watched';
     watched_checked = 'button-modal__checked';
   } else {
     text_btn_watch = 'add to watched';
   }
   if (isExistsQueueObjFilm(id)) {
-    text_btn_queue = 'remove';
+    text_btn_queue = 'remove from queue';
     queue_checked = 'button-modal__checked';
   } else {
     text_btn_queue = 'add to queue';
@@ -95,6 +95,7 @@ export function createModalMarkup(data) {
               id="${id}"
               class="button-list__button button-modal__white ${watched_checked}"
               data-action="watched"
+          
             >
               ${text_btn_watch}
             </button>
