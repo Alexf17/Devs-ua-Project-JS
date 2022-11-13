@@ -1,5 +1,6 @@
 export const refs = {
   preloaderEl: document.querySelector('#preloader'),
+  libraryWrapper: document.querySelector('.library__wrapper'),
   imgElArr: document.getElementsByClassName('film-item__img'),
   bodyEl: document.querySelector('body'),
   infoFilmWrapEl: document.querySelector('.infoFilm__wrap'),

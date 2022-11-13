@@ -34,9 +34,10 @@ function onLibBtnClick(e) {
 }
 
 //Рендер коллекции из watch
+console.log(refs.libraryWrapper);
 if (JSON.parse(localStorage.getItem('localStorageData')) === null) {
   const img = `<img src=${empty} alt="empty">`;
-  renderFoo(img, refs.cardListElLibrary);
+  renderFoo(img, refs.libraryWrapper);
   return;
 }
 
@@ -52,12 +53,14 @@ export async function createLibraryMarkup(onBtnClick, isWatched = false) {
 
   if (onBtnClick === 'watched') {
     if (
+      JSON.parse(localStorage.getItem('localStorageData')) === null ||
       JSON.parse(localStorage.getItem('localStorageData')).watchedFilms
         .length === 0
     ) {
       const img = `<img src=${empty} alt="empty">`;
+      cleanerMarkup(refs.libraryWrapper);
       cleanerMarkup(refs.cardListElLibrary);
-      renderFoo(img, refs.cardListElLibrary);
+      renderFoo(img, refs.libraryWrapper);
       return;
     }
     results = localStorageData.watchedFilms;
@@ -65,12 +68,14 @@ export async function createLibraryMarkup(onBtnClick, isWatched = false) {
 
   if (onBtnClick === 'queue') {
     if (
+      JSON.parse(localStorage.getItem('localStorageData')) === null ||
       JSON.parse(localStorage.getItem('localStorageData')).queueFilms.length ===
-      0
+        0
     ) {
       const img = `<img src=${empty} alt="empty">`;
+      cleanerMarkup(refs.libraryWrapper);
       cleanerMarkup(refs.cardListElLibrary);
-      renderFoo(img, refs.cardListElLibrary);
+      renderFoo(img, refs.libraryWrapper);
       return;
     }
     results = localStorageData.queueFilms;
@@ -124,6 +129,7 @@ export async function createLibraryMarkup(onBtnClick, isWatched = false) {
     )
     .join('');
 
+  cleanerMarkup(refs.libraryWrapper);
   cleanerMarkup(refs.cardListElLibrary);
   // возвращаем строку
   renderFoo(filmCards, refs.cardListElLibrary);

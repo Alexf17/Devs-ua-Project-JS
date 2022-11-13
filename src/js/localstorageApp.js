@@ -193,6 +193,7 @@ function removeObjFilm(localStorageOld, checkId) {
 }
 
 function setStatusRemove(btnRef) {
+  console.dir(btnRef);
   btnRef.textContent = 'add to queue'
     ? (btnRef.textContent = 'remove from queue')
     : (btnRef.textContent = 'remove from watched');
