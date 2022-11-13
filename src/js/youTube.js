@@ -5,7 +5,10 @@ import { renderFoo } from './renderMarkup';
 import { cleanerMarkup } from './cleanerMarkup';
 import { Notify } from 'notiflix';
 
-refs.cardListEl.addEventListener('click', onYoutubeClick);
+if (window.location.pathname === '/index.html') {
+  refs.cardListEl.addEventListener('click', onYoutubeClick);
+}
+
 refs.youTubeCloseBtn.addEventListener('click', onYoutubeClose);
 refs.youTubeBackdrop.addEventListener('click', onBackdropYouTubeClose);
 

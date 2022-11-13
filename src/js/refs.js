@@ -8,6 +8,7 @@ export const refs = {
   darkBtn: document.querySelector('button[data-theme="onDark"]'),
   lightBtn: document.querySelector('button[data-theme="onLight"]'),
   cardListEl: document.querySelector('ul.card__list'),
+  cardListElLibrary: document.querySelector('ul.library_card__list'),
   headerFormEl: document.querySelector('.header__form'),
   headerErrorEl: document.querySelector('.header__error'),
   libBtnContainerEl: document.querySelector('.btn-container'),

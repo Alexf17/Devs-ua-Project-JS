@@ -10,6 +10,7 @@ const apiFilmoteka = new ApiFilmoteka();
 // Получение ссылок на необходимые элементы
 
 export const refs = {
+  cardListElLibrary: document.querySelector('ul.library_card__list'),
   filmList: document.querySelector('.card__list'),
   ModalFilmBackdrop: document.querySelector('.backdrop-modalInfo'),
   ModalFilmBody: document.querySelector('body'),
@@ -19,8 +20,16 @@ export const refs = {
 };
 
 // Добавление слушателей для открытия/закрытия модального окна
+if (window.location.pathname === '/index.html') {
+  refs.filmList.addEventListener('click', onFilmCardClick);
+}
 
-refs.filmList.addEventListener('click', onFilmCardClick);
+if (window.location.pathname === '/my-library.html') {
+  console.log(window.location.pathname);
+  refs.cardListElLibrary.addEventListener('click', onFilmCardClick);
+  // refs.filmList.removeEventListener('click', onFilmCardClick);
+}
+
 refs.ModalFilmBtnClose.addEventListener('click', onModalFilmBtnClose);
 refs.ModalFilmBackdrop.addEventListener('click', onBackdropClose);
 

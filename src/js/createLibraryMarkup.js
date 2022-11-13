@@ -98,7 +98,7 @@ export async function createLibraryMarkup(onBtnClick, isWatched = false) {
     )
     .join('');
 
-  cleanerMarkup(refs.cardListEl);
+  cleanerMarkup(refs.cardListElLibrary);
   // возвращаем строку
-  renderFoo(filmCards, refs.cardListEl);
+  renderFoo(filmCards, refs.cardListElLibrary);
 }
