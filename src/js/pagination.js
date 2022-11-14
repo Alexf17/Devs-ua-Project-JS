@@ -9,7 +9,7 @@ export default function pagination(currentPage, allPages) {
   let afterPage = currentPage + 1;
   let afterTwoPage = currentPage + 2;
   if (currentPage > 1) {
-    markup += `<li class="paginationRow">&#129144;</li>`;
+    markup += `<li class="paginationRow">&#10094;</li>`;
   }
   if (currentPage > 1) {
     markup += `<li>1</li>`;
@@ -36,7 +36,7 @@ export default function pagination(currentPage, allPages) {
   }
   if (allPages > currentPage) {
     markup += `<li>${currentPage + 5}</li>`;
-    markup += `<li class="paginationRow">&#129146;</li>`;
+    markup += `<li class="paginationRow">&#10095;</li>`;
   }
 
   refs.paginationBox.innerHTML = markup;

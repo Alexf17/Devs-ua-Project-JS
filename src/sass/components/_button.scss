@@ -20,7 +20,6 @@
   }
 }
 
-
 .button--transparent {
   background-color: transparent;
   border: 1px solid #ffffff;
@@ -61,14 +60,13 @@
     box-shadow: 2px 2px 5px rgb(161, 158, 158);
     background-color: var(--accent-color);
     color: var(--white-color);
-    border: transparent;
+    border: 1px solid transparent;
   }
 }
 
 .button-modal__checked {
   background-color: var(--back-drop-bg-color);
 }
-
 
 .button--orange {
   background-color: var(--accent-color);

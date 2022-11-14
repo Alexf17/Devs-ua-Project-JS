@@ -115,7 +115,7 @@ async function handlerPaginationInput(evt) {
     if (evt.target.nodeName !== 'LI') {
       return;
     }
-    if (evt.target.textContent === '🡸') {
+    if (evt.target.textContent === '❮') {
       api.setPageNumber((globalCurrentpage -= 1));
       api.getFilmName();
 
@@ -128,7 +128,7 @@ async function handlerPaginationInput(evt) {
       preloaderRefreshOFF();
       return;
     }
-    if (evt.target.textContent === '🡺') {
+    if (evt.target.textContent === '❯') {
       api.setPageNumber((globalCurrentpage += 1));
       api.getFilmName();
       const filesFromBackend = await api.fetchFilmsByName();

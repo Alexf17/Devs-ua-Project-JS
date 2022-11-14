@@ -53,7 +53,7 @@ function onInfoFilmWrapClick(e) {
   // Get link on watchedBtn
   if (e.target.dataset.action === 'watched') {
     if (!refs.isLogin) {
-      Notify.warning('Please Sign in');
+      Notify.info('Please Sign in');
       return;
     }
     let watchedBtn = e.target;
@@ -107,7 +107,7 @@ function onInfoFilmWrapClick(e) {
 
   if (e.target.dataset.action === 'queue') {
     if (!refs.isLogin) {
-      Notify.warning('Please Sign in');
+      Notify.info('Please Sign in');
       return;
     }
     let queueBtn = e.target;
@@ -193,11 +193,15 @@ function removeObjFilm(localStorageOld, checkId) {
 }
 
 function setStatusRemove(btnRef) {
-  console.dir(btnRef);
-  btnRef.textContent = 'add to queue'
-    ? (btnRef.textContent = 'remove from queue')
-    : (btnRef.textContent = 'remove from watched');
-  btnRef.classList.add('button-modal__checked');
+  console.log(btnRef.dataset.action);
+  if (btnRef.dataset.action === 'watched') {
+    console.log(1);
+    btnRef.textContent = 'remove from watched';
+    btnRef.classList.add('button-modal__checked');
+  } else {
+    btnRef.textContent = 'remove from queue';
+    btnRef.classList.add('button-modal__checked');
+  }
 }
 
 function setStatusAddToQueue(btnRef) {
