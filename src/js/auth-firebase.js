@@ -49,6 +49,7 @@ function formSubmit(e) {
     return;
   }
   createNewAccount(auth, userEmail, userPass);
+
   Notify.success(`Congratulation, ${userName}! You did it!`);
   formSignUp.reset();
   formSignUp.removeEventListener('submit', formSubmit);
@@ -101,7 +102,7 @@ async function loginIntoAccount(auth, email, password) {
     auth = getAuth(firebaseConfig);
     await setPersistence(auth, browserLocalPersistence);
     await signInWithEmailAndPassword(auth, email, password);
-    Notify.info(`You successfully logged in`);
+    Notify.info(`Welcome back, ${email}! You successfully logged in.`);
   } catch (error) {
     console.log(error);
     Notify.warning('Email or password wrong! Please, try again.');

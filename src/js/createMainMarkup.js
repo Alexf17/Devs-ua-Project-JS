@@ -81,7 +81,7 @@ async function handlerPagination(evt) {
       return;
     }
 
-    if (evt.target.textContent === '🡸') {
+    if (evt.target.textContent === '❮') {
       api.setPageNumber((globalCurrentpage -= 1));
 
       const filesFromBackend = await api.fetchPopularsFilms();
@@ -94,7 +94,7 @@ async function handlerPagination(evt) {
       return;
     }
 
-    if (evt.target.textContent === '🡺') {
+    if (evt.target.textContent === '❯') {
       api.setPageNumber((globalCurrentpage += 1));
 
       const filesFromBackend = await api.fetchPopularsFilms();

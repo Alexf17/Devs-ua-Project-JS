@@ -201,8 +201,6 @@
     display: inline-flex;
   }
 
- 
-
   .header__list-link--accent::after {
     content: '';
     position: absolute;
@@ -305,8 +303,8 @@
   opacity: 100%;
   text-align: center;
 }
- @media screen and (min-width: 768px) {
- .header__error {
+@media screen and (min-width: 768px) {
+  .header__error {
     margin-top: 16px;
     color: var(--red-color);
     transition: opacity var(--transition-duration) var(--transition-timing);
@@ -315,33 +313,47 @@
 }
 
 .header__icon.film__tape {
-  stroke-opacity: .5;
-  animation-duration: 2s;
+  stroke-opacity: 0.5;
+  animation-duration: 3s;
   animation-name: pulse;
   animation-iteration-count: infinite;
   transform-origin: 50% 50%;
   transform-box: fill-box;
   animation-timing-function: linear;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale3d(0.25, 0.25, 0.25);
   }
-  
-  @keyframes pulse {
-    0% {
-      transform: scale3d(0.25, 0.25, 0.25);
-    }
-    
-    25% {
-      transform: scale3d(0.25, 0.25, 0.25);
-    }
-    
-    50% {
-      transform: scale3d(0.5, 0.5, 0.5);
-    }
-  
-    75% {
-      transform: scale3d(0.75, 0.75, 0.75);
-    }
-  
-    100% {
-      transform: scale3d(1, 1, 1);
-    }
+
+  20% {
+    transform: scale3d(0.5, 0.5, 0.5);
   }
+
+  35% {
+    transform: scale3d(0.75, 0.75, 0.75);
+  }
+
+  45% {
+    transform: scale3d(1, 1, 1);
+  }
+  50% {
+    transform: scale3d(1, 1, 1);
+  }
+  55% {
+    transform: scale3d(1, 1, 1);
+  }
+
+  65% {
+    transform: scale3d(0.75, 0.75, 0.75);
+  }
+
+  85% {
+    transform: scale3d(0.5, 0.5, 0.5);
+  }
+
+  100% {
+    transform: scale3d(0.25, 0.25, 0.25);
+  }
+}

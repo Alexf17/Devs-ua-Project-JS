@@ -10,7 +10,8 @@ main {
   flex-grow: 1;
 }
 
-.card__list,.library_card__list {
+.card__list,
+.library_card__list {
   width: 100%;
   text-align: center;
   @media screen and(min-width:768px) {
@@ -24,13 +25,18 @@ main {
   }
 }
 
+.library__wrapper {
+  display: flex;
+  justify-content: center;
+}
+
 .film__item {
   position: relative;
   border-radius: 5px;
   display: inline-block;
   flex-grow: 1;
-  transition: box-shadow var(--transition-duration) var(--transition-timing);
-  transition: scale var(--transition-duration) var(--transition-timing);
+  transition: box-shadow var(--transition-duration) var(--transition-timing),
+    scale var(--transition-duration) var(--transition-timing);
   &:hover,
   &:focus {
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),

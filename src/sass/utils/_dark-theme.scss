@@ -42,6 +42,10 @@ button.change_theme[data-theme='onLight'] {
   }
   .footer__text {
     color: var(--white-color);
+    &:hover,
+    &:focus {
+      color: var(--accent-color);
+    }
   }
   .film__title {
     color: var(--white-color);
@@ -170,5 +174,13 @@ button.change_theme[data-theme='onLight'] {
   }
   .paginationRow {
     background-color: #363636;
+  }
+
+  .film__item {
+    &:hover,
+    &:focus {
+      box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.646),
+        0px 4px 4px rgba(255, 255, 255, 0.654), 1px 4px 6px rgb(255, 255, 255);
+    }
   }
 }
