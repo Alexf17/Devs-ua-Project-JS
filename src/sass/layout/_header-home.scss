@@ -123,7 +123,9 @@
   padding-bottom: 2px;
   margin-top: 0;
 
-  transition: color var(--transition-duration) var(--transition-timing);
+  transition: color var(--transition-duration) var(--transition-timing),
+    -webkit-text-stroke var(--transition-duration) var(--transition-timing),
+    text-shadow var(--transition-duration) var(--transition-timing);
 }
 
 .header__form {
@@ -148,7 +150,8 @@
 
     color: var(--white-color);
     transition: border-bottom-color var(--transition-duration)
-      var(--transition-timing);
+        var(--transition-timing),
+      box-shadow var(--transition-duration) var(--transition-timing);
     &:hover,
     &:focus {
       cursor: pointer;
@@ -162,7 +165,7 @@
     .header__form-input {
       max-width: 336px;
     }
-    .header__form-search {
+    & {
       width: 336px;
     }
     .header__form {
@@ -181,7 +184,7 @@
     .header__form-input {
       max-width: 394px;
     }
-    .header__form-search {
+    & {
       width: 394px;
     }
   }
@@ -214,7 +217,9 @@
 
   .header__logo-text {
     display: none;
-    transition: color var(--transition-duration) var(--transition-timing);
+    transition: color var(--transition-duration) var(--transition-timing),
+      -webkit-text-stroke var(--transition-duration) var(--transition-timing),
+      text-shadow var(--transition-duration) var(--transition-timing);
   }
   @media screen and (min-width: 768px) {
     .header__logo {
@@ -257,29 +262,38 @@
   stroke: white;
 
   transition: stroke var(--transition-duration) var(--transition-timing),
-    fill var(--transition-duration) var(--transition-timing);
+    fill var(--transition-duration) var(--transition-timing),
+    box-shadow var(--transition-duration) var(--transition-timing);
 }
 
 /*Ховери*/
 .header__logo:hover.header__logo:focus .header__icon {
   stroke: var(--accent-color);
 }
-.header__logo:hover.header__logo:focus .header__logo-text {
+.header__logo:hover,
+.header__logo:focus .header__logo-text {
   color: var(--accent-color);
+  text-shadow: 10px 10px 30px wheat, -10px -10px 30px var(--accent-color);
+  -webkit-text-stroke: 0.5px black;
 }
 .header__list-link:hover,
 .header__list-link:focus {
   color: var(--accent-color);
+  text-shadow: 10px 10px 30px wheat, -10px -10px 30px var(--accent-color);
+  -webkit-text-stroke: 0.5px black;
 }
 
 .icon-autorization:hover {
   fill: var(--accent-color);
   stroke: var(--accent-color);
+  box-shadow: 10px 10px 30px wheat, -10px -10px 30px var(--accent-color);
 }
 
 .header__form-input:hover,
 .header__form-input:focus {
   border-bottom-color: var(--accent-color);
+
+  box-shadow: 0px 2px 30px wheat, 0px -2px 30px var(--accent-color);
 }
 
 .header__form-input:hover.header__form-input::placeholder {

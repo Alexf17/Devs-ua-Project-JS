@@ -17,15 +17,18 @@
     width: 40px;
     height: 40px;
     transition: transform var(--transition-duration) var(--transition-timing),
-      color var(--transition-duration) var(--transition-timing);
+      color var(--transition-duration) var(--transition-timing),
+      box-shadow var(--transition-duration) var(--transition-timing);
     &:hover,
     &:focus {
       transform: scale(1.02);
       color: var(--accent-color);
+      box-shadow: 2px 2px 10px wheat, -2px -2px 10px var(--accent-color);
     }
     &.paginationPage--current {
       color: var(--white-color);
       background-color: var(--accent-color);
+      box-shadow: 2px 2px 10px wheat, -2px -2px 10px var(--accent-color);
       &:hover,
       &:focus {
         color: var(--white-color);

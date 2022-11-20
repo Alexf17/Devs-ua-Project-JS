@@ -9,13 +9,12 @@
   fill: white;
   background-color: transparent;
   transform: scale(0.75); // 75% of original size
+  transition: fill var(--transition-duration) var(--transition-timing);
 }
 
 .change_theme:hover,
 .change_theme:focus {
   fill: var(--orange-hover);
-  transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @media screen and (min-width: 768px) {
@@ -35,24 +34,93 @@ button.change_theme[data-theme='onLight'] {
 // Тёмная тема
 .dark__theme {
   // страница -------------------
-  background-color: #5c5b5b;
+  background-color: #303030;
+
+  .header {
+    background-image: url(/src/images/mobile/main-background-mobile-dark.jpg);
+  }
+
+  @media (min-device-pixel-ratio: 2),
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .header {
+      background-image: url(/src/images/mobile/main-background-mobile-dark@2x.jpg);
+    }
+  }
+
+  @media screen and (min-device-pixel-ratio: 3),
+    screen and (min-resolution: 288dpi),
+    screen and (min-resolution: 3dppx) {
+    .header {
+      background-image: url(/src/images/mobile/main-background-mobile-dark@3x.jpg);
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .header {
+      min-height: 216px;
+      background-image: url(/src/images/tablet/main-background-tablet-dark.jpg);
+    }
+
+    @media (min-device-pixel-ratio: 2),
+      (-webkit-min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      .header {
+        background-image: url(/src/images/tablet/main-background-tablet-dark@2x.jpg);
+      }
+    }
+    @media screen and (min-device-pixel-ratio: 3),
+      screen and (min-resolution: 288dpi),
+      screen and (min-resolution: 3dppx) {
+      .header {
+        background-image: url(/src/images/tablet/main-background-tablet-dark@3x.jpg);
+      }
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    .header {
+      background-image: url(/src/images/desktop/main-background-desktop-dark.jpg);
+    }
+
+    @media (min-device-pixel-ratio: 2),
+      (-webkit-min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      .header {
+        background-image: url(/src/images/desktop/main-background-desktop-dark@2x.jpg);
+      }
+    }
+    @media screen and (min-device-pixel-ratio: 3),
+      screen and (min-resolution: 288dpi),
+      screen and (min-resolution: 3dppx) {
+      .header {
+        background-image: url(/src/images/desktop/main-background-desktop-dark@3x.jpg);
+      }
+    }
+  }
 
   .footer {
-    background-color: #363636;
+    background-color: #202020;
   }
   .footer__text {
     color: var(--white-color);
+  }
+  .footer__link {
     &:hover,
     &:focus {
       color: var(--accent-color);
     }
   }
+
   .film__title {
     color: var(--white-color);
   }
   // модалка основная (инфо)---------
   .infoFilm {
-    background-color: #5c5b5b;
+    background-color: #303030;
   }
   .infoFilm__button {
     fill: var(--light-gray-color);
@@ -77,7 +145,7 @@ button.change_theme[data-theme='onLight'] {
   }
   // модалка команды -------------------
   .ourteam__container {
-    background-color: #5c5b5b;
+    background-color: #303030;
   }
   .modal__close-button {
     fill: var(--light-gray-color);
@@ -95,7 +163,7 @@ button.change_theme[data-theme='onLight'] {
   }
   // модалка авторизации---------------------
   .authorization {
-    background-color: #5c5b5b;
+    background-color: #303030;
   }
   .authorization__close {
     fill: var(--light-gray-color);
@@ -155,25 +223,23 @@ button.change_theme[data-theme='onLight'] {
   //пагинация
   .paginationBox > li {
     color: var(--white-color);
-    transition: transform var(--transition-duration) var(--transition-timing),
-      color var(--transition-duration) var(--transition-timing);
+    transition: transform var(--transition-duration) var(--transition-timing);
     &:hover,
     &:focus {
       transform: scale(1.02);
       color: var(--accent-color);
     }
     &.paginationPage--current {
-      color: #363636;
+      color: #202020;
       background-color: var(--accent-color);
       &:hover,
       &:focus {
-        color: var(--white-color);
         transform: scale(1);
       }
     }
   }
   .paginationRow {
-    background-color: #363636;
+    background-color: #202020;
   }
 
   .film__item {

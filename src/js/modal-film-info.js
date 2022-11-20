@@ -46,9 +46,11 @@ async function onFilmCardClick(e) {
     apiFilmoteka.filmId = filmId;
     const dataBackEnd = await apiFilmoteka.fetchFilmsById();
 
+    const backdropImage = `https://image.tmdb.org/t/p/original${dataBackEnd.backdrop_path}`;
+
     const markup = createModalMarkup(dataBackEnd);
     renderFoo(markup, refs.ModalFilmWrap);
-    openModal();
+    openModal(backdropImage);
   }
 }
 
@@ -77,16 +79,21 @@ function onKeyAction({ key }) {
 //
 function closeModal() {
   refs.ModalFilmBody.removeEventListener('keydown', onKeyAction);
-
   refs.ModalFilmBackdrop.classList.add('visually-hidden');
+  cleanerMarkup(refs.ModalFilmWrap);
+
   refs.ModalFilmBody.classList.remove('no-scroll');
   refs.ModalFilmBackdrop.classList.remove('scroll');
   refs.btn_anchor.classList.remove('btn_anchor-hidden');
-  cleanerMarkup(refs.ModalFilmWrap);
 }
 
-function openModal() {
-  refs.ModalFilmBackdrop.classList.remove('visually-hidden');
+function openModal(backdrop) {
+  setTimeout(() => {
+    refs.ModalFilmBackdrop.classList.remove('visually-hidden');
+  }, 300);
+  // refs.ModalFilmBackdrop.classList.remove('visually-hidden');
+
+  refs.ModalFilmBackdrop.style.backgroundImage = `url(${backdrop})`;
   refs.ModalFilmBody.classList.add('no-scroll');
   refs.ModalFilmBackdrop.classList.add('scroll');
   refs.btn_anchor.classList.add('btn_anchor-hidden');

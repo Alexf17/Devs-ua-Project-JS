@@ -59,10 +59,15 @@
   text-decoration-line: underline;
   margin: 0;
   margin-left: 4px;
-  transition: color var(--transition-timing) var(--transition-duration);
+  transition: color var(--transition-timing) var(--transition-duration),
+    text-color var(--transition-duration) var(--transition-timing),
+    -webkit-text-stroke var(--transition-duration) var(--transition-timing);
+
   &:hover,
   &:focus {
     color: var(--accent-color);
+    text-shadow: 10px 10px 30px wheat, -10px -10px 30px var(--accent-color);
+    -webkit-text-stroke: 0.5px black;
   }
 }
 

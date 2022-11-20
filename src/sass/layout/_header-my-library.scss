@@ -246,6 +246,8 @@
 
 .header__list-link:hover {
   color: var(--accent-color);
+  text-shadow: 10px 10px 30px wheat, -10px -10px 30px var(--accent-color);
+  -webkit-text-stroke: 0.5px black;
 }
 .lib-btn:hover {
   background-color: var(--accent-color);
@@ -260,7 +262,7 @@
   padding: 3px;
   width: 40px;
   height: 20px;
-  
+
   font-weight: 500;
   font-size: 12px;
   line-height: 1.17;

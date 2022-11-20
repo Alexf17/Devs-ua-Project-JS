@@ -1,12 +1,25 @@
 .backdrop-modalInfo {
+  z-index: 3;
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
   background-color: var(--back-drop-bg-color);
+  background-size: 100%;
+  background-repeat: no-repeat;
+
   opacity: 1;
-  transition: opacity var(--transition--duration) var(--transition-timing);
+  transition: opacity 1500ms var(--transition-timing),
+    visibility var(--transition-duration) var(--transition-timing);
+
+  &.visually-hidden {
+    opacity: 0;
+
+    & .infoFilm {
+      opacity: 0;
+    }
+  }
 }
 
 .infoFilm {
@@ -20,8 +33,13 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  transition: transform var(--transition-duration) var(--transition-timing);
 
   padding: 48px 20px 40px;
+
+  border-radius: 5px;
+
+  opacity: 0.95;
 
   background-color: #ffffff;
   scrollbar-color: var(--gray-color);
