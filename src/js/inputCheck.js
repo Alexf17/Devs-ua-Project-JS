@@ -166,9 +166,12 @@ async function handlerPaginationInput(evt) {
 
       return;
     }
-    const page = evt.target.textContent;
 
-    api.setPageNumber(Number(page));
+    const page = evt.target.textContent;
+    globalCurrentpage = Number(page);
+
+    api.setPageNumber(globalCurrentpage);
+
     const filesFromBackend = await api.fetchFilmsByName();
 
     cleanerMarkup(refs.cardListEl);

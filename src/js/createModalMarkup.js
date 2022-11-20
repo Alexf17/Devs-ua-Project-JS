@@ -4,8 +4,9 @@ import {
   isExistsQueueObjFilm,
   isExistsWatchedObjFilm,
 } from './localstorageApp';
-import { refs } from './refs';
+
 let localStorageData = JSON.parse(localStorage.getItem('localStorageData'));
+
 export function createModalMarkup(data) {
   // console.log('data', data);
   // refs.fetchDataValue = data;
@@ -26,13 +27,6 @@ export function createModalMarkup(data) {
   let text_btn_queue = '';
   let watched_checked = '';
   let queue_checked = '';
-
-  // isExistsWatchedObjFilm(id)
-  //   ? (text_btn_watch = 'remove')
-  //   : (text_btn_watch = 'add to watched');
-  // isExistsQueueObjFilm(id)
-  //   ? (text_btn_queue = 'remove')
-  //   : (text_btn_queue = 'add to queue');
 
   if (isExistsWatchedObjFilm(id)) {
     text_btn_watch = 'remove from watched';

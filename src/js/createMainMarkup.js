@@ -73,7 +73,6 @@ createMainMarkup(api.fetchPopularsFilms());
 
 async function handlerPagination(evt) {
   if (api.filmName) {
-    // console.log('return');
     return;
   } else {
     // console.log('asd');
@@ -91,6 +90,7 @@ async function handlerPagination(evt) {
 
       pagination(api.pageNumber, api.totalPages);
       preloaderRefreshOFF();
+
       return;
     }
 
@@ -104,6 +104,7 @@ async function handlerPagination(evt) {
 
       pagination(api.pageNumber, api.totalPages);
       preloaderRefreshOFF();
+
       return;
     }
 
@@ -117,11 +118,13 @@ async function handlerPagination(evt) {
 
       pagination(api.pageNumber, api.totalPages);
       preloaderRefreshOFF();
+
       return;
     }
 
     if (evt.target.id === 'right-pagnDots') {
       api.setPageNumber((globalCurrentpage += 3));
+
       const filesFromBackend = await api.fetchPopularsFilms();
 
       cleanerMarkup(refs.cardListEl);
@@ -129,12 +132,14 @@ async function handlerPagination(evt) {
 
       pagination(api.pageNumber, api.totalPages);
       preloaderRefreshOFF();
+
       return;
     }
 
     const page = evt.target.textContent;
+    globalCurrentpage = Number(page);
 
-    api.setPageNumber(Number(page));
+    api.setPageNumber(globalCurrentpage);
     const filesFromBackend = await api.fetchPopularsFilms();
 
     cleanerMarkup(refs.cardListEl);
