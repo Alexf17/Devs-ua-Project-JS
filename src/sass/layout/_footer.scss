@@ -60,14 +60,26 @@
   margin: 0;
   margin-left: 4px;
   transition: color var(--transition-timing) var(--transition-duration),
-    text-color var(--transition-duration) var(--transition-timing),
+    -webkit-animation var(--transition-duration) var(--transition-timing),
     -webkit-text-stroke var(--transition-duration) var(--transition-timing);
 
   &:hover,
   &:focus {
     color: var(--accent-color);
-    text-shadow: 10px 10px 30px wheat, -10px -10px 30px var(--accent-color);
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
     -webkit-text-stroke: 0.5px black;
+  }
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px yellow, 0 0 20px yellow, 0 0 30px red, 0 0 40px red,
+      0 0 50px red, 0 0 60px red, 0 0 70px red;
+  }
+
+  to {
+    text-shadow: 0 0 20px yellow, 0 0 30px red, 0 0 40px red, 0 0 50px red,
+      0 0 60px red, 0 0 70px red, 0 0 80px red;
   }
 }
 
